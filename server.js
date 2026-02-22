@@ -212,7 +212,11 @@ function triggerBuild() {
 }
 
 // ─── Start ────────────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
-    console.log(`✅  Server running at http://localhost:${PORT}`);
-    console.log(`   Admin panel: http://localhost:${PORT}/admin`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`✅  Server running at http://localhost:${PORT}`);
+        console.log(`   Admin panel: http://localhost:${PORT}/admin`);
+    });
+}
+
+module.exports = app;
