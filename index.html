@@ -101,222 +101,491 @@
     <div id="main-header"></div>
 
     <!-- Hero Section -->
-    <!-- Hero Section with Video Background -->
-    <section class="h-screen relative overflow-hidden flex items-center justify-center">
-        <!-- Video Background (Adjusted Opacity and Scale) -->
-        <div class="absolute inset-0 w-full h-full z-0">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-90">
-                <source src="assets/hero-gif.mp4" type="video/mp4">
-            </video>
-            <!-- Stronger Overlay for Readability -->
-            <div class="absolute inset-0 bg-slate-900/60"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-slate-900/40"></div>
+    <!-- Hero Section -->
+    <section
+        class="h-screen relative overflow-hidden flex flex-col justify-center bg-secondary pb-12 pt-24 min-h-[700px]">
+        <div
+            class="absolute inset-0 bg-primary/5 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')]">
         </div>
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-surface to-transparent z-10"></div>
 
-        <div class="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 pb-12">
-            <!-- Badge -->
-            <div class="mb-6 animate-fade-in-up" style="animation-delay: 0.1s;">
-                <div
-                    class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-5 py-1.5 border border-white/10 shadow-lg">
-                    <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                    <span class="text-xs md:text-sm font-semibold text-white/90 tracking-wide uppercase">Gestão
-                        Inteligente de Viagens</span>
+        <div class="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+
+            <span
+                class="inline-block bg-white/10 text-white backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-bold mb-6 tracking-wide border border-white/20">Gestão
+                de Viagens para PMEs</span>
+
+            <h1
+                class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-[1.1] tracking-tight text-white max-w-5xl">
+                Reduza os custos de viagens corporativas em até 30% <span class="text-primary block mt-2">sem perder
+                    horas cotando tarifas "na unha".</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-slate-300 leading-relaxed font-medium mb-10 max-w-3xl mx-auto">
+                Uma plataforma all-in-one com inteligência tarifária avançada e um Concierge humano 24/7. Feita para
+                PMEs que não querem ser ignoradas pelas grandes agências, nem abandonadas por ferramentas self-service.
+            </p>
+
+            <div class="flex flex-col items-center">
+                <a href="https://emeo1uhrjwf.typeform.com/to/oWdmlXrQ" target="_blank"
+                    class="inline-block bg-primary text-white text-lg font-black px-10 py-5 rounded-xl shadow-2xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all mb-4">
+                    Fazer uma simulação de economia
+                </a>
+                <p class="text-sm font-medium text-slate-400">
+                    Mais de <strong class="text-white">R$ 168 mil</strong> já economizados por nossos clientes. <br
+                        class="hidden md:block">Zero risco cambial.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Banner -->
+    <section class="py-10 bg-surface border-b border-slate-200 relative z-10 -mt-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Empresas que já otimizam suas
+                DREs conosco</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale">
+                <span class="text-2xl font-black text-slate-500">MINAP</span>
+                <span class="text-2xl font-black text-slate-500">HPrime</span>
+                <span class="text-2xl font-black text-slate-500">Comaro Engenharia</span>
+                <span class="text-2xl font-black text-slate-500">TCA Advogados</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: QUANTIFICAÇÃO DA DOR -->
+    <section class="py-24 bg-white relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-secondary mb-16 max-w-4xl mx-auto leading-tight">O custo
+                oculto que está engolindo sua margem <span class="text-slate-400 font-medium block text-2xl mt-3">(e a
+                    saúde mental da sua equipe).</span></h2>
+
+            <div class="grid md:grid-cols-2 gap-8 text-left mb-12">
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200">
+                    <span
+                        class="bg-red-100 text-red-600 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mb-4 inline-block">Problema
+                        1</span>
+                    <h3 class="text-xl font-bold text-secondary mb-3">Cotações intermináveis</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed"><strong class="text-secondary">40 minutos
+                            desperdiçados</strong> pulando de site em site para emitir uma única passagem.</p>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200">
+                    <span
+                        class="bg-red-100 text-red-600 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mb-4 inline-block">Problema
+                        2</span>
+                    <h3 class="text-xl font-bold text-secondary mb-3">O desespero da remarcação</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed"><strong class="text-secondary">Até 1h30 pendurado
+                            no telefone</strong> quando a companhia aérea cancela o voo do seu CEO.</p>
                 </div>
             </div>
 
-            <!-- Static Title (Smaller Font, Fixed Content) -->
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight text-white drop-shadow-2xl animate-fade-in-up"
-                style="animation-delay: 0.2s;">
-                Reduza em até 30% os custos com viagens corporativas<br>
-                <span class="text-primary text-3xl sm:text-4xl">sem perder horas cotando tarifas "na unha".</span>
-            </h1>
-
-            <!-- Subtitle -->
-            <div class="mb-10 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.3s;">
-                <p class="text-lg md:text-xl text-slate-100 leading-relaxed font-light">
-                    Uma plataforma all-in-one com inteligência de tarifas e um Concierge humano 24/7. Feita para PMEs
-                    que não querem ser ignoradas pelas grandes agências, nem abandonadas por plataformas de
-                    autoatendimento.
+            <div
+                class="bg-secondary text-white rounded-3xl p-10 shadow-2xl transform md:scale-105 relative z-10 border-b-4 border-red-500">
+                <p class="text-xl md:text-2xl leading-relaxed text-slate-300">
+                    = <strong
+                        class="text-white text-3xl md:text-5xl font-black tracking-tight block my-2 text-red-400">R$
+                        6.000 a R$ 9.000</strong> jogados no lixo todo ano em horas de operação invisível <span
+                        class="text-sm block mt-2 opacity-50 font-normal">(numa PME com 30 viagens/mês).</span>
                 </p>
             </div>
 
-            <!-- Magic Button (Positioned Closer) -->
-            <div class="animate-fade-in-up" style="animation-delay: 0.4s;">
-                <a href="https://emeo1uhrjwf.typeform.com/to/oWdmlXrQ" target="_blank"
-                    class="relative inline-flex h-12 overflow-hidden rounded-lg p-[1px] focus:outline-none group shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-shadow">
-                    <span
-                        class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#FF6600_0%,#FFD400_50%,#FF6600_100%)]"></span>
-                    <span
-                        class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-slate-900 px-8 py-1 text-sm font-bold text-white backdrop-blur-3xl gap-2 transition-transform group-hover:scale-[0.98]">
-                        Faça uma simulação de economia
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </span>
-                </a>
-
-                <!-- Friction Reducer -->
-                <div class="mt-4">
-                    <p class="text-sm font-medium text-slate-300 drop-shadow-md">
-                        Mais de <span class="text-white font-bold">R$168 mil</span> já economizados pelos nossos
-                        clientes.
-                    </p>
-                </div>
+            <div class="mt-16 text-xl text-slate-600 font-medium max-w-2xl mx-auto">
+                <p>E pior: você ainda acaba pagando o preço caro do varejo.</p>
+                <p class="mt-2 text-primary font-bold text-2xl">Mas existe um jeito melhor.</p>
             </div>
         </div>
     </section>
 
-    <!-- Problem vs Solution Section -->
-    <section class="py-24 bg-surface">
+    <!-- SECTION 3: O MECANISMO ÚNICO -->
+    <section class="py-24 bg-surface" id="plataforma">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-                <!-- Problem Side -->
-                <div
-                    class="bg-white p-10 rounded-3xl shadow-card border border-slate-100 relative overflow-hidden group hover:shadow-xl transition-all">
-                    <div
-                        class="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-secondary mb-6">Como garantimos de 10% a 30% de
+                    economia <span class="text-primary block mt-2">(com zero dor de cabeça).</span></h2>
+            </div>
+
+            <div class="space-y-24">
+                <!-- Bloco 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                    <div class="flex-1 order-2 md:order-1">
+                        <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">01 /
+                            Preço</span>
+                        <h3 class="text-3xl font-extrabold text-secondary mb-6 leading-tight">Acesso a Milhas B2B e
+                            Tarifas Net.</h3>
+                        <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                            Nós acessamos bancos profissionais de milhas e consolidadoras que você não encontra sozinho.
+                            Compramos a passagem no momento exato em que você paga, eliminando qualquer risco (O
+                            Anti-123Milhas).
+                        </p>
+                        <p
+                            class="text-lg text-secondary font-bold bg-white p-4 rounded-xl border-l-4 border-primary shadow-sm inline-block">
+                            O resultado? Uma economia média comprovada de 14% direta na última linha da sua DRE.
+                        </p>
                     </div>
-                    <div class="w-14 h-14 bg-red-100/50 rounded-2xl flex items-center justify-center mb-6">
-                        <span class="material-icons text-red-600 text-2xl">hourglass_empty</span>
+                    <div class="flex-1 order-1 md:order-2 w-full">
+                        <div class="bg-white p-2 rounded-2xl shadow-xl border border-slate-100">
+                            <!-- Visual placeholder for price tech -->
+                            <div
+                                class="bg-slate-50 h-64 md:h-80 rounded-xl flex items-center justify-center p-6 text-center text-slate-400">
+                                <span class="material-icons text-6xl opacity-30">currency_exchange</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-secondary mb-4">O Problema</h3>
-                    <p class="text-slate-600 leading-relaxed text-lg mb-4">
-                        Sua equipe gasta, em média, 40 minutos pulando de site em site para emitir uma passagem. Se
-                        houver cancelamento? São até 1h30 no telefone tentando remarcar.
-                    </p>
-                    <p class="text-slate-600 leading-relaxed text-lg font-medium">
-                        Em uma PME típica, isso significa mais de <span class="text-red-500 font-bold">R$6.000 a R$9.000
-                            jogados no lixo</span> todo ano em custos operacionais invisíveis.<br><br>Existe um jeito
-                        melhor.
-                    </p>
                 </div>
 
-                <!-- Solution Side -->
-                <div
-                    class="bg-slate-900 p-10 rounded-3xl shadow-glow relative overflow-hidden group hover:shadow-2xl transition-all">
-                    <div
-                        class="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-bl-full -z-10 transition-transform group-hover:scale-110">
+                <!-- Bloco 2 -->
+                <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                    <div class="flex-1 w-full">
+                        <div class="bg-white p-2 rounded-2xl shadow-xl border border-slate-100">
+                            <!-- Visual placeholder for dashboard tech -->
+                            <div
+                                class="bg-slate-50 h-64 md:h-80 rounded-xl flex items-center justify-center p-6 text-center text-slate-400">
+                                <span class="material-icons text-6xl opacity-30">dashboard</span>
+                            </div>
+                        </div>
                     </div>
-                    <div
-                        class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 border border-white/5">
-                        <span class="material-icons text-primary text-2xl">rocket_launch</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">A Solução Velt</h3>
-                    <p class="text-slate-300 leading-relaxed text-lg mb-4">
-                        Nós centralizamos todas as buscas, aplicamos milhas e tarifas de consolidadoras de forma 100%
-                        segura, e emitimos para você.
-                    </p>
-                    <div class="mt-6 p-4 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm">
-                        <p class="text-white leading-relaxed text-lg flex items-start gap-3">
-                            <span class="material-icons text-accent mt-0.5">check_circle</span>
-                            <span>O resultado? Economia média comprovada de <span
-                                    class="text-primary font-bold">14%</span> e ROI em até 90 dias.</span>
+                    <div class="flex-1">
+                        <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">02 /
+                            Tecnologia</span>
+                        <h3 class="text-3xl font-extrabold text-secondary mb-6 leading-tight">Plataforma All-in-One
+                            Inteligente.</h3>
+                        <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                            Chega de aprovações desestruturadas no WhatsApp. Nossa plataforma centraliza políticas de
+                            viagem, faturamento fiscal automatizado e leitura por IA.
+                        </p>
+                        <p class="text-lg text-secondary font-bold">
+                            Sua equipe administrativa ganha tempo para focar no que importa e fecha o notebook no
+                            horário.
                         </p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Stats Section -->
-    <section class="py-12 bg-white border-y border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-slate-100">
-                <div class="text-center px-4">
-                    <p class="text-4xl font-extrabold text-secondary mb-2">500k+</p>
-                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Viagens Realizadas</p>
-                </div>
-                <div class="text-center px-4">
-                    <p class="text-4xl font-extrabold text-primary mb-2">35%</p>
-                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Redução de Custos</p>
-                </div>
-                <div class="text-center px-4">
-                    <p class="text-4xl font-extrabold text-secondary mb-2">99.9%</p>
-                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Precisão nos Dados</p>
-                </div>
-                <div class="text-center px-4">
-                    <p class="text-4xl font-extrabold text-primary mb-2">24/7</p>
-                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Suporte Dedicado</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="py-24 bg-surface" id="funcionalidades">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-20">
-                <span class="text-primary font-bold tracking-wider text-sm uppercase mb-4 block">Funcionalidades</span>
-                <h2 class="text-4xl font-extrabold text-secondary mb-6">Tudo o que você precisa em um só lugar</h2>
-                <p class="text-slate-600 text-lg">A Velt integra diretamente ao fluxo da sua empresa, tornando a gestão
-                    de viagens tão fácil quanto um clique.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div
-                    class="bg-white p-8 rounded-3xl shadow-card hover:shadow-xl transition-shadow border border-slate-100 group">
-                    <div
-                        class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <span class="material-icons text-primary text-2xl">sync</span>
+                <!-- Bloco 3 -->
+                <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                    <div class="flex-1 order-2 md:order-1">
+                        <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">03 /
+                            Suporte</span>
+                        <h3 class="text-3xl font-extrabold text-secondary mb-6 leading-tight">Concierge Humano 24/7.
+                        </h3>
+                        <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                            A tecnologia garante velocidade, mas humanos resolvem problemas reais. Se o voo atrasar de
+                            madrugada, nosso Concierge reage e realoca seu passageiro antes mesmo dele pedir ajuda.
+                        </p>
+                        <p class="text-lg text-secondary font-bold border-b border-primary inline-block pb-1">
+                            Durma em paz sabendo que ninguém vai ficar abandonado no aeroporto.
+                        </p>
                     </div>
-                    <h3 class="text-xl font-bold text-secondary mb-3">Sincronização em Tempo Real</h3>
-                    <p class="text-slate-500 leading-relaxed">Conecte os cartões corporativos e perfis de colaboradores
-                        em minutos com nossas integrações nativas.</p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div
-                    class="bg-white p-8 rounded-3xl shadow-card hover:shadow-xl transition-shadow border border-slate-100 group">
-                    <div
-                        class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <span class="material-icons text-blue-600 text-2xl">auto_graph</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-secondary mb-3">Relatórios Automatizados</h3>
-                    <p class="text-slate-500 leading-relaxed">Nossa IA identifica quilometragem, rastreia reservas e
-                        categoriza despesas automaticamente.</p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div
-                    class="bg-white p-8 rounded-3xl shadow-card hover:shadow-xl transition-shadow border border-slate-100 group">
-                    <div
-                        class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <span class="material-icons text-green-600 text-2xl">verified_user</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-secondary mb-3">Compliance Garantido</h3>
-                    <p class="text-slate-500 leading-relaxed">Defina políticas de viagem e deixe que o sistema garanta
-                        que cada reserva esteja dentro do orçamento.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-secondary rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
-                <!-- Decorative Blobs -->
-                <div
-                    class="absolute top-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2">
-                </div>
-                <div
-                    class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2">
-                </div>
-
-                <div class="relative z-10 max-w-4xl mx-auto">
-                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
-                        "A VELT superou todas as expectativas. Economizei R$ 1.500 em uma única emissão. Meu voo
-                        cancelou e a equipe reagiu na hora... nenhuma agência tradicional chega perto dessa agilidade."
-                    </h2>
-                    <div class="flex items-center justify-center gap-4">
-                        <img src="https://i.pravatar.cc/100?img=11"
-                            class="w-16 h-16 rounded-full border-4 border-white/10" alt="Gabriel Guerra">
-                        <div class="text-left">
-                            <p class="text-white font-bold text-lg">Gabriel Guerra</p>
-                            <p class="text-slate-400">CFO da MINAP</p>
+                    <div class="flex-1 order-1 md:order-2 w-full">
+                        <div class="bg-white p-2 rounded-2xl shadow-xl border border-slate-100">
+                            <!-- Visual placeholder for support -->
+                            <div
+                                class="bg-slate-50 h-64 md:h-80 rounded-xl flex items-center justify-center p-6 text-center text-slate-400">
+                                <span class="material-icons text-6xl opacity-30">support_agent</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: TESTEMUNHAIS TRANSFORMACIONAIS -->
+    <section class="py-24 bg-white border-y border-slate-100" id="cases">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-secondary mb-16 text-center leading-tight">Não confie
+                apenas na nossa palavra. <br><span class="text-primary">Confie na matemática deles.</span></h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-slate-50 p-8 md:p-10 rounded-3xl relative shadow-sm border border-slate-200">
+                    <span class="material-icons text-primary/20 text-6xl absolute top-6 right-6">format_quote</span>
+                    <p class="text-lg text-slate-700 leading-relaxed mb-8 relative z-10 font-medium italic">
+                        "A VELT superou expectativas. Economizei mais de R$ 1.500 em uma única emissão. Meu voo cancelou
+                        e a equipe reagiu na hora... Nenhuma agência tradicional chega perto dessa agilidade."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-bold opacity-80">
+                            GG
+                        </div>
+                        <div>
+                            <p class="font-bold text-secondary">Gabriel Guerra</p>
+                            <p class="text-sm text-slate-500">Diretor Financeiro, MINAP</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-slate-900 p-8 md:p-10 rounded-3xl relative shadow-xl transform md:-translate-y-4">
+                    <span class="material-icons text-primary/20 text-6xl absolute top-6 right-6">format_quote</span>
+                    <p class="text-lg text-slate-300 leading-relaxed mb-8 relative z-10 font-medium italic">
+                        "Eles garantem pelo menos 10% de economia e estão cumprindo com louvor. Estou economizando 10%,
+                        20%, 30%... O impacto é muito significativo, e quando há um problema, os executivos resolvem a
+                        qualquer momento."
+                    </p>
+                    <div class="flex items-center gap-4 border-t border-slate-700 pt-6">
+                        <div
+                            class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold blur-[0.5px]">
+                            FA
+                        </div>
+                        <div>
+                            <p class="font-bold text-white">Felipe Almeida</p>
+                            <p class="text-sm text-slate-400">CEO, HPrime</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-slate-50 p-8 md:p-10 rounded-3xl relative shadow-sm border border-slate-200">
+                    <span class="material-icons text-primary/20 text-6xl absolute top-6 right-6">format_quote</span>
+                    <p class="text-lg text-slate-700 leading-relaxed mb-8 relative z-10 font-medium italic mt-2">
+                        "Com a economia nas passagens, os colaboradores que antes viajavam de ônibus agora voam de
+                        avião, com muito mais conforto e velocidade para as obras."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-bold opacity-80">
+                            FC
+                        </div>
+                        <div>
+                            <p class="font-bold text-secondary">Felipe Ceolin</p>
+                            <p class="text-sm text-slate-500">Diretor de Operações, Comaro Engenharia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: DISQUALIFICAÇÃO (Cordão de Veludo) -->
+    <section class="py-24 bg-surface" id="pra-quem-e">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-secondary mb-4">A Velt não é para todo mundo.</h2>
+                <p class="text-xl text-slate-500 font-medium">(E está tudo bem).</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- E PARA VOCE -->
+                <div
+                    class="bg-white rounded-3xl p-8 lg:p-10 border border-green-200 shadow-xl relative overflow-hidden transform md:-translate-y-2">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-green-500"></div>
+                    <div class="flex items-center gap-3 mb-8">
+                        <div
+                            class="bg-green-100 text-green-600 rounded-full w-12 h-12 flex flex-shrink-0 items-center justify-center">
+                            <span class="material-icons text-2xl font-bold">check</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-secondary">Você é o match perfeito se...</h3>
+                    </div>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <span class="material-icons text-green-500 flex-shrink-0 mt-1">done_all</span>
+                            <span class="text-slate-700 font-medium text-lg leading-relaxed">É uma PME ou Middle Market
+                                (20 a 200 colaboradores).</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="material-icons text-green-500 flex-shrink-0 mt-1">done_all</span>
+                            <span class="text-slate-700 font-medium text-lg leading-relaxed">Gasta a partir de R$ 10.000
+                                mensais com viagens corporativas.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="material-icons text-green-500 flex-shrink-0 mt-1">done_all</span>
+                            <span class="text-slate-700 font-medium text-lg leading-relaxed">Quer a última linha da DRE
+                                otimizada sem sacrificar o conforto do seu time.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- NAO E PARA VOCE -->
+                <div
+                    class="bg-slate-50 rounded-3xl p-8 lg:p-10 border border-slate-200 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-red-400"></div>
+                    <div class="flex items-center gap-3 mb-8">
+                        <div
+                            class="bg-red-100 text-red-600 rounded-full w-12 h-12 flex flex-shrink-0 items-center justify-center">
+                            <span class="material-icons text-2xl font-bold">close</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-500">Você NÃO deve nos usar se...</h3>
+                    </div>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4 opacity-70">
+                            <span class="material-icons text-red-400 flex-shrink-0 mt-1">cancel</span>
+                            <span class="text-slate-600 font-medium text-lg leading-relaxed">Busca uma agência de
+                                turismo focada apenas em pacotes de lazer para pessoa física.</span>
+                        </li>
+                        <li class="flex items-start gap-4 opacity-70">
+                            <span class="material-icons text-red-400 flex-shrink-0 mt-1">cancel</span>
+                            <span class="text-slate-600 font-medium text-lg leading-relaxed">É uma megacorporação
+                                burocrática procurando soluções engessadas de Enterprise.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: FOUNDER STORY -->
+    <section class="py-24 bg-secondary relative overflow-hidden text-white" id="sobre">
+        <!-- Visual effects -->
+        <div
+            class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[100px] opacity-50 translate-x-1/3 -translate-y-1/3 pointer-events-none">
+        </div>
+        <div
+            class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none">
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <!-- Image Side -->
+                <div class="lg:w-5/12 w-full">
+                    <div class="relative">
+                        <div
+                            class="absolute inset-0 bg-primary translate-x-4 -translate-y-4 rounded-3xl -z-10 opacity-50">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80"
+                            alt="Fundadores Velt"
+                            class="rounded-3xl shadow-2xl object-cover w-full h-[500px] lg:h-[600px] grayscale hover:grayscale-0 transition-all duration-700">
+                        <div
+                            class="absolute bottom-6 left-6 bg-white/10 backdrop-blur-md px-6 py-3 rounded-xl border border-white/20">
+                            <p class="font-bold text-lg leading-tight">Bruno & Wellerson</p>
+                            <p class="text-sm text-slate-300">Fundadores da Velt</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Side -->
+                <div class="lg:w-7/12 w-full text-lg leading-relaxed text-slate-300 space-y-6">
+                    <h2 class="text-3xl font-extrabold text-white mb-8 border-b border-slate-700 pb-6">Uma rápida
+                        mensagem dos fundadores</h2>
+                    <p>
+                        "Olá, aqui são o Bruno e o Wellerson 👋.
+                    </p>
+                    <p>
+                        Nós operamos por anos estruturando times em gigantes (Stone/TAG, V4 Company). Ao olharmos para
+                        as PMEs, vimos uma injustiça: <strong class="text-white">o mercado de viagens trata pequenas
+                            empresas como clientes de segunda classe.</strong>
+                    </p>
+                    <p>
+                        Você não tem acesso a tarifas de atacado e sua equipe gasta horas preciosas operando um "caos
+                        institucionalizado" em múltiplos sites.
+                    </p>
+                    <p class="text-white font-medium border-l-4 border-primary pl-6 py-2 my-8 bg-white/5 rounded-r-xl">
+                        Criamos a Velt para mudar isso. Juntamos inteligência algorítmica profunda com atendimento
+                        humano obstinado para entregar uma plataforma que devolve o seu tempo e o seu dinheiro.
+                    </p>
+                    <p class="font-bold text-white text-xl">
+                        Venha testar nosso modelo."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: BOTTOM CTA & FAQ -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <!-- Minimal background decoration -->
+        <div class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-slate-50 rounded-tl-full -z-10"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Bottom CTA -->
+            <div class="text-center mb-24">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-secondary mb-10 leading-tight">Chega de pagar
+                    tarifas de varejo e perder o tempo da sua equipe.</h2>
+
+                <a href="https://emeo1uhrjwf.typeform.com/to/oWdmlXrQ" target="_blank"
+                    class="inline-block bg-primary text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-orange-600 transition-all shadow-2xl shadow-primary/30 hover:scale-105 active:scale-95 mb-6">
+                    Ver a Velt em Ação (Demonstração)
+                </a>
+
+                <p class="text-slate-500 font-medium">Entraremos em contato para calcular sua economia média baseada nos
+                    seus últimos voos. Setup rápido e seguro.</p>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div>
+                <h3 class="text-2xl font-bold text-secondary mb-8 text-center uppercase tracking-widest text-sm">
+                    Perguntas Frequentes</h3>
+
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <details
+                        class="group bg-white border border-slate-200 rounded-2xl [&_summary::-webkit-details-marker]:hidden shadow-sm">
+                        <summary class="flex items-center justify-between p-6 cursor-pointer">
+                            <h4 class="font-bold text-secondary text-lg">A Velt é segura? (E o risco da 123Milhas?)</h4>
+                            <span class="relative shrink-0 ml-1.5 w-5 h-5">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 text-slate-400"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 text-primary"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="p-6 pt-0 leading-relaxed text-slate-600 text-lg">
+                            Sim, somos <strong>100% seguros</strong>. O risco não está nas milhas, está na gestão. Ao
+                            contrário de modelos que quebraram, a Velt opera com caixa casado: nós compramos a passagem
+                            do fornecedor no exato segundo em que você confirma o pagamento conosco. Zero especulação. O
+                            seu localizador oficial é emitido na hora.
+                        </div>
+                    </details>
+
+                    <!-- FAQ Item 2 -->
+                    <details
+                        class="group bg-white border border-slate-200 rounded-2xl [&_summary::-webkit-details-marker]:hidden shadow-sm">
+                        <summary class="flex items-center justify-between p-6 cursor-pointer">
+                            <h4 class="font-bold text-secondary text-lg">Como funciona a economia garantida?</h4>
+                            <span class="relative shrink-0 ml-1.5 w-5 h-5">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 text-slate-400"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 text-primary"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="p-6 pt-0 leading-relaxed text-slate-600 text-lg">
+                            Nossa IA varre não apenas sites normais, mas consolidadoras e estoques de milhas B2B. A
+                            mágica é matemática: acessamos canais com descontos invisíveis para o público geral.
+                        </div>
+                    </details>
+
+                    <!-- FAQ Item 3 -->
+                    <details
+                        class="group bg-white border border-slate-200 rounded-2xl [&_summary::-webkit-details-marker]:hidden shadow-sm">
+                        <summary class="flex items-center justify-between p-6 cursor-pointer">
+                            <h4 class="font-bold text-secondary text-lg">E se meu voo der problema no fim de semana?
+                            </h4>
+                            <span class="relative shrink-0 ml-1.5 w-5 h-5">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 text-slate-400"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 text-primary"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="p-6 pt-0 leading-relaxed text-slate-600 text-lg">
+                            Você terá contato direto com nosso <strong>Concierge 24/7</strong>. Diferente de robôs
+                            online, nós atuamos ativamente para te recolocar no próximo voo disponível, sem que você
+                            precise virar noites no telefone.
+                        </div>
+                    </details>
+                </div>
+            </div>
+
         </div>
     </section>
 
