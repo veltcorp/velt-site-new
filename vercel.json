@@ -3,7 +3,16 @@
     "builds": [
         {
             "src": "server.js",
-            "use": "@vercel/node"
+            "use": "@vercel/node",
+            "config": {
+                "includeFiles": [
+                    "*.html",
+                    "blog/**/*.html",
+                    "assets/**/*",
+                    "js/**/*",
+                    "css/**/*"
+                ]
+            }
         }
     ],
     "rewrites": [
