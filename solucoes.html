@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluções - Velt Gestão Inteligente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B00',
+                        secondary: '#1E293B',
+                        surface: '#F8FAFC',
+                        accent: '#22C55E',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Navigation (Same as Home) -->
+    <!-- Dynamic Header -->
+    <div id="main-header"></div>
+
+    <!-- Header -->
+    <header class="bg-secondary py-24 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl translate-y-1/2 translate-x-1/2">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">Soluções para cada <span
+                    class="text-primary">Necessidade</span></h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto">Seja você uma startup em crescimento ou uma
+                multinacional, a Velt escala com o seu negócio.</p>
+        </div>
+    </header>
+
+    <!-- Solutions Grid -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Solution 1 -->
+                <div
+                    class="bg-white rounded-3xl p-10 shadow-lg border border-slate-100 hover:border-primary/30 transition-colors">
+                    <span
+                        class="bg-blue-100 text-blue-600 px-4 py-1.5 rounded-full text-sm font-bold mb-6 inline-block">Grandes
+                        Empresas</span>
+                    <h2 class="text-3xl font-bold text-secondary mb-4">Gestão Global</h2>
+                    <p class="text-slate-600 mb-8 leading-relaxed">Centralize a gestão de viagens de milhares de
+                        colaboradores em múltiplos países. Controle orçamentos, compliance e segurança em um único
+                        painel.</p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3">
+                            <span class="material-icons text-green-500">check_circle</span>
+                            <span class="text-slate-700">Políticas de viagem multi-nível</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-icons text-green-500">check_circle</span>
+                            <span class="text-slate-700">Integração com ERP (SAP, Oracle)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-icons text-green-500">check_circle</span>
+                            <span class="text-slate-700">Suporte VIP 24/7 dedicado</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="text-primary font-bold hover:underline">Saiba mais sobre Enterprise -&gt;</a>
+                </div>
+
+                <!-- Solution 2 -->
+                <div
+                    class="bg-white rounded-3xl p-10 shadow-lg border border-slate-100 hover:border-primary/30 transition-colors">
+                    <span
+                        class="bg-orange-100 text-orange-600 px-4 py-1.5 rounded-full text-sm font-bold mb-6 inline-block">PMEs
+                        e Startups</span>
+                    <h2 class="text-3xl font-bold text-secondary mb-4">Crescimento Ágil</h2>
+                    <p class="text-slate-600 mb-8 leading-relaxed">Abandone as planilhas e comece a gerir viagens como
+                        uma empresa grande, mas com a agilidade que você precisa. Setup em menos de 5 minutos.</p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3">
+                            <span class="material-icons text-green-500">check_circle</span>
+                            <span class="text-slate-700">Cartões virtuais ilimitados</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-icons text-green-500">check_circle</span>
+                            <span class="text-slate-700">Reembolso em até 24h</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-icons text-green-500">check_circle</span>
+                            <span class="text-slate-700">Sem taxas de adesão</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="text-primary font-bold hover:underline">Saiba mais para Startups -&gt;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Spotlight -->
+    <section class="py-24 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="flex-1">
+                    <div
+                        class="bg-white p-6 rounded-3xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800"
+                            alt="Finance Dashboard" class="rounded-2xl w-full">
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-4xl font-extrabold text-secondary mb-6">Controle Financeiro Total</h2>
+                    <p class="text-slate-600 text-lg mb-8">Diga adeus à "caixa preta" das despesas de viagem. Com a
+                        Velt, cada centavo é rastreado, categorizado e analisado em tempo real.</p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-secondary text-xl mb-2">Auditabilidade</h4>
+                            <p class="text-sm text-slate-500">Histórico completo de alterações e aprovações para
+                                auditorias fiscais.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-secondary text-xl mb-2">Forecasting</h4>
+                            <p class="text-sm text-slate-500">Previsão de gastos futuros baseada em IA e histórico de
+                                viagens.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Footer -->
+    <div id="main-footer"></div>
+
+    <script src="js/layout.js"></script>
+
+</body>
+
+</html>

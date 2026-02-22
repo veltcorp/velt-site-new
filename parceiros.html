@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parceiros - Velt Gestão Inteligente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B00',
+                        secondary: '#1E293B',
+                        surface: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <!-- Dynamic Header -->
+    <div id="main-header"></div>
+
+    <!-- Header -->
+    <header class="py-24 bg-secondary relative overflow-hidden text-center text-white">
+        <div
+            class="absolute inset-0 bg-primary/10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')]">
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6">Cresça com a <span class="text-primary">Velt</span>
+            </h1>
+            <p class="text-xl text-slate-300 mb-10">Junte-se ao nosso ecossistema de parceiros e ofereça a melhor gestão
+                de viagens do mercado aos seus clientes.</p>
+            <button
+                class="bg-white text-secondary px-8 py-4 rounded-xl font-bold hover:bg-slate-100 transition-colors">Tornar-se
+                Parceiro</button>
+        </div>
+    </header>
+
+    <!-- Benefits Grid -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="p-8 border border-slate-100 rounded-3xl hover:shadow-lg transition-shadow text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="material-icons text-primary text-3xl">monetization_on</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">Comissões Atrativas</h3>
+                    <p class="text-slate-600">Receba até 20% de revenue share recorrente por cada cliente indicado.</p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="p-8 border border-slate-100 rounded-3xl hover:shadow-lg transition-shadow text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="material-icons text-blue-600 text-3xl">school</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">Treinamento e Suporte</h3>
+                    <p class="text-slate-600">Acesso exclusivo à Velt Academy e suporte técnico prioritário para seus
+                        clientes.</p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="p-8 border border-slate-100 rounded-3xl hover:shadow-lg transition-shadow text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="material-icons text-green-600 text-3xl">campaign</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">Co-Marketing</h3>
+                    <p class="text-slate-600">Recursos de marketing, webinars conjuntos e destaque no nosso marketplace.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Footer -->
+    <div id="main-footer"></div>
+
+    <script src="js/layout.js"></script>
+
+</body>
+
+</html>

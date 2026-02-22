@@ -1,0 +1,7 @@
+node_modules
+.env
+.DS_Store
+# If you want to keep the generated blog files out of git and let Vercel build them:
+# blog/*.html
+# blog.html
+# (But since we're doing a simple static push for now, maybe keep them?)

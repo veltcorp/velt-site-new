@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viagens Corporativas - Blog Velt</title>
+    <meta name="description" content="Tudo sobre gestão inteligente de viagens corporativas: políticas, plataformas, TMCs e melhores práticas.">
+
+    <!-- Open Graph / SEO -->
+    <meta property="og:title" content="Viagens Corporativas - Blog Velt">
+    <meta property="og:description" content="Tudo sobre gestão inteligente de viagens corporativas: políticas, plataformas, TMCs e melhores práticas.">
+    <meta property="og:image" content="/assets/blog/viagens-corporativas.svg">
+    <meta property="og:type" content="website">
+
+    <!-- Performance: preconnect to external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#FF6B00', secondary: '#1E293B', surface: '#F8FAFC' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <style>body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #1E293B; }</style>
+</head>
+<body class="antialiased">
+
+    <!-- Dynamic Header -->
+    <div id="main-header"></div>
+
+    <!-- Hero -->
+    <header class="relative pt-20 pb-24 bg-secondary text-white overflow-hidden rounded-b-[3rem]">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 right-10 w-72 h-72 rounded-full" style="background: #3B82F6; filter: blur(100px);"></div>
+            <div class="absolute bottom-10 left-10 w-52 h-52 rounded-full" style="background: #FF6B00; filter: blur(80px);"></div>
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <div class="text-6xl mb-6">✈️</div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Viagens Corporativas</h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto">Tudo sobre gestão inteligente de viagens corporativas: políticas, plataformas, TMCs e melhores práticas.</p>
+            <p class="mt-4 text-sm text-slate-400">5 artigos</p>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="container mx-auto px-4 py-4 text-sm text-slate-500">
+        <a href="/" class="hover:text-primary">Home</a> <span class="mx-2">/</span>
+        <a href="/blog.html" class="hover:text-primary">Blog</a> <span class="mx-2">/</span>
+        <span class="text-slate-800 font-medium">Viagens Corporativas</span>
+    </nav>
+
+    <!-- Articles -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-slate-100 group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="/assets/blog/viagens-corporativas.svg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Gestão de viagens corporativas: Guia Completo para Empresas" loading="lazy">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs font-bold text-primary uppercase">Educacional</span>
+                            <span class="text-slate-300">•</span><span class="text-xs text-slate-400">Topo/Meio</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-secondary mb-3 leading-tight group-hover:text-primary transition-colors">
+                            Gestão de viagens corporativas: Guia Completo para Empresas
+                        </h2>
+                        <p class="text-slate-500 text-sm mb-6 line-clamp-3">Descubra tudo sobre gestão de viagens corporativas: o que é, como funciona, por que importa e como implementar na sua empresa. Guia completo com checklist práti</p>
+                        <a href="/blog/gestao-de-viagens-corporativas.html" class="text-secondary font-bold text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            Ler Artigo <span class="material-icons text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-slate-100 group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="/assets/blog/viagens-corporativas.svg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Plataforma de viagens corporativas: A Melhor Solução para Empresas" loading="lazy">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs font-bold text-primary uppercase">Comercial</span>
+                            <span class="text-slate-300">•</span><span class="text-xs text-slate-400">Fundo</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-secondary mb-3 leading-tight group-hover:text-primary transition-colors">
+                            Plataforma de viagens corporativas: A Melhor Solução para Empresas
+                        </h2>
+                        <p class="text-slate-500 text-sm mb-6 line-clamp-3">Compare soluções de plataforma de viagens corporativas e descubra como empresas economizam até 30% com a plataforma certa. Guia decisório B2B.</p>
+                        <a href="/blog/plataforma-de-viagens-corporativas.html" class="text-secondary font-bold text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            Ler Artigo <span class="material-icons text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-slate-100 group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="/assets/blog/viagens-corporativas.svg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="TMC: Guia Completo para Empresas" loading="lazy">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs font-bold text-primary uppercase">Educacional</span>
+                            <span class="text-slate-300">•</span><span class="text-xs text-slate-400">Meio</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-secondary mb-3 leading-tight group-hover:text-primary transition-colors">
+                            TMC: Guia Completo para Empresas
+                        </h2>
+                        <p class="text-slate-500 text-sm mb-6 line-clamp-3">Descubra tudo sobre TMC: o que é, como funciona, por que importa e como implementar na sua empresa. Guia completo com checklist prático.</p>
+                        <a href="/blog/tmc.html" class="text-secondary font-bold text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            Ler Artigo <span class="material-icons text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-slate-100 group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="/assets/blog/viagens-corporativas.svg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Travel tech: Guia Completo para Empresas" loading="lazy">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs font-bold text-primary uppercase">Educacional</span>
+                            <span class="text-slate-300">•</span><span class="text-xs text-slate-400">Topo</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-secondary mb-3 leading-tight group-hover:text-primary transition-colors">
+                            Travel tech: Guia Completo para Empresas
+                        </h2>
+                        <p class="text-slate-500 text-sm mb-6 line-clamp-3">Descubra tudo sobre travel tech: o que é, como funciona, por que importa e como implementar na sua empresa. Guia completo com checklist prático.</p>
+                        <a href="/blog/travel-tech.html" class="text-secondary font-bold text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            Ler Artigo <span class="material-icons text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-slate-100 group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="/assets/blog/viagens-corporativas.svg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Viagens corporativas: O Que É e Por Que Importa para Sua Empresa" loading="lazy">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs font-bold text-primary uppercase">Informacional</span>
+                            <span class="text-slate-300">•</span><span class="text-xs text-slate-400">Topo</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-secondary mb-3 leading-tight group-hover:text-primary transition-colors">
+                            Viagens corporativas: O Que É e Por Que Importa para Sua Empresa
+                        </h2>
+                        <p class="text-slate-500 text-sm mb-6 line-clamp-3">Entenda viagens corporativas e como isso impacta diretamente os custos, a eficiência e os resultados da sua empresa. Conteúdo B2B completo.</p>
+                        <a href="/blog/viagens-corporativas.html" class="text-secondary font-bold text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            Ler Artigo <span class="material-icons text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Pillars -->
+    <section class="py-12 bg-white border-t border-slate-100">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-xl font-bold text-secondary mb-6 text-center">Explore outros pilares</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+
+                    <a href="/blog/pillar-reducao-de-custos.html"
+                       class="flex items-center gap-3 px-4 py-3 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md hover:border-primary/30 transition-all group">
+                        <span class="text-xl">📉</span>
+                        <span class="font-semibold text-sm text-secondary group-hover:text-primary transition-colors">Redução de Custos</span>
+                    </a>
+
+                    <a href="/blog/pillar-financeiro.html"
+                       class="flex items-center gap-3 px-4 py-3 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md hover:border-primary/30 transition-all group">
+                        <span class="text-xl">💰</span>
+                        <span class="font-semibold text-sm text-secondary group-hover:text-primary transition-colors">Financeiro</span>
+                    </a>
+
+                    <a href="/blog/pillar-operacao.html"
+                       class="flex items-center gap-3 px-4 py-3 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md hover:border-primary/30 transition-all group">
+                        <span class="text-xl">⚙️</span>
+                        <span class="font-semibold text-sm text-secondary group-hover:text-primary transition-colors">Operação</span>
+                    </a>
+
+                    <a href="/blog/pillar-tecnologia.html"
+                       class="flex items-center gap-3 px-4 py-3 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md hover:border-primary/30 transition-all group">
+                        <span class="text-xl">🤖</span>
+                        <span class="font-semibold text-sm text-secondary group-hover:text-primary transition-colors">Tecnologia</span>
+                    </a>
+
+                    <a href="/blog/pillar-gestao-de-milhas.html"
+                       class="flex items-center gap-3 px-4 py-3 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md hover:border-primary/30 transition-all group">
+                        <span class="text-xl">🎯</span>
+                        <span class="font-semibold text-sm text-secondary group-hover:text-primary transition-colors">Gestão de Milhas</span>
+                    </a>
+
+                    <a href="/blog/pillar-experiencia-do-viajante.html"
+                       class="flex items-center gap-3 px-4 py-3 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md hover:border-primary/30 transition-all group">
+                        <span class="text-xl">😊</span>
+                        <span class="font-semibold text-sm text-secondary group-hover:text-primary transition-colors">Experiência do Viajante</span>
+                    </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer injected by JS -->
+    <div id="main-footer"></div>
+    <script src="../js/layout.js"></script>
+</body>
+</html>

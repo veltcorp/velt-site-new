@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Velt Gestão Inteligente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B00',
+                        secondary: '#1E293B',
+                        surface: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <!-- Dynamic Header -->
+    <div id="main-header"></div>
+
+    <!-- Content -->
+    <main class="flex-grow flex items-center justify-center py-12 px-4">
+        <div
+            class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 bg-white rounded-3xl shadow-2xl overflow-hidden min-h-[600px]">
+
+            <!-- Contact Info -->
+            <div class="bg-secondary text-white p-12 flex flex-col justify-between">
+                <div>
+                    <span class="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">Fale
+                        Conosco</span>
+                    <h1 class="text-4xl font-extrabold mb-6">Vamos conversar?</h1>
+                    <p class="text-slate-300 mb-12">Nossa equipe está pronta para demonstrar como a Velt pode
+                        transformar a gestão de viagens da sua empresa.</p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <span class="material-icons text-primary">email</span>
+                            <div>
+                                <p class="font-bold text-sm">Email</p>
+                                <p class="text-slate-300">contato@velt.com.br</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="material-icons text-primary">location_on</span>
+                            <div>
+                                <p class="font-bold text-sm">Escritório</p>
+                                <p class="text-slate-300">Av. Paulista, 1000 - São Paulo, SP</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Form -->
+            <div class="p-12 flex items-center">
+                <form class="w-full space-y-6">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-secondary">Nome</label>
+                            <input type="text"
+                                class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                placeholder="Seu nome">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-secondary">Sobrenome</label>
+                            <input type="text"
+                                class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                placeholder="Sobrenome">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold text-secondary">Email Corporativo</label>
+                        <input type="email"
+                            class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                            placeholder="voce@empresa.com">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold text-secondary">Mensagem</label>
+                        <textarea
+                            class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all h-32"
+                            placeholder="Como podemos ajudar?"></textarea>
+                    </div>
+
+                    <button type="button"
+                        class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-colors shadow-lg shadow-primary/20">Enviar
+                        Mensagem</button>
+                    <p class="text-xs text-center text-slate-500">Ao enviar, você concorda com nossa Política de
+                        Privacidade.</p>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Dynamic Footer -->
+    <div id="main-footer"></div>
+
+    <script src="js/layout.js"></script>
+
+</body>
+
+</html>

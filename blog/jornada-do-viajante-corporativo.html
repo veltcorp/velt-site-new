@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornada do viajante corporativo: Guia Completo para Empresas - Blog Velt</title>
+    <meta name="description" content="Descubra tudo sobre jornada do viajante corporativo: o que é, como funciona, por que importa e como implementar na sua empresa. Guia completo com checklist prát">
+
+    <!-- Open Graph / SEO -->
+    <meta property="og:title" content="Jornada do viajante corporativo: Guia Completo para Empresas">
+    <meta property="og:description" content="Descubra tudo sobre jornada do viajante corporativo: o que é, como funciona, por que importa e como implementar na sua empresa. Guia completo com checklist prát">
+    <meta property="og:image" content="/assets/blog/experiencia-do-viajante.svg">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="15 de fevereiro de 2026">
+    <meta property="article:author" content="Velt Corp">
+
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B00',
+                        secondary: '#1E293B',
+                        surface: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    typography: {
+                        DEFAULT: {
+                            css: {
+                                maxWidth: '100%', // Allow full width inside container
+                                color: '#334155',
+                                h1: { color: '#1E293B', fontWeight: '800' },
+                                h2: { color: '#1E293B', marginTop: '2em', marginBottom: '0.8em', lineHeight: '1.3' },
+                                h3: { color: '#334155', marginTop: '1.5em', marginBottom: '0.6em' },
+                                strong: { color: '#0F172A', fontWeight: '700' },
+                                a: { color: '#FF6B00', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } },
+                                blockquote: { borderLeftColor: '#FF6B00', fontStyle: 'italic', color: '#475569', backgroundColor: '#F1F5F9', padding: '1rem', borderRadius: '0.5rem' },
+                                code: { color: '#e83e8c', backgroundColor: '#f1f5f9', padding: '0.2em 0.4em', borderRadius: '0.25rem', fontWeight: '500' },
+                                'code::before': { content: '""' },
+                                'code::after': { content: '""' },
+                            },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling for TOC links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar for TOC */
+        .toc-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .toc-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .toc-scroll::-webkit-scrollbar-thumb {
+            background-color: #CBD5E1;
+            border-radius: 20px;
+        }
+
+        /* Progress bar */
+        #reading-progress {
+            transition: width 0.1s;
+        }
+    </style>
+</head>
+
+<body class="antialiased bg-surface text-slate-800">
+
+    <!-- Reading Progress Bar -->
+    <div class="fixed top-0 left-0 w-full h-1 z-50 bg-gray-200">
+        <div id="reading-progress" class="h-full bg-primary w-0"></div>
+    </div>
+
+    <!-- Header injected by JS -->
+    <div id="main-header"></div>
+
+    <!-- Breadcrumb (Optional but good for SEO/UX) -->
+    <nav class="container mx-auto px-4 py-4 text-sm text-slate-500">
+        <a href="/" class="hover:text-primary">Home</a> <span class="mx-2">/</span>
+        <a href="/blog.html" class="hover:text-primary">Blog</a> <span class="mx-2">/</span>
+        <span class="text-slate-800 font-medium truncate">Jornada do viajante corporativo: Guia Completo para Empresas</span>
+    </nav>
+
+    <!-- Article Hero -->
+    <header class="relative pt-20 pb-24 md:pt-32 md:pb-32 bg-secondary text-white overflow-hidden rounded-b-[3rem]">
+        <div class="absolute inset-0 opacity-30 bg-[url('/assets/blog/experiencia-do-viajante.svg')] bg-cover bg-center mix-blend-overlay"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/90 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-secondary to-transparent"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <div class="flex flex-wrap justify-center gap-4 text-sm font-bold uppercase tracking-wider mb-6">
+                <span class="px-3 py-1 bg-primary text-white rounded-full">15 de fevereiro de 2026</span>
+                <span
+                    class="px-3 py-1 bg-white/10 border border-white/20 text-white rounded-full backdrop-blur-md flex items-center gap-2">
+                    <span class="material-icons text-sm">schedule</span> 6 min de leitura
+                </span>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-8 drop-shadow-lg text-balance">
+                Jornada do viajante corporativo: Guia Completo para Empresas</h1>
+
+            <div class="flex items-center justify-center gap-3 text-slate-300">
+                <span class="material-icons text-primary">person</span>
+                <span class="text-lg font-medium">Velt Corp</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-12 flex flex-col lg:flex-row gap-12 relative">
+
+        <!-- Table of Contents (Desktop Sticky) -->
+        <aside class="hidden lg:block w-1/4 relative">
+            <div class="sticky top-32 max-h-[calc(100vh-10rem)] overflow-y-auto toc-scroll pr-4">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Neste artigo</h3>
+                <nav id="toc-desktop" class="space-y-1 border-l border-slate-200"></nav>
+            </div>
+        </aside>
+
+        <!-- Content -->
+        <main class="w-full lg:w-3/4 max-w-3xl mx-auto">
+
+            <!-- Mobile TOC (Collapsible) -->
+            <div class="lg:hidden mb-8 bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+                <details class="group">
+                    <summary
+                        class="flex justify-between items-center p-4 cursor-pointer list-none font-bold text-slate-800">
+                        <span>Índice do Conteúdo</span>
+                        <span
+                            class="material-icons transform group-open:rotate-180 transition-transform text-slate-400">expand_more</span>
+                    </summary>
+                    <div id="toc-mobile" class="px-4 pb-4 pt-0 border-t border-slate-100 bg-slate-50/50">
+                        <!-- JS injected content -->
+                    </div>
+                </details>
+            </div>
+
+            <article class="prose prose-lg prose-slate prose-headings:scroll-mt-32 max-w-none">
+                <p class="lead text-xl text-slate-600 mb-8 font-medium border-l-4 border-primary pl-4 italic">
+                    Descubra tudo sobre jornada do viajante corporativo: o que é, como funciona, por que importa e como implementar na sua empresa. Guia completo com checklist prát
+                </p>
+                <h1>Jornada do viajante corporativo: Guia Completo para Empresas</h1>
+<p>Empresas que buscam eficiência e economia na gestão de viagens corporativas precisam entender a fundo o conceito de <strong>jornada do viajante corporativo</strong> — não como detalhe operacional, mas como <strong>decisão estratégica</strong> que impacta diretamente custos, processos e resultados.</p>
+<p>Neste guia completo, você vai entender o que é jornada do viajante corporativo, como funciona na prática, quais problemas resolve, erros comuns a evitar e como estruturar isso de forma inteligente na sua empresa.</p>
+<h2>O Que É Jornada do viajante corporativo</h2>
+<p>Jornada do viajante corporativo refere-se à qualidade da jornada do colaborador durante viagens corporativas — desde o planejamento até o retorno — e como isso impacta produtividade, bem-estar e resultados empresariais.</p>
+<p>Na prática, isso significa que empresas que estruturam jornada do viajante corporativo de forma profissional conseguem operar com mais eficiência, menos desperdício e mais previsibilidade financeira.</p>
+<blockquote>
+<p><strong>Em termos simples:</strong> jornada do viajante corporativo é a diferença entre gastar dinheiro e investir estrategicamente em viagens corporativas.</p>
+</blockquote>
+<hr>
+<h2>Por Que Jornada do viajante corporativo É Estratégico para Empresas</h2>
+<p>Quando falamos em jornada do viajante corporativo, não estamos tratando de um detalhe operacional — estamos falando de um <strong>fator estratégico</strong> que impacta diretamente:</p>
+<ul>
+<li><strong>Financeiro:</strong> Redução de custos diretos e indiretos</li>
+<li><strong>Operacional:</strong> Eliminação de processos manuais e retrabalho</li>
+<li><strong>Governança:</strong> Conformidade com políticas internas e compliance</li>
+<li><strong>Performance:</strong> Aumento de produtividade e eficiência</li>
+<li><strong>Experiência:</strong> Satisfação dos colaboradores e retenção de talentos</li>
+</ul>
+<p>Empresas que ignoram jornada do viajante corporativo estão, sem perceber, deixando dinheiro na mesa.</p>
+<hr>
+<h2>Principais Desafios do Mercado</h2>
+<p>A maioria das empresas brasileiras ainda enfrenta desafios sérios quando o assunto é jornada do viajante corporativo:</p>
+<ol>
+<li><strong>Processos manuais</strong> — planilhas, e-mails, aprovações informais</li>
+<li><strong>Falta de centralização</strong> — informações espalhadas em diferentes sistemas</li>
+<li><strong>Ausência de política clara</strong> — cada área opera de um jeito</li>
+<li><strong>Falta de dados</strong> — decisões baseadas em achismo, não em métricas</li>
+<li><strong>Custos invisíveis</strong> — gastos que não aparecem no radar financeiro</li>
+<li><strong>Falta de tecnologia</strong> — ferramentas desatualizadas ou inexistentes</li>
+</ol>
+<p>Esses desafios não são apenas operacionais — eles representam <strong>perdas financeiras reais</strong> para a empresa.</p>
+<hr>
+<h2>Impacto Financeiro Real</h2>
+<p>O custo de não estruturar jornada do viajante corporativo vai além do óbvio:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo de Custo</th>
+<th>Impacto</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Custos diretos</strong></td>
+<td>Passagens mais caras, tarifas não otimizadas</td>
+</tr>
+<tr>
+<td><strong>Custos indiretos</strong></td>
+<td>Tempo gasto em processos manuais</td>
+</tr>
+<tr>
+<td><strong>Custos invisíveis</strong></td>
+<td>Retrabalho, erros, falta de aprovações</td>
+</tr>
+<tr>
+<td><strong>Custo de oportunidade</strong></td>
+<td>Economia que poderia ser reinvestida</td>
+</tr>
+<tr>
+<td><strong>Custo humano</strong></td>
+<td>Estresse, desgaste, queda de produtividade</td>
+</tr>
+</tbody></table>
+<p>Empresas que utilizam plataformas inteligentes de <a href="/blog/experiencia-do-viajante-corporativo">experiência do viajante</a> conseguem <strong>economizar entre 10% e 30%</strong> em custos de viagem.</p>
+<hr>
+<h2>Como Funciona na Prática</h2>
+<p>Um processo bem estruturado de jornada do viajante corporativo segue estas etapas:</p>
+<ol>
+<li><strong>Solicitação</strong> — Colaborador solicita viagem via plataforma</li>
+<li><strong>Aprovação</strong> — Gestor aprova dentro da política definida</li>
+<li><strong>Pesquisa e emissão</strong> — Sistema busca melhores tarifas automaticamente</li>
+<li><strong>Pagamento</strong> — Faturamento ou PIX com condições flexíveis</li>
+<li><strong>Viagem</strong> — Suporte 24/7 durante todo o deslocamento</li>
+<li><strong>Prestação de contas</strong> — Reembolsos e relatórios automatizados</li>
+<li><strong>Análise</strong> — Dashboard com métricas e insights financeiros</li>
+</ol>
+<p>Cada etapa gera dados que alimentam <strong>decisões mais inteligentes</strong> no futuro.</p>
+<hr>
+<h2>Como a Tecnologia Ajuda</h2>
+<p>A tecnologia é o principal habilitador de jornada do viajante corporativo eficiente:</p>
+<ul>
+<li><strong>Rastreador de tarifas inteligente</strong> — encontra automaticamente os melhores preços</li>
+<li><strong>Emissão integrada</strong> — tudo dentro de uma única plataforma</li>
+<li><strong>Dashboard em tempo real</strong> — visão completa de gastos e economias</li>
+<li><strong>Automação de aprovações</strong> — workflow configurável por hierarquia</li>
+<li><strong>Gestão de reembolsos</strong> — processo simplificado e controlado</li>
+<li><strong>Suporte 24/7</strong> — equipe dedicada para resolver imprevistos</li>
+</ul>
+<blockquote>
+<p><strong>Para empresas:</strong> a tecnologia não substitui pessoas — ela libera pessoas para fazer o que realmente importa.</p>
+</blockquote>
+<p>Saiba mais sobre como <a href="/blog/tecnologia-e-ia-empresarial">tecnologia e IA empresarial</a> estão transformando o setor.</p>
+<hr>
+<h2>Erros Mais Comuns</h2>
+<p>Evite estes erros ao implementar jornada do viajante corporativo:</p>
+<ul>
+<li>❌ Não definir uma política de viagens clara</li>
+<li>❌ Depender de planilhas e processos manuais</li>
+<li>❌ Não centralizar a gestão em uma única plataforma</li>
+<li>❌ Ignorar custos invisíveis e indiretos</li>
+<li>❌ Não medir resultados com dados e métricas</li>
+<li>❌ Tratar viagens como custo, não como investimento estratégico</li>
+</ul>
+<hr>
+<h2>Boas Práticas</h2>
+<p>✅ Defina uma <strong>política de viagens corporativas</strong> clara e acessível
+✅ Centralize toda a operação em uma <strong>plataforma integrada</strong>
+✅ Automatize aprovações, emissões e reembolsos
+✅ Monitore gastos em tempo real com <strong>dashboards interativos</strong>
+✅ Estabeleça indicadores de economia e eficiência
+✅ Invista em <strong>suporte especializado</strong> para viajantes
+✅ Revise e atualize processos periodicamente</p>
+<hr>
+<h2>Checklist Prático</h2>
+<p>Antes de considerar que sua empresa tem jornada do viajante corporativo estruturado, verifique:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Política de viagens definida e comunicada</li>
+<li><input disabled="" type="checkbox"> Plataforma centralizada e integrada</li>
+<li><input disabled="" type="checkbox"> Processo de aprovação automatizado</li>
+<li><input disabled="" type="checkbox"> Pagamentos organizados (PIX, faturamento, cartão)</li>
+<li><input disabled="" type="checkbox"> Gestão de reembolsos estruturada</li>
+<li><input disabled="" type="checkbox"> Suporte disponível 24/7</li>
+<li><input disabled="" type="checkbox"> Relatórios financeiros periódicos</li>
+<li><input disabled="" type="checkbox"> Dashboard de controle em tempo real</li>
+<li><input disabled="" type="checkbox"> Indicadores de economia mensuráveis</li>
+<li><input disabled="" type="checkbox"> Governança de processos implantada</li>
+</ul>
+<hr>
+<h2>Antes x Depois</h2>
+<table>
+<thead>
+<tr>
+<th>Antes</th>
+<th>Depois</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Processos manuais</td>
+<td>Automação completa</td>
+</tr>
+<tr>
+<td>Gastos descontrolados</td>
+<td>Controle em tempo real</td>
+</tr>
+<tr>
+<td>Falta de dados</td>
+<td>Métricas e insights</td>
+</tr>
+<tr>
+<td>Retrabalho constante</td>
+<td>Eficiência operacional</td>
+</tr>
+<tr>
+<td>Estresse operacional</td>
+<td>Experiência fluida</td>
+</tr>
+<tr>
+<td>Custos invisíveis</td>
+<td>Transparência total</td>
+</tr>
+<tr>
+<td>Decisões por achismo</td>
+<td>Decisões baseadas em dados</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Conclusão Estratégica</h2>
+<p>Jornada do viajante corporativo não é mais um detalhe operacional — é uma <strong>decisão estratégica</strong> que separa empresas eficientes de empresas que perdem dinheiro sem perceber.</p>
+<p>Empresas que investem em estruturar jornada do viajante corporativo com tecnologia, processos e inteligência conseguem:</p>
+<ul>
+<li>Reduzir custos significativamente</li>
+<li>Aumentar eficiência operacional</li>
+<li>Melhorar a experiência dos colaboradores</li>
+<li>Tomar decisões baseadas em dados reais</li>
+<li>Construir governança e compliance</li>
+</ul>
+<p>A questão não é <em>se</em> sua empresa precisa de jornada do viajante corporativo — é <em>quando</em> ela vai parar de perder dinheiro por não ter.</p>
+<hr>
+<h2>Perguntas Frequentes (FAQ)</h2>
+<h3>O que é jornada do viajante corporativo?</h3>
+<p>Jornada do viajante corporativo refere-se à qualidade da jornada do colaborador durante viagens corporativas — desde o planejamento até o retorno — e como isso impacta produtividade, bem-estar e resultados empresariais.</p>
+<h3>Como funciona jornada do viajante corporativo na prática?</h3>
+<p>Jornada do viajante corporativo funciona através de processos estruturados, políticas claras e tecnologia integrada. Empresas que adotam uma abordagem profissional conseguem reduzir custos, aumentar o controle e melhorar a eficiência operacional em todas as etapas.</p>
+<h3>Por que jornada do viajante corporativo é importante para empresas?</h3>
+<p>Porque impacta diretamente o resultado financeiro, a eficiência operacional e a experiência dos colaboradores. Empresas que negligenciam jornada do viajante corporativo perdem dinheiro com processos manuais, falta de controle e desperdício invisível.</p>
+<h3>Quando investir em jornada do viajante corporativo?</h3>
+<p>Quando sua empresa realiza viagens corporativas com frequência, lida com custos descontrolados, processos manuais ou falta de visibilidade sobre gastos. Quanto antes estruturar, maior a economia acumulada.</p>
+<hr>
+<h2>Leitura Recomendada</h2>
+<ul>
+<li><a href="/blog/experiencia-do-viajante-corporativo">Experiência do viajante</a></li>
+<li><a href="/blog/operacao-e-backoffice">Operação</a></li>
+<li><a href="/blog/experiencia-em-viagens-de-negocios">Experiência em viagens de negócios</a></li>
+<li><a href="/blog/estresse-em-viagens-corporativas">Estresse em viagens corporativas</a></li>
+<li><a href="/blog/concierge-corporativo">Concierge corporativo</a></li>
+</ul>
+<hr>
+<h2>Pronto para Transformar a Gestão de Viagens da Sua Empresa?</h2>
+<p>👉 <strong><a href="https://veltcorp.com.br/contato">Fale com a Velt</a></strong> e descubra como estruturar sua operação de viagens corporativas de forma inteligente.</p>
+<p><em>Diagnóstico gratuito para empresas com CNPJ ativo.</em></p>
+
+            </article>
+
+            <!-- Share / Footer of Article -->
+            <div class="mt-16 pt-8 border-t border-slate-200">
+                <h3 class="text-xl font-bold mb-4">Gostou deste artigo?</h3>
+                <div class="flex gap-4">
+                    <!-- Simple share links placeholder -->
+                    <button
+                        class="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                        onclick="alert('Funcionalidade de compartilhar em breve!')">
+                        <span class="material-icons text-sm">share</span> Compartilhar
+                    </button>
+                    <a href="/blog.html"
+                        class="flex items-center gap-2 px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50 transition text-slate-600">
+                        <span class="material-icons text-sm">arrow_back</span> Voltar ao Blog
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script to Generate TOC and Progress Bar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Apply Highlight.js
+            hljs.highlightAll();
+
+            const article = document.querySelector('article');
+            const headings = article.querySelectorAll('h2, h3');
+            const tocDesktop = document.getElementById('toc-desktop');
+            const tocMobile = document.getElementById('toc-mobile');
+
+            if (headings.length === 0) {
+                document.querySelector('aside').style.display = 'none';
+                document.querySelector('details').style.display = 'none';
+            }
+
+            headings.forEach((heading, index) => {
+                const id = `heading-${index}`;
+                heading.id = id;
+
+                // Create link
+                const link = document.createElement('a');
+                link.href = `#${id}`;
+                link.className = heading.tagName === 'H2'
+                    ? 'block py-1 pl-4 border-l-2 border-transparent hover:border-primary hover:text-primary text-slate-600 text-sm transition-colors duration-200'
+                    : 'block py-1 pl-8 border-l-2 border-transparent hover:border-primary hover:text-primary text-slate-500 text-xs transition-colors duration-200';
+                link.textContent = heading.textContent;
+
+                // Clone for mobile
+                const linkMobile = link.cloneNode(true);
+                linkMobile.className = heading.tagName === 'H2'
+                    ? 'block py-2 text-slate-700 font-medium hover:text-primary border-b border-dashed border-slate-200 last:border-0'
+                    : 'block py-2 pl-4 text-slate-500 text-sm hover:text-primary border-b border-dashed border-slate-200 last:border-0';
+
+                tocDesktop.appendChild(link);
+                tocMobile.appendChild(linkMobile);
+            });
+
+            // Scroll Spy for TOC
+            const observerOptions = {
+                root: null,
+                rootMargin: '-100px 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.id;
+                    const tocLink = document.querySelector(`#toc-desktop a[href="#${id}"]`);
+
+                    if (entry.isIntersecting) {
+                        // Remove active class from all
+                        document.querySelectorAll('#toc-desktop a').forEach(a => {
+                            a.classList.remove('border-primary', 'text-primary', 'font-medium');
+                            a.classList.add('border-transparent');
+                        });
+
+                        // Add active class to current
+                        if (tocLink) {
+                            tocLink.classList.remove('border-transparent');
+                            tocLink.classList.add('border-primary', 'text-primary', 'font-medium');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            headings.forEach(h => observer.observe(h));
+
+            // Reading Progress Bar
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.scrollY;
+                const docHeight = document.body.scrollHeight - window.innerHeight;
+                const scrollPercent = scrollTop / docHeight;
+                const progress = Math.min(100, Math.max(0, scrollPercent * 100));
+
+                document.getElementById('reading-progress').style.width = `${progress}%`;
+            });
+        });
+    </script>
+
+
+    <!-- Footer injected by JS -->
+    <div id="main-footer"></div>
+
+    <!-- Layout Script (Root Relative) -->
+    <script src="../js/layout.js"></script>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Jornada do viajante corporativo: Guia Completo para Empresas",
+      "image": "/assets/blog/experiencia-do-viajante.svg",
+      "author": {
+        "@type": "Person",
+        "name": "Velt Corp"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Velt",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velt.com.br/assets/logoVelt.png"
+        }
+      },
+      "datePublished": "15 de fevereiro de 2026",
+      "description": "Descubra tudo sobre jornada do viajante corporativo: o que é, como funciona, por que importa e como implementar na sua empresa. Guia completo com checklist prát"
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionalidades - Velt Gestão Inteligente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B00',
+                        secondary: '#1E293B',
+                        surface: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <!-- Dynamic Header -->
+    <div id="main-header"></div>
+
+    <!-- Header -->
+    <header class="py-20 bg-white text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="text-5xl font-extrabold text-secondary mb-6">Tecnologia que trabalha por <span
+                    class="text-primary">Você</span></h1>
+            <p class="text-xl text-slate-500">Conheça as ferramentas que automatizam 90% do trabalho manual da sua
+                equipe de viagens.</p>
+        </div>
+    </header>
+
+    <!-- Features List -->
+    <section class="pb-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+
+            <!-- Feature 1 -->
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="flex-1 order-2 md:order-1">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="material-icons text-blue-600 text-3xl">gps_fixed</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-secondary mb-4">Rastreamento GPS Preciso</h2>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">O App da Velt detecta automaticamente quando
+                        uma viagem de negócios começa e termina. Sem necessidade de inputs manuais. Diferencia
+                        automaticamente viagens pessoais de profissionais.</p>
+                    <ul class="space-y-2 text-slate-600">
+                        <li class="flex items-center gap-2"><span
+                                class="w-2 h-2 bg-primary rounded-full"></span>Precisão de 99.9%</li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-primary rounded-full"></span>Baixo
+                            consumo de bateria</li>
+                    </ul>
+                </div>
+                <div class="flex-1 order-1 md:order-2">
+                    <div class="bg-slate-100 rounded-3xl p-8 transform rotate-2">
+                        <!-- Mockup Map -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg h-64 relative">
+                            <div class="absolute inset-0 bg-slate-200"></div>
+                            <div
+                                class="absolute top-1/2 left-1/2 w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow-lg animate-pulse">
+                            </div>
+                            <!-- Route Line -->
+                            <svg class="absolute inset-0 w-full h-full pointer-events-none">
+                                <path d="M100,100 Q200,150 300,200" stroke="#3B82F6" stroke-width="4" fill="none"
+                                    stroke-dasharray="8 4" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="flex-1">
+                    <div class="bg-slate-900 rounded-3xl p-8 transform -rotate-2">
+                        <!-- Mockup Receipt Scan -->
+                        <div class="bg-slate-800 rounded-xl p-6 text-white border border-slate-700">
+                            <div class="flex justify-between mb-4">
+                                <span>Scanning...</span>
+                                <span class="material-icons text-green-400">check_circle</span>
+                            </div>
+                            <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                                <div class="h-full bg-green-500 w-3/4"></div>
+                            </div>
+                            <div class="mt-6 space-y-2 text-sm text-slate-400">
+                                <p>Uber Trip........... R$ 45,90</p>
+                                <p>Starbucks.......... R$ 22,50</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="material-icons text-green-600 text-3xl">receipt_long</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-secondary mb-4">Scanner de Recibos IA</h2>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">Tire uma foto e jogue o papel fora. Nossa IA
+                        extrai data, valor, comerciante e categoria em segundos. Adeus, digitação manual.</p>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="flex-1 order-2 md:order-1">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="material-icons text-primary text-3xl">hub</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-secondary mb-4">Integrações Nativas</h2>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">Conecta-se com as ferramentas que você já
+                        usa. Slack, Microsoft Teams, Xero, QuickBooks, SAP e Oracle.</p>
+                </div>
+                <div class="flex-1 order-1 md:order-2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div
+                            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center h-32">
+                            <span class="font-bold text-xl text-slate-700">Slack</span>
+                        </div>
+                        <div
+                            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center h-32">
+                            <span class="font-bold text-xl text-slate-700">SAP</span>
+                        </div>
+                        <div
+                            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center h-32">
+                            <span class="font-bold text-xl text-slate-700">Oracle</span>
+                        </div>
+                        <div
+                            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center h-32">
+                            <span class="font-bold text-xl text-slate-700">QuickBooks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Dynamic Footer -->
+    <div id="main-footer"></div>
+
+    <script src="js/layout.js"></script>
+
+</body>
+
+</html>

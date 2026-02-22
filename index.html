@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velt - Gestão Inteligente de Viagens Corporativas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B00', // Velt Orange
+                        secondary: '#1E293B', // Dark Slate Blue
+                        surface: '#F8FAFC', // Light Gray Background
+                        accent: '#22C55E', // Success Green
+                        warning: '#F59E0B', // Warning Yellow
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'glow': '0 0 20px rgba(255, 107, 0, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8F40 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            color: #475569;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #FF6B00;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #FF6B00;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Dynamic Header -->
+    <div id="main-header"></div>
+
+    <!-- Hero Section -->
+    <!-- Hero Section with Video Background -->
+    <section class="h-screen relative overflow-hidden flex items-center justify-center">
+        <!-- Video Background (Adjusted Opacity and Scale) -->
+        <div class="absolute inset-0 w-full h-full z-0">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-90">
+                <source src="assets/hero-gif.mp4" type="video/mp4">
+            </video>
+            <!-- Stronger Overlay for Readability -->
+            <div class="absolute inset-0 bg-slate-900/60"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-slate-900/40"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 pb-12">
+            <!-- Badge -->
+            <div class="mb-6 animate-fade-in-up" style="animation-delay: 0.1s;">
+                <div
+                    class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-5 py-1.5 border border-white/10 shadow-lg">
+                    <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                    <span class="text-xs md:text-sm font-semibold text-white/90 tracking-wide uppercase">Gestão
+                        Inteligente de Viagens</span>
+                </div>
+            </div>
+
+            <!-- Static Title (Smaller Font, Fixed Content) -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight text-white drop-shadow-2xl animate-fade-in-up"
+                style="animation-delay: 0.2s;">
+                Viagens Corporativas,<br>
+                <span class="text-primary">Simples Desse Jeito.</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <div class="mb-10 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.3s;">
+                <p class="text-lg md:text-xl text-slate-100 leading-relaxed font-light">
+                    A plataforma completa para gerenciar viagens, economizar recursos e garantir a satisfação do seu
+                    time.
+                </p>
+            </div>
+
+            <!-- Magic Button (Positioned Closer) -->
+            <div class="animate-fade-in-up" style="animation-delay: 0.4s;">
+                <a href="https://emeo1uhrjwf.typeform.com/to/oWdmlXrQ" target="_blank"
+                    class="relative inline-flex h-12 overflow-hidden rounded-lg p-[1px] focus:outline-none group shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-shadow">
+                    <span
+                        class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#FF6600_0%,#FFD400_50%,#FF6600_100%)]"></span>
+                    <span
+                        class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-slate-900 px-8 py-1 text-sm font-bold text-white backdrop-blur-3xl gap-2 transition-transform group-hover:scale-[0.98]">
+                        Começar Agora
+                        <span class="material-icons text-sm">arrow_forward</span>
+                    </span>
+                </a>
+
+                <!-- Secondary Link -->
+                <div class="mt-6">
+                    <a href="#funcionalidades"
+                        class="text-sm font-medium text-slate-300 hover:text-white transition-colors border-b border-transparent hover:border-primary pb-0.5">
+                        Ver como funciona
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-slate-100">
+                <div class="text-center px-4">
+                    <p class="text-4xl font-extrabold text-secondary mb-2">500k+</p>
+                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Viagens Realizadas</p>
+                </div>
+                <div class="text-center px-4">
+                    <p class="text-4xl font-extrabold text-primary mb-2">35%</p>
+                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Redução de Custos</p>
+                </div>
+                <div class="text-center px-4">
+                    <p class="text-4xl font-extrabold text-secondary mb-2">99.9%</p>
+                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Precisão nos Dados</p>
+                </div>
+                <div class="text-center px-4">
+                    <p class="text-4xl font-extrabold text-primary mb-2">24/7</p>
+                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Suporte Dedicado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-24 bg-surface" id="funcionalidades">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="text-primary font-bold tracking-wider text-sm uppercase mb-4 block">Funcionalidades</span>
+                <h2 class="text-4xl font-extrabold text-secondary mb-6">Tudo o que você precisa em um só lugar</h2>
+                <p class="text-slate-600 text-lg">A Velt integra diretamente ao fluxo da sua empresa, tornando a gestão
+                    de viagens tão fácil quanto um clique.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-card hover:shadow-xl transition-shadow border border-slate-100 group">
+                    <div
+                        class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-icons text-primary text-2xl">sync</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">Sincronização em Tempo Real</h3>
+                    <p class="text-slate-500 leading-relaxed">Conecte os cartões corporativos e perfis de colaboradores
+                        em minutos com nossas integrações nativas.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-card hover:shadow-xl transition-shadow border border-slate-100 group">
+                    <div
+                        class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-icons text-blue-600 text-2xl">auto_graph</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">Relatórios Automatizados</h3>
+                    <p class="text-slate-500 leading-relaxed">Nossa IA identifica quilometragem, rastreia reservas e
+                        categoriza despesas automaticamente.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-card hover:shadow-xl transition-shadow border border-slate-100 group">
+                    <div
+                        class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-icons text-green-600 text-2xl">verified_user</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">Compliance Garantido</h3>
+                    <p class="text-slate-500 leading-relaxed">Defina políticas de viagem e deixe que o sistema garanta
+                        que cada reserva esteja dentro do orçamento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-secondary rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
+                <!-- Decorative Blobs -->
+                <div
+                    class="absolute top-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2">
+                </div>
+                <div
+                    class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2">
+                </div>
+
+                <div class="relative z-10 max-w-4xl mx-auto">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-8">
+                        "A Velt transformou completamente como nossa equipe comercial lida com viagens. A precisão do
+                        rastreamento gerou uma economia absurda."
+                    </h2>
+                    <div class="flex items-center justify-center gap-4">
+                        <img src="https://i.pravatar.cc/100?img=15"
+                            class="w-16 h-16 rounded-full border-4 border-white/10" alt="CEO">
+                        <div class="text-left">
+                            <p class="text-white font-bold text-lg">Ricardo Mendes</p>
+                            <p class="text-slate-400">CFO, TechSolutions Brasil</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Footer -->
+    <div id="main-footer"></div>
+
+    <!-- Layout Script -->
+    <script src="js/layout.js"></script>
+</body>
+
+</html>
