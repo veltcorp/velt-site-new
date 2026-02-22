@@ -41,54 +41,272 @@
     <!-- Dynamic Header -->
     <div id="main-header"></div>
 
-    <!-- Header -->
-    <header class="py-24 bg-secondary relative overflow-hidden text-center text-white">
+    <!-- 1. Headline & 2. Abertura (Hero) -->
+    <header class="py-24 relative overflow-hidden text-center bg-white border-b border-slate-100">
         <div
-            class="absolute inset-0 bg-primary/10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')]">
+            class="absolute inset-0 bg-primary/5 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')]">
         </div>
         <div class="relative z-10 max-w-4xl mx-auto px-4">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6">Cresça com a <span class="text-primary">Velt</span>
-            </h1>
-            <p class="text-xl text-slate-300 mb-10">Junte-se ao nosso ecossistema de parceiros e ofereça a melhor gestão
-                de viagens do mercado aos seus clientes.</p>
-            <button
-                class="bg-white text-secondary px-8 py-4 rounded-xl font-bold hover:bg-slate-100 transition-colors">Tornar-se
-                Parceiro</button>
+            <span
+                class="bg-orange-100 text-orange-600 px-4 py-1.5 rounded-full text-sm font-bold mb-6 inline-block uppercase tracking-wider">Programa
+                de Parceiros Oficiais</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-secondary leading-tight">Ganhe de R$
+                500 a R$ 1.500 por <span class="text-primary">cada empresa</span> que você indicar.</h1>
+            <p class="text-xl text-slate-600 mb-6 font-medium max-w-3xl mx-auto">Você faz a ponte com o decisor. Nós
+                fazemos todo o trabalho de vendas. Você recebe a comissão.</p>
+
+            <div
+                class="max-w-3xl mx-auto mt-12 bg-slate-50 rounded-2xl p-8 md:p-10 border border-slate-100 text-left shadow-sm">
+                <p class="text-lg text-slate-600 mb-4">Você construiu um networking valioso ao longo dos anos. Gestores
+                    financeiros, donos de empresas, diretores de RH.</p>
+                <p class="text-lg text-slate-600 mb-4">O que você talvez não saiba é que a maioria dessas empresas está
+                    <strong class="text-secondary font-extrabold">rasgando dinheiro</strong> — pagando até 30% a mais em
+                    tarifas aéreas e perdendo horas com cotações manuais em viagens corporativas.</p>
+                <p class="text-lg text-slate-800 mb-4 font-bold">É aí que você entra.</p>
+                <p class="text-lg text-slate-600">Seja um parceiro oficial da <span
+                        class="text-primary font-bold">Velt</span>. Ajude sua rede de contatos a descobrir uma
+                    plataforma que reduz os custos de viagens corporativas de imediato, e seja muito bem remunerado por
+                    isso. Sem precisar vender nada. Sem burocracia.</p>
+            </div>
+
+            <div class="mt-12">
+                <a href="#cta"
+                    class="inline-block bg-primary text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-600 transition-colors shadow-lg shadow-primary/30 text-lg">Quero
+                    me tornar um Parceiro Velt</a>
+            </div>
         </div>
     </header>
 
-    <!-- Benefits Grid -->
+    <!-- 3. Como funciona (O Mecanismo Simples) -->
+    <section class="py-24 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-secondary mb-4">Como funciona?</h2>
+                <p class="text-xl text-slate-600">A regra de ouro do nosso programa é: <strong
+                        class="text-primary text-2xl ml-2">Zero trabalho operacional para você.</strong></p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative mt-12">
+                <!-- Connector Line for Desktop -->
+                <div class="hidden md:block absolute top-12 left-10 right-10 h-1 bg-slate-200 z-0"></div>
+
+                <!-- Match -->
+                <div class="bg-white p-8 border border-slate-100 rounded-3xl relative z-10 shadow-sm text-center">
+                    <div
+                        class="w-20 h-20 bg-secondary text-white rounded-full flex items-center justify-center font-bold text-3xl mx-auto mb-6 shadow-md shadow-secondary/20 border-4 border-surface">
+                        1</div>
+                    <h3 class="text-2xl font-bold text-secondary mb-4">Você indica (O Match)</h3>
+                    <p class="text-slate-600 text-lg">Você nos apresenta o decisor da empresa (CFO, Sócio ou Gestor de
+                        RH/Compras) via e-mail ou WhatsApp.</p>
+                </div>
+
+                <!-- Pesado -->
+                <div class="bg-white p-8 border border-slate-100 rounded-3xl relative z-10 shadow-sm text-center">
+                    <div
+                        class="w-20 h-20 bg-secondary text-white rounded-full flex items-center justify-center font-bold text-3xl mx-auto mb-6 shadow-md shadow-secondary/20 border-4 border-surface">
+                        2</div>
+                    <h3 class="text-2xl font-bold text-secondary mb-4">Nós vendemos <br><span
+                            class="text-slate-400 text-lg">(O Trabalho Pesado)</span></h3>
+                    <p class="text-slate-600 text-lg">Nossos consultores assumem 100% do processo. Fazemos a
+                        demonstração, mostramos o cálculo de economia, negociamos e fechamos o contrato.</p>
+                </div>
+
+                <!-- Resultado -->
+                <div
+                    class="bg-white p-8 border-2 border-primary/30 rounded-3xl relative z-10 shadow-xl transform md:-translate-y-2 text-center">
+                    <div
+                        class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center font-bold text-3xl mx-auto mb-6 shadow-lg shadow-primary/30 border-4 border-surface">
+                        3</div>
+                    <h3 class="text-2xl font-bold text-primary mb-4">Você recebe (O Resultado)</h3>
+                    <p class="text-slate-600 text-lg">Assim que o cliente fechar e começar a usar a plataforma, você
+                        recebe de <strong class="text-green-600 text-xl block mt-2">R$ 500 a R$ 1.500</strong> direto na
+                        sua conta, dependendo do volume de viagens.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4 & 6. Objeções & ICP -->
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Benefit 1 -->
-                <div class="p-8 border border-slate-100 rounded-3xl hover:shadow-lg transition-shadow text-center">
-                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="material-icons text-primary text-3xl">monetization_on</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-secondary mb-3">Comissões Atrativas</h3>
-                    <p class="text-slate-600">Receba até 20% de revenue share recorrente por cada cliente indicado.</p>
+            <div class="flex flex-col lg:flex-row gap-16 items-start">
+
+                <!-- Quebra Objeção -->
+                <div class="flex-1">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-secondary mb-8 leading-tight">Por que indicar a
+                        Velt é fácil?</h2>
+                    <p class="text-xl text-slate-600 mb-10 border-l-4 border-primary pl-6 font-medium italic">"Indicar
+                        um software ruim queima o seu networking. Indicar a Velt fortalece a sua autoridade."</p>
+
+                    <p class="text-lg text-slate-600 mb-8">Nossa plataforma entrega economia real garantida (de 10% a
+                        30%) usando inteligência tarifária, milhas B2B e consolidadoras.</p>
+
+                    <ul class="space-y-8">
+                        <li class="flex gap-5">
+                            <div class="bg-green-100 w-14 h-14 shrink-0 rounded-full flex items-center justify-center">
+                                <span class="material-icons text-green-600 text-2xl">trending_up</span></div>
+                            <div>
+                                <h4 class="font-bold text-secondary text-xl mb-1">O produto se vende sozinho</h4>
+                                <p class="text-slate-600 leading-relaxed text-lg">Já geramos mais de R$ 168 mil em
+                                    economia real para nossos clientes.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-5">
+                            <div class="bg-red-100 w-14 h-14 shrink-0 rounded-full flex items-center justify-center">
+                                <span class="material-icons text-red-600 text-2xl">error_outline</span></div>
+                            <div>
+                                <h4 class="font-bold text-secondary text-xl mb-1">A dor do cliente é urgente</h4>
+                                <p class="text-slate-600 leading-relaxed text-lg">As empresas estão perdendo R$ 6.000 a
+                                    R$ 9.000 por ano em custos operacionais ocultos com viagens "na unha". Quando
+                                    mostramos a solução, o fechamento é rápido.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-5">
+                            <div class="bg-blue-100 w-14 h-14 shrink-0 rounded-full flex items-center justify-center">
+                                <span class="material-icons text-blue-600 text-2xl">handshake</span></div>
+                            <div>
+                                <h4 class="font-bold text-secondary text-xl mb-1">O cliente vai te agradecer</h4>
+                                <p class="text-slate-600 leading-relaxed text-lg">Você resolve o caos da equipe
+                                    administrativa dele e ainda corta custos da DRE.</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Benefit 2 -->
-                <div class="p-8 border border-slate-100 rounded-3xl hover:shadow-lg transition-shadow text-center">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="material-icons text-blue-600 text-3xl">school</span>
+                <!-- O ICP (Perfil de Empresa) -->
+                <div class="lg:w-[450px] w-full shrink-0 relative mt-10 lg:mt-0">
+                    <div class="bg-slate-900 rounded-3xl p-10 text-white shadow-2xl relative z-10 overflow-hidden">
+                        <div
+                            class="absolute -top-10 -right-10 w-40 h-40 bg-primary rounded-full blur-3xl opacity-30 pointer-events-none">
+                        </div>
+
+                        <span
+                            class="bg-slate-800 text-slate-300 font-bold uppercase tracking-wider text-xs px-3 py-1 rounded border border-slate-700 mb-6 inline-block">Qualificação</span>
+
+                        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3"><span
+                                class="material-icons text-primary">radar</span> O Perfil Perfeito</h3>
+                        <p class="text-slate-300 mb-8 border-b border-slate-700 pb-8">Para garantir que suas indicações
+                            convertam rápido, busque empresas com as seguintes características:</p>
+
+                        <div class="space-y-6">
+                            <div>
+                                <span
+                                    class="text-primary font-bold text-sm uppercase tracking-wider flex items-center gap-2 mb-1"><span
+                                        class="material-icons text-[16px]">business</span> Tamanho</span>
+                                <span class="font-medium text-lg block">PMEs e Middle Market</span>
+                                <span class="text-slate-400 text-sm">20 a 200 colaboradores</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="text-primary font-bold text-sm uppercase tracking-wider flex items-center gap-2 mb-1"><span
+                                        class="material-icons text-[16px]">payments</span> Gastos com Viagem</span>
+                                <span class="font-medium text-lg block">Acima de R$ 10.000 mensais</span>
+                                <span class="text-slate-400 text-sm">Contando Passagens e Hotéis</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="text-primary font-bold text-sm uppercase tracking-wider flex items-center gap-2 mb-1"><span
+                                        class="material-icons text-[16px]">category</span> Segmentos Comuns</span>
+                                <span class="font-medium text-lg leading-snug block">Consultorias, Engenharias,
+                                    Advocacia, Auditorias, Tech.</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-secondary mb-3">Treinamento e Suporte</h3>
-                    <p class="text-slate-600">Acesso exclusivo à Velt Academy e suporte técnico prioritário para seus
-                        clientes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Velvet Rope (Quem é ideal / não é) -->
+    <section class="py-24 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-secondary mb-16 text-center">Quem é o Parceiro Ideal?
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- E PARA VOCE -->
+                <div
+                    class="bg-white rounded-3xl p-8 lg:p-10 border border-green-200 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-green-500"></div>
+                    <div class="flex items-center gap-3 mb-8">
+                        <div
+                            class="bg-green-100 text-green-600 rounded-full w-10 h-10 flex flex-shrink-0 items-center justify-center">
+                            <span class="material-icons">check</span></div>
+                        <h3 class="text-xl font-bold text-secondary">Este programa É para você se:</h3>
+                    </div>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <span class="material-icons text-green-500 flex-shrink-0 mt-1">done_all</span>
+                            <span class="text-slate-700 font-medium">Você é consultor B2B (Financeiro, BPO, Processos,
+                                RH).</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="material-icons text-green-500 flex-shrink-0 mt-1">done_all</span>
+                            <span class="text-slate-700 font-medium">Você tem uma agência, escritório de contabilidade
+                                ou software ERP com clientes PMEs.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="material-icons text-green-500 flex-shrink-0 mt-1">done_all</span>
+                            <span class="text-slate-700 font-medium">Você é um executivo superconectado e conhece donos
+                                e gestores de empresas (20 a 200 funcionários) que viajam com frequência.</span>
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Benefit 3 -->
-                <div class="p-8 border border-slate-100 rounded-3xl hover:shadow-lg transition-shadow text-center">
-                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="material-icons text-green-600 text-3xl">campaign</span>
+                <!-- NAO E PARA VOCE -->
+                <div
+                    class="bg-white rounded-3xl p-8 lg:p-10 border border-red-200 shadow-sm opacity-90 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-red-400"></div>
+                    <div class="flex items-center gap-3 mb-8">
+                        <div
+                            class="bg-red-100 text-red-600 rounded-full w-10 h-10 flex flex-shrink-0 items-center justify-center">
+                            <span class="material-icons">close</span></div>
+                        <h3 class="text-xl font-bold text-secondary">Este programa NÃO é para você se:</h3>
                     </div>
-                    <h3 class="text-xl font-bold text-secondary mb-3">Co-Marketing</h3>
-                    <p class="text-slate-600">Recursos de marketing, webinars conjuntos e destaque no nosso marketplace.
-                    </p>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <span class="material-icons text-red-400 flex-shrink-0 mt-1">cancel</span>
+                            <span class="text-slate-600">Você só conhece pessoas que viajam a lazer (turismo
+                                B2C).</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="material-icons text-red-400 flex-shrink-0 mt-1">cancel</span>
+                            <span class="text-slate-600">Você quer "dinheiro fácil" sem ter contatos reais com tomadores
+                                de decisão em empresas.</span>
+                        </li>
+                    </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CTA -->
+    <section id="cta" class="py-24 bg-primary relative text-center overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-96 h-96 bg-white/20 rounded-full blur-3xl translate-y-1/2 translate-x-1/2">
+        </div>
+
+        <div class="relative z-10 max-w-3xl mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-10 leading-tight">Pronto para monetizar o seu
+                networking?</h2>
+
+            <a href="https://emeo1uhrjwf.typeform.com/to/oWdmlXrQ" target="_blank"
+                class="inline-block bg-white text-secondary px-10 py-5 rounded-2xl font-black text-xl hover:bg-slate-100 transition-all shadow-2xl hover:scale-105 active:scale-95 mb-8">
+                Quero me tornar um Parceiro Velt
+            </a>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-white/90 font-medium text-sm">
+                <span class="flex items-center gap-2"><span class="material-icons opacity-50">flash_on</span> Processo
+                    de aprovação em < 24 horas</span>
+                        <span class="hidden md:inline text-white/30">•</span>
+                        <span class="flex items-center gap-2"><span class="material-icons opacity-50">money_off</span>
+                            Sem taxas de adesão</span>
+                        <span class="hidden md:inline text-white/30">•</span>
+                        <span class="flex items-center gap-2"><span
+                                class="material-icons opacity-50">all_inclusive</span> Sem metas mínimas de
+                            indicação</span>
             </div>
         </div>
     </section>
