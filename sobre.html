@@ -41,83 +41,283 @@
     <!-- Dynamic Header -->
     <div id="main-header"></div>
 
-    <!-- Hero -->
-    <header class="py-24 bg-grey relative overflow-hidden">
-        <div class="absolute inset-0 bg-secondary skew-y-3 origin-top-left -z-10 h-[80%] rounded-br-[5rem]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 leading-tight">O mercado de viagens
-                corporativas trata as PMEs como clientes de segunda classe. <br><span class="text-primary">Nós decidimos
-                    mudar isso.</span></h1>
-
-            <div
-                class="max-w-4xl mx-auto mb-12 bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10 shadow-2xl text-left">
-                <p class="text-lg md:text-xl text-slate-300 leading-relaxed space-y-4">
-                    <span class="block">"Olá, aqui são o Bruno e o Wellerson 👋. Nós operamos durante anos na linha de
-                        frente de grandes empresas estruturando processos complexos (V4, Stone/TAG).</span>
-                    <br>
-                    <span class="block">Quando olhamos para as PMEs, vimos o <strong>'caos institucionalizado'</strong>:
-                        pessoas gastando de 20 a 30 horas por mês tentando economizar centavos em cotações manuais,
-                        apenas para ficarem na mão quando um voo cancelava. As grandes Travel-techs só olham para contas
-                        corporativas gigantes. As plataformas online não te atendem quando você mais precisa.</span>
-                    <br>
-                    <span class="block text-white font-medium">Criamos a Velt para ser a ponte: tecnologia de ponta para
-                        reduzir seus custos em até 30%, e atendimento humano real para que o viajante e a secretária
-                        durmam em paz."</span>
-                </p>
-            </div>
+    <!-- SECTION 1: HERO -->
+    <header class="bg-secondary pt-32 pb-24 relative overflow-hidden text-center text-white">
+        <!-- Visual decorators -->
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none">
         </div>
 
-        <!-- Team Image Collage -->
-        <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="h-64 rounded-2xl overflow-hidden shadow-lg translate-y-8 bg-slate-200"><img
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80"
-                    class="w-full h-full object-cover"></div>
-            <div class="h-64 rounded-2xl overflow-hidden shadow-lg bg-slate-200"><img
-                    src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=600&q=80"
-                    class="w-full h-full object-cover"></div>
-            <div class="h-64 rounded-2xl overflow-hidden shadow-lg translate-y-12 bg-slate-200"><img
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80"
-                    class="w-full h-full object-cover"></div>
-            <div class="h-64 rounded-2xl overflow-hidden shadow-lg translate-y-4 bg-slate-200"><img
-                    src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80"
-                    class="w-full h-full object-cover"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 flex flex-col items-center">
+            <span
+                class="inline-block bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-bold mb-6 tracking-widest uppercase border border-white/20">Nossa
+                História</span>
+
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 leading-[1.15] tracking-tight">O mercado de
+                viagens trata as PMEs como clientes de segunda classe. <span class="text-primary block mt-2">Nós
+                    decidimos construir a solução.</span></h1>
+
+            <p class="text-lg md:text-xl text-slate-300 mb-16 font-medium leading-relaxed max-w-3xl">
+                Nascemos para acabar com o "caos institucionalizado" das viagens corporativas, combinando acesso a
+                tarifas de atacado com um suporte incansavelmente humano.
+            </p>
+        </div>
+
+        <!-- Hero Image (Builders Vibe) -->
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div
+                class="rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-800/50 relative h-[400px] md:h-[600px]">
+                <div class="absolute inset-0 bg-secondary/20 mix-blend-multiply z-10"></div>
+                <!-- Using a more authentic, gritty startup "builders" image -->
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+                    alt="Equipe Velt Construindo"
+                    class="w-full h-full object-cover grayscale transition-all duration-700 hover:grayscale-0">
+            </div>
         </div>
     </header>
 
-    <!-- Values -->
-    <section class="py-24 mt-12">
+    <!-- SECTION 2: A CARTA DOS FUNDADORES (Founder Story) -->
+    <section class="py-24 bg-surface relative">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-10 md:p-14 shadow-xl border border-slate-100 relative">
+                <!-- Decorative quote mark -->
+                <span
+                    class="material-icons text-primary/10 text-8xl absolute -top-6 -left-6 z-0 transform rotate-180">format_quote</span>
+
+                <div class="relative z-10 space-y-8 text-lg md:text-xl leading-relaxed text-slate-700">
+                    <p class="font-bold text-secondary text-2xl">Olá, aqui são o Bruno e o Wellerson 👋.</p>
+
+                    <p>
+                        Nós passamos anos estruturando operações em grandes empresas de tecnologia e infraestrutura
+                        financeira (como Stone, TAG, Tino e V4). Quando olhamos para o mercado de viagens corporativas,
+                        percebemos um abismo invisível.
+                    </p>
+
+                    <p>
+                        Descobrimos que as PMEs brasileiras — que movimentam a maior parte da nossa economia — <strong
+                            class="text-primary">estavam abandonadas.</strong> De um lado, as grandes agências (TMCs) só
+                        querem saber de contas multinacionais milionárias, oferecendo um processo lento e engessado. Do
+                        outro lado, plataformas 100% online que te deixam falando sozinho com um robô quando seu voo
+                        atrasa no domingo à noite.
+                    </p>
+
+                    <p class="bg-slate-50 p-6 rounded-2xl border-l-4 border-secondary text-secondary font-medium">
+                        O resultado disso? Um "caos institucionalizado". Vimos equipes administrativas gastando até 40
+                        minutos pulando de site em site para emitir uma única passagem. Vimos empresas queimando
+                        milhares de reais por ano apenas em horas perdidas "apagando incêndios" de remarcações.
+                    </p>
+
+                    <p>
+                        Sabíamos que a tecnologia poderia automatizar esse trabalho de backoffice, e que a inteligência
+                        financeira (via milhas B2B e consolidadoras) poderia reduzir os custos direto na DRE. Mas também
+                        sabíamos de uma verdade absoluta: <strong>viajar a trabalho sempre terá imprevistos.</strong>
+                    </p>
+
+                    <p class="font-bold text-secondary text-xl">
+                        Foi por isso que criamos a Velt.
+                    </p>
+
+                    <p>
+                        Uma travel-tech que usa Inteligência Artificial para buscar economia real de até 30%, mas que
+                        mantém um Concierge Humano 24/7. Porque, no fim do dia, se o voo do seu time cancelar, você não
+                        quer um software. Você quer alguém que resolva o problema para você dormir em paz.
+                    </p>
+
+                    <div class="pt-8 mt-8 border-t border-slate-100 italic font-bold text-secondary">
+                        <p>Um abraço,</p>
+                        <p class="text-primary mt-2 flex items-center gap-2">
+                            Bruno Brant & Wellerson Assumpção <span
+                                class="bg-primary/10 text-primary text-xs px-2 py-1 rounded-md not-italic font-black border border-primary/20">FUNDADORES</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: NOSSO INIMIGO (A "Anti-Value Prop") -->
+    <section class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div
+            class="absolute top-0 right-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-10 text-white">Contra o que nós lutamos?</h2>
+
+            <p class="text-xl md:text-2xl font-medium leading-relaxed text-slate-300 mb-8 max-w-3xl mx-auto">
+                Nós temos um inimigo claro: <span class="text-red-400 font-bold border-b border-red-400">A Ineficiência
+                    Aceita.</span>
+            </p>
+
+            <p class="text-lg leading-relaxed text-slate-400 max-w-2xl mx-auto space-y-6">
+                <span class="block">Lutamos contra a ideia de que é "normal" a sua secretária perder o dia inteiro
+                    planilhando voos. Lutamos contra as tarifas abusivas de balcão (B2C) cobradas de empresas.</span>
+                <span class="block font-medium text-white bg-white/5 p-6 rounded-2xl border border-white/10">
+                    E lutamos ferozmente contra modelos irresponsáveis de especulação que jogam com o dinheiro do
+                    cliente — é por isso que operamos com risco zero e "caixa casado": <strong
+                        class="text-red-400">compramos o seu bilhete do fornecedor no exato segundo em que você emite
+                        conosco.</strong>
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 4: O NOSSO DNA (Missão, Visão e Valores) -->
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <span class="text-primary font-bold tracking-widest uppercase text-sm">Nossos Valores</span>
-                <h2 class="text-3xl font-extrabold text-secondary mt-2">O que nos move</h2>
+                <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Nosso DNA</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-secondary">A fundação da Velt</h2>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="text-center">
-                    <div
-                        class="w-16 h-16 bg-orange-100 text-primary rounded-full flex items-center justify-center mx-auto mb-6 text-3xl font-bold">
-                        1</div>
-                    <h3 class="text-xl font-bold mb-3">Transparência Radical</h3>
-                    <p class="text-slate-600">Construímos confiança através da clareza. Sem taxas ocultas, sem letras
-                        miúdas.</p>
+            <!-- Missão e Visão Lado a Lado -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <div
+                    class="bg-surface p-10 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-primary"></div>
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <span class="material-icons text-primary text-2xl">flag</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-secondary mb-4">Nossa Missão</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed">Simplificar e potencializar a forma de viajar, com
+                        gestão leve, humana e inteligente, unindo tecnologia e experiência para garantir mais economia e
+                        o melhor caminho em cada viagem.</p>
                 </div>
-                <div class="text-center">
-                    <div
-                        class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl font-bold">
-                        2</div>
-                    <h3 class="text-xl font-bold mb-3">Foco no Cliente</h3>
-                    <p class="text-slate-600">Não desenvolvemos features para impressionar investidores, mas para
-                        resolver problemas reais dos nossos usuários.</p>
-                </div>
-                <div class="text-center">
-                    <div
-                        class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl font-bold">
-                        3</div>
-                    <h3 class="text-xl font-bold mb-3">Simplicidade sempre</h3>
-                    <p class="text-slate-600">Se algo é complexo, está errado. Trabalhamos duro para tornar o difícil
-                        invisível.</p>
+
+                <div
+                    class="bg-surface p-10 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-secondary"></div>
+                    <div class="w-14 h-14 bg-slate-200 rounded-xl flex items-center justify-center mb-6">
+                        <span class="material-icons text-secondary text-2xl">visibility</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-secondary mb-4">Nossa Visão</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed">Ser a gestora de viagens do Brasil que melhor
+                        conecta eficiência tecnológica, proximidade no atendimento e resultados reais. Nosso objetivo é
+                        inspirar o mercado provando que dá para fazer diferente e melhor.</p>
                 </div>
             </div>
+
+            <!-- Valores (Grid de 6) -->
+            <div>
+                <h3 class="text-2xl font-bold text-center text-secondary mb-10">O que não negociamos (Nossos Valores)
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Valor 1 -->
+                    <div
+                        class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4 hover:border-primary/50 transition-colors">
+                        <span class="material-icons text-primary/70 mt-1">sentiment_satisfied_alt</span>
+                        <p class="text-secondary font-bold text-lg leading-snug">Pessoas felizes performam melhor.</p>
+                    </div>
+                    <!-- Valor 2 -->
+                    <div
+                        class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4 hover:border-primary/50 transition-colors">
+                        <span class="material-icons text-primary/70 mt-1">record_voice_over</span>
+                        <p class="text-secondary font-bold text-lg leading-snug">A confiança nasce da franqueza (falamos
+                            direto com quem precisa ouvir).</p>
+                    </div>
+                    <!-- Valor 3 -->
+                    <div
+                        class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4 hover:border-primary/50 transition-colors">
+                        <span class="material-icons text-primary/70 mt-1">local_fire_department</span>
+                        <p class="text-secondary font-bold text-lg leading-snug">Inquietude como ferramenta do próprio
+                            sucesso.</p>
+                    </div>
+                    <!-- Valor 4 -->
+                    <div
+                        class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4 hover:border-primary/50 transition-colors">
+                        <span class="material-icons text-primary/70 mt-1">analytics</span>
+                        <p class="text-secondary font-bold text-lg leading-snug">Dados são sagrados.</p>
+                    </div>
+                    <!-- Valor 5 -->
+                    <div
+                        class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4 hover:border-primary/50 transition-colors">
+                        <span class="material-icons text-primary/70 mt-1">schedule</span>
+                        <p class="text-secondary font-bold text-lg leading-snug">Cumpra metas e não horários.</p>
+                    </div>
+                    <!-- Valor 6 -->
+                    <div
+                        class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4 hover:border-primary/50 transition-colors">
+                        <span class="material-icons text-primary/70 mt-1">handshake</span>
+                        <p class="text-secondary font-bold text-lg leading-snug">Somos parceiros valiosos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: QUEM ESTÁ CONSTRUINDO A VELT -->
+    <section class="py-24 bg-surface border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Founders</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-secondary mb-6">A experiência de gigantes, <br><span
+                        class="text-slate-500">agora a serviço da sua PME.</span></h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Bruno -->
+                <div
+                    class="bg-white rounded-3xl p-8 border border-slate-200 shadow-card flex flex-col items-center text-center group">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80"
+                        alt="Bruno Brant"
+                        class="w-32 h-32 rounded-full object-cover mb-6 border-4 border-slate-100 shadow-lg grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <h3 class="text-2xl font-extrabold text-secondary">Bruno Brant</h3>
+                    <p class="text-primary font-bold mb-6 text-sm uppercase tracking-wider">Co-founder & CEO</p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Ex-Head de Outbound e Diretor de Vendas em grandes empresas como V4 Company e MeetHub. Passou os
+                        últimos anos estruturando processos comerciais complexos e analisando a fundo a DRE de empresas
+                        B2B. Na Velt, garante que a nossa promessa de economia chegue de forma transparente e implacável
+                        para o cliente.
+                    </p>
+                </div>
+
+                <!-- Wellerson -->
+                <div
+                    class="bg-white rounded-3xl p-8 border border-slate-200 shadow-card flex flex-col items-center text-center group">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80"
+                        alt="Wellerson Assumpção"
+                        class="w-32 h-32 rounded-full object-cover mb-6 border-4 border-slate-100 shadow-lg grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <h3 class="text-2xl font-extrabold text-secondary">Wellerson Assumpção</h3>
+                    <p class="text-primary font-bold mb-6 text-sm uppercase tracking-wider">Co-founder & CPTO</p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Ex-Lead de Produto na Stone (TAG) e na Tino. Especialista em infraestrutura financeira, IA e
+                        construção de sistemas resilientes que operam bilhões de reais. É a mente por trás da
+                        arquitetura "Anti-Caos" da Velt, garantindo que toda emissão seja segura, blindada e hiper
+                        automatizada.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: BOTTOM CTA -->
+    <section class="py-24 bg-primary relative text-center overflow-hidden flex flex-col items-center justify-center">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+        </div>
+        <div
+            class="absolute top-0 right-0 w-96 h-96 bg-white/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+        </div>
+
+        <div class="relative z-10 max-w-3xl mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-8 leading-tight">Não deixe o seu dinheiro e o
+                tempo do seu time na mesa.</h2>
+
+            <p class="text-xl text-white/90 mb-10 font-medium leading-relaxed">
+                Você conheceu nossa história e nossa missão. Agora, queremos conhecer o seu cenário. Deixe-nos fazer uma
+                simulação de quanto você poderia ter economizado (em tempo e reais) nas suas últimas viagens.
+            </p>
+
+            <a href="https://emeo1uhrjwf.typeform.com/to/oWdmlXrQ" target="_blank"
+                class="inline-block bg-white text-secondary px-10 py-5 rounded-2xl font-black text-xl hover:bg-slate-100 transition-all shadow-2xl hover:scale-105 active:scale-95 mb-6">
+                Falar com os Fundadores
+            </a>
+
+            <p class="text-white/80 font-medium text-sm flex items-center justify-center gap-2">
+                <span class="material-icons opacity-70 text-[18px]">verified</span> Demonstração gratuita em 15 minutos.
+                Calculamos seu ROI ao vivo.
+            </p>
         </div>
     </section>
 
