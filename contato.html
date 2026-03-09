@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato - Velt Gestão Inteligente</title>
+    <title>Agendar Demo - Velt Gestão Inteligente de Viagens Corporativas</title>
+    <meta name="description"
+        content="Agende uma demonstração gratuita da Velt e descubra quanto sua empresa pode economizar em viagens corporativas.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -32,90 +34,204 @@
             background-color: #F8FAFC;
             color: #1E293B;
         }
+
+        /* Input focus ring */
+        .velt-input:focus {
+            outline: none;
+            border-color: #FF6B00;
+            box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.15);
+        }
+
+        /* Success state animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.4s ease-out forwards;
+        }
+
+        /* Spinning loader */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spin {
+            animation: spin 0.8s linear infinite;
+        }
     </style>
 </head>
 
 <body class="antialiased min-h-screen flex flex-col">
 
-    <!-- Navigation -->
     <!-- Dynamic Header -->
     <div id="main-header"></div>
 
-    <!-- Content -->
+    <!-- Main Content -->
     <main class="flex-grow flex items-center justify-center py-12 px-4">
         <div
-            class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 bg-white rounded-3xl shadow-2xl overflow-hidden min-h-[600px]">
+            class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-0 bg-white rounded-3xl shadow-2xl overflow-hidden min-h-[620px]">
 
-            <!-- Contact Info -->
-            <div class="bg-secondary text-white p-12 flex flex-col justify-between">
-                <div>
-                    <span class="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">Fale
-                        Conosco</span>
-                    <h1 class="text-4xl font-extrabold mb-6">Vamos conversar?</h1>
-                    <p class="text-slate-300 mb-12">Nossa equipe está pronta para demonstrar como a Velt pode
-                        transformar a gestão de viagens da sua empresa.</p>
-
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <span class="material-icons text-primary">email</span>
-                            <div>
-                                <p class="font-bold text-sm">Email</p>
-                                <p class="text-slate-300">contato@velt.com.br</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <span class="material-icons text-primary">location_on</span>
-                            <div>
-                                <p class="font-bold text-sm">Escritório</p>
-                                <p class="text-slate-300">Av. Paulista, 1000 - São Paulo, SP</p>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Left: Info Panel -->
+            <div class="bg-secondary text-white p-12 flex flex-col justify-between relative overflow-hidden">
+                <!-- Background decoration -->
+                <div
+                    class="absolute top-0 right-0 w-72 h-72 bg-primary/20 rounded-full blur-[80px] -translate-y-1/3 translate-x-1/3 pointer-events-none">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-48 h-48 bg-primary/10 rounded-full blur-[60px] translate-y-1/3 -translate-x-1/3 pointer-events-none">
                 </div>
 
+                <div class="relative z-10">
+                    <span class="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">Agendar
+                        Demo</span>
+                    <h1 class="text-4xl font-extrabold mb-6 leading-tight">Vamos descobrir quanto você está deixando na
+                        mesa?</h1>
+                    <p class="text-slate-300 mb-12 text-lg leading-relaxed">
+                        Em 30 minutos mostramos a plataforma ao vivo e calculamos a economia real com base nas suas
+                        viagens. Sem compromisso.
+                    </p>
 
+                    <ul class="space-y-5">
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center shrink-0 border border-primary/30">
+                                <span class="material-icons text-primary text-lg">savings</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">Economia de 10% a 30%</p>
+                                <p class="text-slate-400 text-sm">Comprovada nos nossos clientes atuais</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center shrink-0 border border-primary/30">
+                                <span class="material-icons text-primary text-lg">support_agent</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">Concierge 24/7</p>
+                                <p class="text-slate-400 text-sm">Atendimento humano em qualquer imprevisto</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center shrink-0 border border-primary/30">
+                                <span class="material-icons text-primary text-lg">flash_on</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">Setup em minutos</p>
+                                <p class="text-slate-400 text-sm">Sem taxas escondidas, sem burocracia</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="relative z-10 mt-12 border-t border-white/10 pt-8">
+                    <div class="flex flex-col gap-2 text-sm text-slate-400">
+                        <a href="mailto:contato@velt.com.br"
+                            class="flex items-center gap-3 hover:text-primary transition-colors">
+                            <span class="material-icons text-primary text-lg">email</span>
+                            contato@velt.com.br
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <!-- Form -->
-            <div class="p-12 flex items-center">
-                <form class="w-full space-y-6">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-sm font-bold text-secondary">Nome</label>
-                            <input type="text"
-                                class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                                placeholder="Seu nome">
+            <!-- Right: Form Panel -->
+            <div class="p-10 md:p-14 flex flex-col justify-center">
+
+                <!-- Default form view -->
+                <div id="form-container">
+                    <p class="text-sm font-bold text-primary uppercase tracking-wider mb-2">Formulário de contato</p>
+                    <h2 class="text-2xl font-extrabold text-secondary mb-8 leading-tight">Preencha os dados abaixo e
+                        nossa equipe entrará em contato.</h2>
+
+                    <form id="velt-contact-form" class="space-y-5" novalidate>
+                        <!-- Name -->
+                        <div class="space-y-1.5">
+                            <label for="name" class="text-sm font-bold text-secondary block">Nome completo <span
+                                    class="text-red-500">*</span></label>
+                            <input id="name" name="name" type="text" required autocomplete="name" placeholder="Seu nome"
+                                class="velt-input w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-secondary placeholder-slate-400 transition-all text-sm font-medium">
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-sm font-bold text-secondary">Sobrenome</label>
-                            <input type="text"
-                                class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                                placeholder="Sobrenome">
+
+                        <!-- Email -->
+                        <div class="space-y-1.5">
+                            <label for="email" class="text-sm font-bold text-secondary block">E-mail corporativo <span
+                                    class="text-red-500">*</span></label>
+                            <input id="email" name="email" type="email" required autocomplete="email"
+                                placeholder="voce@empresa.com"
+                                class="velt-input w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-secondary placeholder-slate-400 transition-all text-sm font-medium">
                         </div>
-                    </div>
 
-                    <div class="space-y-2">
-                        <label class="text-sm font-bold text-secondary">Email Corporativo</label>
-                        <input type="email"
-                            class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                            placeholder="voce@empresa.com">
-                    </div>
+                        <!-- Phone -->
+                        <div class="space-y-1.5">
+                            <label for="phone" class="text-sm font-bold text-secondary block">Telefone / WhatsApp <span
+                                    class="text-red-500">*</span></label>
+                            <input id="phone" name="phone" type="tel" required autocomplete="tel"
+                                placeholder="(11) 99999-9999"
+                                class="velt-input w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-secondary placeholder-slate-400 transition-all text-sm font-medium">
+                        </div>
 
-                    <div class="space-y-2">
-                        <label class="text-sm font-bold text-secondary">Mensagem</label>
-                        <textarea
-                            class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all h-32"
-                            placeholder="Como podemos ajudar?"></textarea>
-                    </div>
+                        <!-- Company -->
+                        <div class="space-y-1.5">
+                            <label for="company" class="text-sm font-bold text-secondary block">Empresa <span
+                                    class="text-red-500">*</span></label>
+                            <input id="company" name="company" type="text" required autocomplete="organization"
+                                placeholder="Nome da sua empresa"
+                                class="velt-input w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-secondary placeholder-slate-400 transition-all text-sm font-medium">
+                        </div>
 
-                    <button type="button"
-                        class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-colors shadow-lg shadow-primary/20">Enviar
-                        Mensagem</button>
-                    <p class="text-xs text-center text-slate-500">Ao enviar, você concorda com nossa Política de
-                        Privacidade.</p>
-                </form>
+                        <!-- Error message -->
+                        <div id="form-error"
+                            class="hidden items-center gap-2 text-red-600 text-sm font-medium bg-red-50 border border-red-100 rounded-xl px-4 py-3">
+                            <span class="material-icons text-lg">error_outline</span>
+                            <span id="form-error-msg">Algo deu errado. Tente novamente.</span>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button id="submit-btn" type="submit"
+                            class="w-full bg-primary text-white py-4 rounded-xl font-black text-lg hover:bg-orange-600 active:scale-95 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 mt-2">
+                            <span id="btn-label">Agendar minha Demo Gratuita</span>
+                            <span id="btn-spinner" class="hidden">
+                                <svg class="spin w-5 h-5 text-white" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <p class="text-xs text-center text-slate-400 leading-relaxed">
+                            Ao enviar, você concorda com nossa
+                            <a href="politicas-de-privacidade.html"
+                                class="underline hover:text-primary transition-colors">Política de Privacidade</a>.
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Success view (hidden by default) -->
+                <div id="success-container" class="hidden fade-in-up text-center py-8">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="material-icons text-green-600 text-4xl">check_circle</span>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-secondary mb-3">Mensagem enviada!</h3>
+                    <p class="text-slate-500 leading-relaxed max-w-xs mx-auto">
+                        Nossa equipe entrará em contato em breve. Fique de olho no seu e-mail!
+                    </p>
+                </div>
+
             </div>
-
         </div>
     </main>
 
@@ -123,6 +239,124 @@
     <div id="main-footer"></div>
 
     <script src="js/layout.js"></script>
+
+    <!-- Form Handler -->
+    <script>
+            (function () {
+                const HUBSPOT_PORTAL = '50211725';
+                const HUBSPOT_FORM_ID = 'fc9622f6-bd22-4eda-a23a-32191360baa3';
+                const HUBSPOT_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL}/${HUBSPOT_FORM_ID}`;
+
+                const form = document.getElementById('velt-contact-form');
+                const formContainer = document.getElementById('form-container');
+                const successBox = document.getElementById('success-container');
+                const submitBtn = document.getElementById('submit-btn');
+                const btnLabel = document.getElementById('btn-label');
+                const btnSpinner = document.getElementById('btn-spinner');
+                const errorBox = document.getElementById('form-error');
+                const errorMsg = document.getElementById('form-error-msg');
+
+                function setLoading(loading) {
+                    submitBtn.disabled = loading;
+                    btnLabel.classList.toggle('opacity-0', loading);
+                    btnSpinner.classList.toggle('hidden', !loading);
+                }
+
+                function showError(msg) {
+                    errorMsg.textContent = msg || 'Algo deu errado. Tente novamente.';
+                    errorBox.classList.remove('hidden');
+                    errorBox.classList.add('flex');
+                }
+
+                function hideError() {
+                    errorBox.classList.add('hidden');
+                    errorBox.classList.remove('flex');
+                }
+
+                form.addEventListener('submit', async function (e) {
+                    // 1. Prevent default
+                    e.preventDefault();
+                    hideError();
+
+                    // 2. Collect fields
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const company = document.getElementById('company').value.trim();
+
+                    // Basic client-side validation
+                    if (!name || !email || !phone || !company) {
+                        showError('Por favor, preencha todos os campos obrigatórios.');
+                        return;
+                    }
+
+                    setLoading(true);
+
+                    // Split name into firstname/lastname for HubSpot
+                    const nameParts = name.split(' ');
+                    const firstname = nameParts[0];
+                    const lastname = nameParts.slice(1).join(' ') || '-';
+
+                    // 3. Send to HubSpot
+                    const payload = {
+                        fields: [
+                            { name: 'firstname', value: firstname },
+                            { name: 'lastname', value: lastname },
+                            { name: 'email', value: email },
+                            { name: 'phone', value: phone },
+                            { name: 'company', value: company },
+                        ],
+                        context: {
+                            pageUri: window.location.href,
+                            pageName: document.title,
+                        },
+                    };
+
+                    try {
+                        const res = await fetch(HUBSPOT_URL, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload),
+                        });
+
+                        if (!res.ok) {
+                            const data = await res.json().catch(() => ({}));
+                            throw new Error(data.message || `HTTP ${res.status}`);
+                        }
+
+                        // 4. GTM event
+                        if (window.dataLayer) {
+                            window.dataLayer.push({
+                                event: 'form_submit',
+                                form_name: 'LP_HTML_FORM',
+                            });
+                        }
+
+                        // 5. Facebook Pixel
+                        if (typeof fbq === 'function') {
+                            fbq('track', 'Lead');
+                        }
+
+                        // 6. Reset form
+                        form.reset();
+
+                        // 7. Emit browser event
+                        window.dispatchEvent(new CustomEvent('formSubmissionSuccess'));
+
+                        // Show success UI
+                        formContainer.classList.add('hidden');
+                        successBox.classList.remove('hidden');
+                        successBox.classList.add('fade-in-up');
+
+                    } catch (err) {
+                        console.error('[Velt Form] Submission error:', err);
+                        showError('Não conseguimos enviar sua mensagem. Tente novamente ou fale conosco pelo e-mail.');
+                    } finally {
+                        setLoading(false);
+                    }
+                });
+            })();
+    </script>
 
 </body>
 
