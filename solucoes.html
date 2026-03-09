@@ -22,6 +22,15 @@
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
@@ -51,8 +60,8 @@
         </div>
         <div class="max-w-4xl mx-auto px-4 relative z-10">
             <span
-                class="inline-block bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-bold mb-6 tracking-wide uppercase border border-white/20">Para
-                quem é a Velt?</span>
+                class="inline-block bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-bold mb-6 tracking-wide uppercase border border-white/20">Soluções
+                360 para Toda a Empresa</span>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">Viagens corporativas não
                 precisam ser sinônimo de <span class="text-primary">"caos institucionalizado".</span></h1>
             <p class="text-lg md:text-xl text-slate-300 mb-12 font-medium leading-relaxed max-w-3xl mx-auto">
@@ -62,15 +71,15 @@
 
             <!-- Sticky Scroll / Tabs trigger -->
             <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-                <a href="#gestor"
+                <a href="#casos-uso" onclick="switchTab('gestor')"
                     class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2">
-                    <span class="material-icons text-primary">account_balance_wallet</span> Para Gestores Financeiros
+                    <span class="material-icons text-primary">account_balance_wallet</span> Para os Gestores
                 </a>
-                <a href="#admin"
+                <a href="#casos-uso" onclick="switchTab('admin')"
                     class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2">
                     <span class="material-icons text-primary">engineering</span> Para o Administrativo
                 </a>
-                <a href="#viajante"
+                <a href="#casos-uso" onclick="switchTab('viajante')"
                     class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2">
                     <span class="material-icons text-primary">flight_takeoff</span> Para o Viajante
                 </a>
@@ -78,184 +87,244 @@
         </div>
     </header>
 
-    <!-- SECTION 2: CASO DE USO 1 - O SÓCIO / GESTOR FINANCEIRO -->
-    <section id="gestor" class="py-24 bg-white scroll-mt-20">
+    <!-- SECTION 2: CASOS DE USO INTERATIVOS -->
+    <section id="casos-uso" class="py-24 bg-surface scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row gap-16 items-center">
-                <div class="lg:w-1/2">
-                    <span
-                        class="bg-blue-100 text-blue-600 px-4 py-1.5 rounded-full text-sm font-bold mb-6 inline-flex items-center gap-2"><span
-                            class="material-icons text-[18px]">account_balance_wallet</span> Para Sócios e
-                        Gestores</span>
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-secondary mb-8 leading-tight">A matemática não
-                        mente.</h2>
+            <div class="text-center mb-16">
+                <span
+                    class="bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-bold mb-4 inline-block tracking-wide uppercase">Para
+                    cada pessoa do time</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-secondary leading-tight">Uma solução sob medida</h2>
+                <p class="text-lg text-slate-500 mt-4 max-w-2xl mx-auto font-medium">Selecione o seu perfil e veja como
+                    a Velt transforma o seu dia a dia.</p>
+            </div>
 
-                    <div class="space-y-8">
-                        <div>
-                            <h4
-                                class="font-bold text-slate-400 text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
-                                <span class="material-icons text-red-400 text-sm">cancel</span> O Jeito Atual</h4>
-                            <p class="text-slate-600 text-lg leading-relaxed">Você acha que está economizando ao pedir
-                                para sua equipe cotar voos em 5 sites diferentes. A verdade? Você está pagando o preço
-                                caro do varejo (B2C) e queimando horas de trabalho de uma equipe que deveria focar no
-                                core business.</p>
-                        </div>
+            <!-- Tabs Navigation -->
+            <div class="flex flex-wrap justify-center gap-4 mb-20">
+                <button onclick="switchTab('gestor')" id="tab-gestor"
+                    class="usecase-tab active-tab bg-white shadow-md hover:shadow-lg border-2 border-primary text-secondary font-bold py-3 px-8 rounded-full transition-all flex items-center gap-2">
+                    <span id="icon-gestor"
+                        class="material-icons text-primary transition-colors">account_balance_wallet</span> Gestores
+                </button>
+                <button onclick="switchTab('admin')" id="tab-admin"
+                    class="usecase-tab bg-white shadow-sm hover:shadow-md border-2 border-transparent hover:border-slate-200 text-slate-500 font-bold py-3 px-8 rounded-full transition-all flex items-center gap-2">
+                    <span id="icon-admin" class="material-icons text-slate-400 transition-colors">engineering</span>
+                    Administrativo
+                </button>
+                <button onclick="switchTab('viajante')" id="tab-viajante"
+                    class="usecase-tab bg-white shadow-sm hover:shadow-md border-2 border-transparent hover:border-slate-200 text-slate-500 font-bold py-3 px-8 rounded-full transition-all flex items-center gap-2">
+                    <span id="icon-viajante"
+                        class="material-icons text-slate-400 transition-colors">flight_takeoff</span> Viajantes
+                </button>
+            </div>
 
-                        <div class="bg-slate-50 p-6 rounded-2xl border-l-4 border-secondary">
-                            <p class="text-secondary font-bold text-lg">Em uma PME típica (30 viagens/mês), o custo
-                                invisível desse processo manual tira de <strong class="text-red-500">R$ 6.000 a R$ 9.000
-                                    por ano</strong> da sua margem. E você nem percebe, porque não há visibilidade
-                                unificada.</p>
-                        </div>
+            <!-- Tabs Content -->
+            <div class="relative max-w-5xl mx-auto">
 
-                        <div>
-                            <h4
-                                class="font-bold text-primary text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
-                                <span class="material-icons text-primary text-sm">check_circle</span> A Solução Velt
-                            </h4>
-                            <p class="text-slate-600 text-lg leading-relaxed">Substituímos a "busca na unha" por
-                                tecnologia integrada. Acessamos bancos de milhas profissionais e tarifas com desconto de
-                                consolidadoras para entregar uma economia real de <strong class="text-secondary">10% a
-                                    30%</strong> direto na sua DRE.</p>
-                        </div>
-
-                        <ul class="space-y-4 pt-4 border-t border-slate-100">
-                            <li class="flex items-start gap-3"><span
-                                    class="material-icons text-green-500 mt-0.5">check_circle</span> <span
-                                    class="text-slate-700 font-medium"><strong>Dashboard unificado:</strong> Saiba
-                                    exatamente quem viajou e quanto gastou.</span></li>
-                            <li class="flex items-start gap-3"><span
-                                    class="material-icons text-green-500 mt-0.5">check_circle</span> <span
-                                    class="text-slate-700 font-medium"><strong>Caixa casado e 100% seguro:</strong> Sem
-                                    "apostas" com o seu dinheiro.</span></li>
-                            <li class="flex items-start gap-3"><span
-                                    class="material-icons text-green-500 mt-0.5">check_circle</span> <span
-                                    class="text-slate-700 font-medium"><strong>ROI médio comprovado</strong> em menos de
-                                    90 dias.</span></li>
-                        </ul>
+                <!-- Content Gestor -->
+                <div id="content-gestor" class="usecase-content animate-fade-in block">
+                    <div class="text-center mb-12">
+                        <h3 class="text-3xl font-extrabold text-secondary">A matemática não mente.</h3>
                     </div>
-                </div>
 
-                <div class="lg:w-1/2 w-full">
-                    <div
-                        class="bg-secondary rounded-3xl p-8 shadow-2xl relative overflow-hidden text-center h-[500px] flex items-center justify-center border-4 border-slate-100">
-                        <!-- Decorative visual for Dashboard/Finance -->
+                    <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                        <!-- O Jeito Antigo -->
                         <div
-                            class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
-                        </div>
-                        <div class="relative z-10 text-white opacity-40">
-                            <span class="material-icons text-9xl">insights</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 3: CASO DE USO 2 - SECRETARIA / DEP. PESSOAL -->
-    <section id="admin" class="py-24 bg-surface scroll-mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row-reverse gap-16 items-center">
-                <div class="lg:w-1/2">
-                    <span
-                        class="bg-orange-100 text-orange-600 px-4 py-1.5 rounded-full text-sm font-bold mb-6 inline-flex items-center gap-2"><span
-                            class="material-icons text-[18px]">engineering</span> Para a Equipe Administrativa</span>
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-secondary mb-8 leading-tight">Feche seu notebook
-                        às 18h em ponto.</h2>
-
-                    <div class="space-y-8">
-                        <div>
-                            <h4
-                                class="font-bold text-slate-400 text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
-                                <span class="material-icons text-red-400 text-sm">cancel</span> O Jeito Atual</h4>
-                            <p class="text-slate-600 text-lg leading-relaxed">Nós sabemos como é. Centralizaram todas as
-                                emissões em você. Você gasta 40 minutos pulando de site em site para emitir uma única
-                                passagem. E quando a companhia aérea cancela um voo de última hora? A "bomba" cai no seu
-                                colo e você passa até 1h30 pendurada no telefone sentindo raiva e impotência.</p>
+                            class="bg-white rounded-3xl p-8 border-t-8 border-red-500 shadow-xl relative overflow-hidden group flex flex-col justify-between">
+                            <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                                <span class="material-icons text-9xl text-red-500">trending_down</span>
+                            </div>
+                            <div class="relative z-10">
+                                <h4
+                                    class="font-bold text-slate-400 text-sm uppercase tracking-wider mb-6 flex items-center gap-2">
+                                    <span class="material-icons text-red-500">cancel</span> O Jeito Atual
+                                </h4>
+                                <p class="text-slate-600 text-lg leading-relaxed mb-6">Você acha que está economizando
+                                    ao pedir para sua equipe cotar voos em 5 sites diferentes. A verdade? Você está
+                                    pagando o preço caro do varejo (B2C) e queimando horas produtivas de quem deveria
+                                    focar no negócio.</p>
+                            </div>
+                            <div class="bg-red-50 p-5 rounded-xl border border-red-100 relative z-10 mt-auto">
+                                <p class="text-red-900 font-bold text-lg">Gerando um Custo Operacional Invisível de
+                                    <span class="text-red-600">R$ 6.000 a R$ 9.000/ano</span> em uma empresa com 20 a 30
+                                    viagens por mês.
+                                </p>
+                            </div>
                         </div>
 
-                        <div>
-                            <h4
-                                class="font-bold text-primary text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
-                                <span class="material-icons text-primary text-sm">check_circle</span> A Solução Velt
-                            </h4>
-                            <p class="text-slate-600 text-lg leading-relaxed">Você nunca mais vai lidar com o mau
-                                atendimento das companhias aéreas. A Velt tira o trabalho operacional e burocrático das
-                                suas mãos. Plataforma única para emissão rápida e robôs que fazem a leitura de vouchers
-                                e faturamento fiscal automático.</p>
-                        </div>
+                        <!-- O Jeito Velt -->
+                        <div
+                            class="bg-secondary rounded-3xl p-8 border-t-8 border-primary shadow-2xl relative overflow-hidden group text-white flex flex-col justify-between">
+                            <div
+                                class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+                            </div>
+                            <div
+                                class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity z-0">
+                                <span class="material-icons text-9xl text-primary">trending_up</span>
+                            </div>
+                            <div class="relative z-10">
+                                <h4
+                                    class="font-extrabold text-primary text-sm uppercase tracking-wider mb-6 flex items-center gap-2">
+                                    <span class="material-icons text-primary">task_alt</span> A Solução Velt
+                                </h4>
+                                <p class="text-slate-300 text-lg leading-relaxed mb-8">Substituímos a "busca na unha"
+                                    por tecnologia integrada. Acesso a bancos de milhas profissionais e tarifas de
+                                    consolidadoras para entregar uma economia real que reflete direto na sua DRE.</p>
 
-                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                            <p class="text-secondary font-bold text-lg flex gap-3"><span
-                                    class="material-icons text-primary">nights_stay</span> E o melhor? Se o voo do CEO
-                                atrasar de madrugada, o nosso Concierge 24/7 entra em ação antes mesmo dele te ligar.
-                                Deixe o trabalho pesado conosco e durma em paz.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:w-1/2 w-full">
-                    <div
-                        class="bg-slate-200 rounded-3xl p-8 shadow-inner relative overflow-hidden text-center h-[500px] flex items-center justify-center border border-slate-300">
-                        <!-- Decorative visual for Admin -->
-                        <div class="relative z-10 text-slate-400 opacity-50">
-                            <span class="material-icons text-9xl">task_alt</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 4: CASO DE USO 3 - O VIAJANTE -->
-    <section id="viajante" class="py-24 bg-white scroll-mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row gap-16 items-center">
-                <div class="lg:w-1/2">
-                    <span
-                        class="bg-green-100 text-green-700 px-4 py-1.5 rounded-full text-sm font-bold mb-6 inline-flex items-center gap-2"><span
-                            class="material-icons text-[18px]">flight_takeoff</span> Para quem viaja</span>
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-secondary mb-8 leading-tight">Zero perrengue no
-                        aeroporto.</h2>
-
-                    <div class="space-y-8">
-                        <div>
-                            <h4
-                                class="font-bold text-slate-400 text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
-                                <span class="material-icons text-red-400 text-sm">cancel</span> O Jeito Atual</h4>
-                            <p class="text-slate-600 text-lg leading-relaxed">"Viajar a trabalho é exaustivo". Você
-                                chega no aeroporto, o voo está cancelado, não há vaga em hotel e você precisa tirar
-                                dinheiro do próprio bolso para comer enquanto aguarda o longo processo de reembolso da
-                                empresa.</p>
-                        </div>
-
-                        <div>
-                            <h4
-                                class="font-bold text-primary text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
-                                <span class="material-icons text-primary text-sm">check_circle</span> A Solução Velt
-                            </h4>
-                            <p class="text-slate-600 text-lg leading-relaxed">Nós tratamos o viajante corporativo de PME
-                                com o respeito que ele merece. Nosso Concierge monitora atrasos e cancelamentos de forma
-                                proativa. Você não é só uma reserva no sistema.</p>
-                        </div>
-
-                        <div class="bg-green-50 p-6 rounded-2xl border-l-4 border-green-500">
-                            <p class="text-green-900 font-bold text-lg">Seu voo cancelou? Nós já emitimos o próximo
-                                localizador. Você foca na sua reunião e no seu conforto; nós lidamos com a burocracia do
-                                aeroporto.</p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-3"><span
+                                            class="material-icons text-primary mt-0.5">check_circle</span> <span
+                                            class="text-white font-medium text-lg border-b border-primary/30 pb-1">Economia
+                                            de 10% a 30% comprovada.</span></li>
+                                    <li class="flex items-start gap-3"><span
+                                            class="material-icons text-primary mt-0.5">check_circle</span> <span
+                                            class="text-white font-medium text-lg border-b border-primary/30 pb-1">Dashboard
+                                            unificado e Gestão em tempo real.</span></li>
+                                    <li class="flex items-start gap-3"><span
+                                            class="material-icons text-primary mt-0.5">check_circle</span> <span
+                                            class="text-white font-medium text-lg">Controle e Hierarquia de
+                                            Aprovações.</span></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="lg:w-1/2 w-full">
-                    <div
-                        class="bg-secondary rounded-3xl p-8 shadow-2xl relative overflow-hidden text-center h-[500px] flex items-center justify-center border border-slate-700">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-slate-900 to-transparent"></div>
-                        <div class="relative z-10 text-slate-600 opacity-60">
-                            <span class="material-icons text-9xl">airline_seat_recline_extra</span>
+                <!-- Content Admin -->
+                <div id="content-admin" class="usecase-content hidden">
+                    <div class="text-center mb-12">
+                        <h3 class="text-3xl font-extrabold text-secondary">Feche o notebook às 18h em ponto.</h3>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                        <!-- O Jeito Antigo -->
+                        <div
+                            class="bg-white rounded-3xl p-8 border-t-8 border-red-500 shadow-xl relative overflow-hidden group flex flex-col justify-between">
+                            <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                                <span class="material-icons text-9xl text-red-500">alarm_off</span>
+                            </div>
+                            <div class="relative z-10">
+                                <h4
+                                    class="font-bold text-slate-400 text-sm uppercase tracking-wider mb-6 flex items-center gap-2">
+                                    <span class="material-icons text-red-500">cancel</span> O Jeito Atual
+                                </h4>
+                                <p class="text-slate-600 text-lg leading-relaxed mb-6">Nós sabemos como é... Você gasta
+                                    horas, às vezes espera dias pra ver se a passagem fica mais barata. E se acontece
+                                    algum imprevisto, resolver problemas com a companhia aérea é ma dor de cabeça...</p>
+                            </div>
+                            <div class="bg-red-50 p-5 rounded-xl border border-red-100 relative z-10 mt-auto">
+                                <p class="text-red-900 font-bold text-lg">Sentindo impaciência e impotência com <span
+                                        class="text-red-600">1h30 no telefone</span> sem saber como lidar com isso da
+                                    melhor forma.</p>
+                            </div>
+                        </div>
+
+                        <!-- O Jeito Velt -->
+                        <div
+                            class="bg-secondary rounded-3xl p-8 border-t-8 border-primary shadow-2xl relative overflow-hidden group text-white flex flex-col justify-between">
+                            <div
+                                class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+                            </div>
+                            <div
+                                class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity z-0">
+                                <span class="material-icons text-9xl text-primary">alarm_on</span>
+                            </div>
+                            <div class="relative z-10">
+                                <h4
+                                    class="font-extrabold text-primary text-sm uppercase tracking-wider mb-6 flex items-center gap-2">
+                                    <span class="material-icons text-primary">task_alt</span> A Solução Velt
+                                </h4>
+                                <p class="text-slate-300 text-lg leading-relaxed mb-8">Nunca mais lide com o mau
+                                    atendimento das companhias. Emissões simples e rápidas. Intermediação eficiênte de
+                                    qualquer imprevisto.</p>
+
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-3"><span
+                                            class="material-icons text-primary mt-0.5">check_circle</span> <span
+                                            class="text-white font-medium text-lg border-b border-primary/30 pb-1">Emissões
+                                            centralizadas em poucos minutos.</span></li>
+                                    <li class="flex items-start gap-3"><span
+                                            class="material-icons text-primary mt-0.5">check_circle</span> <span
+                                            class="text-white font-medium text-lg border-b border-primary/30 pb-1">Concierge
+                                            24/7 resolve problemas.</span></li>
+                                    <li class="flex items-start gap-3"><span
+                                            class="material-icons text-primary mt-0.5">check_circle</span> <span
+                                            class="text-white font-medium text-lg">Adeus burocracia sem fim.</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Content Viajante -->
+                <div id="content-viajante" class="usecase-content hidden">
+                    <div class="text-center mb-12">
+                        <h3 class="text-3xl font-extrabold text-secondary">Zero perrengue no aeroporto.</h3>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                        <!-- O Jeito Antigo -->
+                        <div
+                            class="bg-white rounded-3xl p-8 border-t-8 border-red-500 shadow-xl relative overflow-hidden group flex flex-col justify-between">
+                            <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                                <span class="material-icons text-9xl text-red-500">flight_busy</span>
+                            </div>
+                            <div class="relative z-10">
+                                <h4
+                                    class="font-bold text-slate-400 text-sm uppercase tracking-wider mb-6 flex items-center gap-2">
+                                    <span class="material-icons text-red-500">cancel</span> O Jeito Atual
+                                </h4>
+                                <p class="text-slate-600 text-lg leading-relaxed mb-6">"Viajar a trabalho é exaustivo".
+                                    Você chega no aeroporto, o voo está cancelado, perde o horário do compromisso, não
+                                    há vaga no hotel e você fica
+                                    abandonado, precisando se virar para resolver sozinho.</p>
+                            </div>
+                            <div class="bg-red-50 p-5 rounded-xl border border-red-100 relative z-10 mt-auto">
+                                <p class="text-red-900 font-bold text-lg">Tirar dinheiro do <span
+                                        class="text-red-600">próprio bolso</span> para comer aguardando processos
+                                    burocráticos.</p>
+                            </div>
+                        </div>
+
+                        <!-- O Jeito Velt -->
+                        <div
+                            class="bg-secondary rounded-3xl p-8 border-t-8 border-primary shadow-2xl relative overflow-hidden group text-white flex flex-col justify-between">
+                            <div
+                                class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+                            </div>
+                            <div
+                                class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity z-0">
+                                <span class="material-icons text-9xl text-primary">airline_seat_recline_extra</span>
+                            </div>
+                            <div class="relative z-10">
+                                <h4
+                                    class="font-extrabold text-primary text-sm uppercase tracking-wider mb-6 flex items-center gap-2">
+                                    <span class="material-icons text-primary">task_alt</span> A Solução Velt
+                                </h4>
+                                <p class="text-slate-300 text-lg leading-relaxed mb-8">Nós tratamos o viajante
+                                    corporativo de PME com o respeito que ele merece. Nosso Concierge proativo monitora
+                                    atrasos e cancelamentos antes mesmo de você chegar ao aeroporto.</p>
+
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-3"><span
+                                            class="material-icons text-primary mt-0.5">check_circle</span> <span
+                                            class="text-white font-medium text-lg border-b border-primary/30 pb-1">Realocação
+                                            automática em atrasos.</span></li>
+                                    <li class="flex items-start gap-3"><span
+                                            class="material-icons text-primary mt-0.5">check_circle</span> <span
+                                            class="text-white font-medium text-lg border-b border-primary/30 pb-1">Suporte
+                                            juridico imediato.</span></li>
+                                    <li class="flex items-start gap-3"><span
+                                            class="material-icons text-primary mt-0.5">check_circle</span> <span
+                                            class="text-white font-medium text-lg">Foque na reunião, cuidamos do
+                                            voo.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -268,9 +337,11 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">O "Como"</span>
+                <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Eficiência Digital &
+                    Excelência Humana</span>
                 <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Tecnologia onde você precisa,
-                    <br><span class="text-slate-400">humanos quando você precisa.</span></h2>
+                    <br><span class="text-slate-400">humanos quando você precisa.</span>
+                </h2>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
@@ -282,8 +353,8 @@
                     </div>
                     <h3 class="text-xl font-bold mb-4">Achar o Menor Preço</h3>
                     <p class="text-slate-400 leading-relaxed font-medium">Uma plataforma inteligente que elimina abas
-                        infinitas do navegador e centraliza as regras e limites da sua empresa para compras em um
-                        clique.</p>
+                        infinitas do navegador e centraliza as regras e limites da sua empresa para compras rápidas e
+                        economia real.</p>
                 </div>
 
                 <!-- Col 2 -->
@@ -293,8 +364,8 @@
                         <span class="material-icons text-primary text-2xl">smart_toy</span>
                     </div>
                     <h3 class="text-xl font-bold mb-4">Matar Trabalho Invisível</h3>
-                    <p class="text-slate-400 leading-relaxed font-medium">Nossos bots processam faturamentos
-                        automaticamente, emitem vouchers inteligentes e consolidam pagamentos diários.</p>
+                    <p class="text-slate-400 leading-relaxed font-medium">Tecnologia de ponta em todos os níveis de
+                        entrega das nossas soluções, para que humanos cuidem apenas do mais importante: você.</p>
                 </div>
 
                 <!-- Col 3 -->
@@ -304,7 +375,7 @@
                         <span class="material-icons text-primary text-2xl">support_agent</span>
                     </div>
                     <h3 class="text-xl font-bold mb-4">Salvar o seu Dia</h3>
-                    <p class="text-slate-400 leading-relaxed font-medium">Um suporte 24 horas real e obstinado, que
+                    <p class="text-slate-400 leading-relaxed font-medium">Um suporte 24 horas premium, que
                         resolve imprevistos de forma ágil para que ninguém da sua empresa perca tempo.</p>
                 </div>
             </div>
@@ -325,7 +396,7 @@
 
             <p class="text-xl text-white/90 mb-10 max-w-3xl mx-auto font-medium leading-relaxed">
                 Junte-se às dezenas de PMEs que já reduziram suas despesas financeiras e devolveram horas de vida aos
-                seus colaboradores. Mais de <strong>R$ 168 mil</strong> já economizados e NPS de 100% no atendimento.
+                seus colaboradores. Mais de <strong>R$ 168 mil</strong> já economizados e NPS 100 no atendimento.
             </p>
 
             <a href="https://emeo1uhrjwf.typeform.com/to/oWdmlXrQ" target="_blank"
@@ -342,6 +413,47 @@
 
     <!-- Dynamic Footer -->
     <div id="main-footer"></div>
+
+
+    <script>
+        function switchTab(tabId) {
+            // Hide all contents
+            document.querySelectorAll('.usecase-content').forEach(el => {
+                el.classList.remove('block', 'animate-fade-in');
+                el.classList.add('hidden');
+            });
+
+            // Reset all tabs to inactive state
+            document.querySelectorAll('.usecase-tab').forEach(el => {
+                el.classList.remove('border-primary', 'text-secondary', 'shadow-md');
+                el.classList.add('border-transparent', 'text-slate-500', 'shadow-sm');
+
+                // Reset icons
+                const icon = el.children[0];
+                icon.classList.remove('text-primary');
+                icon.classList.add('text-slate-400');
+            });
+
+            // Show target content
+            const targetContent = document.getElementById('content-' + tabId);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+                targetContent.classList.add('block', 'animate-fade-in');
+            }
+
+            // Set active tab
+            const targetTab = document.getElementById('tab-' + tabId);
+            if (targetTab) {
+                targetTab.classList.remove('border-transparent', 'text-slate-500', 'shadow-sm');
+                targetTab.classList.add('border-primary', 'text-secondary', 'shadow-md');
+
+                // Set active icon
+                const icon = targetTab.children[0];
+                icon.classList.remove('text-slate-400');
+                icon.classList.add('text-primary');
+            }
+        }
+    </script>
 
     <script src="js/layout.js"></script>
 
