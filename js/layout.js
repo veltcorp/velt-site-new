@@ -29,18 +29,18 @@ function loadHeader() {
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="${basePath}index.html" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Início</a>
-                    <a href="${basePath}solucoes.html" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Soluções</a>
-                    <a href="${basePath}funcionalidades.html" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Funcionalidades</a>
-                    <a href="${basePath}sobre.html" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Sobre Nós</a>
-                    <a href="${basePath}parceiros.html" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Parceiros</a>
-                    <a href="${basePath}blog.html" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Blog</a>
+                    <a href="${basePath}" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Início</a>
+                    <a href="${basePath}solucoes" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Soluções</a>
+                    <a href="${basePath}funcionalidades" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Funcionalidades</a>
+                    <a href="${basePath}sobre" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Sobre Nós</a>
+                    <a href="${basePath}parceiros" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Parceiros</a>
+                    <a href="${basePath}blog" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Blog</a>
                 </div>
 
                 <!-- CTA Buttons & Mobile Toggle -->
                 <div class="flex items-center gap-4">
                     <a href="#" class="hidden lg:block font-semibold text-slate-600 hover:text-primary transition-colors">Entrar</a>
-                    <a href="${basePath}contato.html" class="hidden md:block bg-primary text-white px-6 py-2.5 rounded-xl font-bold hover:bg-orange-600 transition-all shadow-lg shadow-primary/20 transform hover:-translate-y-0.5">
+                    <a href="${basePath}contato" class="hidden md:block bg-primary text-white px-6 py-2.5 rounded-xl font-bold hover:bg-orange-600 transition-all shadow-lg shadow-primary/20 transform hover:-translate-y-0.5">
                         Agendar Demo
                     </a>
                     
@@ -58,15 +58,15 @@ function loadHeader() {
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 z-[60] bg-white transform translate-x-full transition-transform duration-300 md:hidden flex flex-col pt-24 px-6 pb-6 overflow-y-auto">
         <div class="flex flex-col space-y-6 text-center">
-            <a href="${basePath}index.html" class="text-xl font-bold text-slate-800 hover:text-primary">Início</a>
-            <a href="${basePath}solucoes.html" class="text-xl font-bold text-slate-800 hover:text-primary">Soluções</a>
-            <a href="${basePath}funcionalidades.html" class="text-xl font-bold text-slate-800 hover:text-primary">Funcionalidades</a>
-            <a href="${basePath}sobre.html" class="text-xl font-bold text-slate-800 hover:text-primary">Sobre Nós</a>
-            <a href="${basePath}parceiros.html" class="text-xl font-bold text-slate-800 hover:text-primary">Parceiros</a>
-            <a href="${basePath}blog.html" class="text-xl font-bold text-slate-800 hover:text-primary">Blog</a>
+            <a href="${basePath}" class="text-xl font-bold text-slate-800 hover:text-primary">Início</a>
+            <a href="${basePath}solucoes" class="text-xl font-bold text-slate-800 hover:text-primary">Soluções</a>
+            <a href="${basePath}funcionalidades" class="text-xl font-bold text-slate-800 hover:text-primary">Funcionalidades</a>
+            <a href="${basePath}sobre" class="text-xl font-bold text-slate-800 hover:text-primary">Sobre Nós</a>
+            <a href="${basePath}parceiros" class="text-xl font-bold text-slate-800 hover:text-primary">Parceiros</a>
+            <a href="${basePath}blog" class="text-xl font-bold text-slate-800 hover:text-primary">Blog</a>
             <hr class="border-slate-100">
             <a href="#" class="text-xl font-bold text-slate-800 hover:text-primary">Entrar</a>
-            <a href="${basePath}contato.html" class="bg-primary text-white px-6 py-4 rounded-xl font-bold text-lg shadow-lg shadow-primary/20">Agendar Demo</a>
+            <a href="${basePath}contato" class="bg-primary text-white px-6 py-4 rounded-xl font-bold text-lg shadow-lg shadow-primary/20">Agendar Demo</a>
         </div>
         
         <!-- Close Button -->
@@ -125,26 +125,26 @@ function loadFooter() {
                 <div>
                     <h4 class="font-bold text-secondary mb-6">Produto</h4>
                     <ul class="space-y-4 text-sm text-slate-500">
-                        <li><a href="${basePath}solucoes.html" class="hover:text-primary transition-colors">Soluções</a></li>
-                        <li><a href="${basePath}funcionalidades.html" class="hover:text-primary transition-colors">Funcionalidades</a></li>
-                        <li><a href="${basePath}parceiros.html" class="hover:text-primary transition-colors">Parceiros</a></li>
+                        <li><a href="${basePath}solucoes" class="hover:text-primary transition-colors">Soluções</a></li>
+                        <li><a href="${basePath}funcionalidades" class="hover:text-primary transition-colors">Funcionalidades</a></li>
+                        <li><a href="${basePath}parceiros" class="hover:text-primary transition-colors">Parceiros</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="font-bold text-secondary mb-6">Empresa</h4>
                     <ul class="space-y-4 text-sm text-slate-500">
-                        <li><a href="${basePath}sobre.html" class="hover:text-primary transition-colors">Sobre Nós</a></li>
-                        <li><a href="${basePath}blog.html" class="hover:text-primary transition-colors">Blog</a></li>
-                        <li><a href="${basePath}contato.html" class="hover:text-primary transition-colors">Contato</a></li>
+                        <li><a href="${basePath}sobre" class="hover:text-primary transition-colors">Sobre Nós</a></li>
+                        <li><a href="${basePath}blog" class="hover:text-primary transition-colors">Blog</a></li>
+                        <li><a href="${basePath}contato" class="hover:text-primary transition-colors">Contato</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="font-bold text-secondary mb-6">Legal</h4>
                     <ul class="space-y-4 text-sm text-slate-500">
-                        <li><a href="${basePath}politicas-de-privacidade.html" class="hover:text-primary transition-colors">Políticas de Privacidade</a></li>
-                        <li><a href="${basePath}termos-de-uso.html" class="hover:text-primary transition-colors">Termos de Uso</a></li>
+                        <li><a href="${basePath}politicas-de-privacidade" class="hover:text-primary transition-colors">Políticas de Privacidade</a></li>
+                        <li><a href="${basePath}termos-de-uso" class="hover:text-primary transition-colors">Termos de Uso</a></li>
                     </ul>
                 </div>
             </div>
@@ -186,18 +186,21 @@ function setupMobileMenu() {
 }
 
 function highlightActiveLink() {
-    const path = window.location.pathname;
-    const page = path.split("/").pop() || 'index.html';
+    const pathname = window.location.pathname;
+    // Normalise: strip trailing slash, strip .html, default to '/' for home
+    const currentPath = pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
 
-    // Select all nav links (both desktop and mobile)
     const links = document.querySelectorAll('.nav-link, #mobile-menu a');
 
     links.forEach(link => {
-        if (link.getAttribute('href') === page) {
-            link.classList.add('text-primary'); // Active color
+        const href = link.getAttribute('href') || '';
+        // Normalise the link href the same way
+        const linkPath = href.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+
+        if (linkPath === currentPath || (currentPath === '/' && (linkPath === '' || linkPath === '/'))) {
+            link.classList.add('text-primary');
             link.classList.remove('text-slate-600', 'text-slate-800');
 
-            // Add font-bold if it's a desktop link
             if (link.classList.contains('nav-link')) {
                 link.classList.add('font-bold');
                 link.classList.remove('font-medium');

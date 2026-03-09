@@ -52,6 +52,29 @@ app.use(express.static(__dirname, {
     index: 'index.html',
 }));
 
+// ─── Clean URL Middleware ──────────────────────────────────────────────────────
+// Serves /page, /blog/slug, etc. by mapping to the corresponding .html file.
+// Only runs when the static middleware didn't already match.
+app.use((req, res, next) => {
+    // Skip paths that already have an extension, admin routes, API, and assets
+    if (/\.\w+$/.test(req.path) || req.path.startsWith('/admin') || req.path.startsWith('/health')) {
+        return next();
+    }
+
+    const rawPath = req.path.replace(/\/$/, '') || '/index';
+    const candidates = [
+        path.join(__dirname, `${rawPath}.html`),
+        path.join(__dirname, rawPath, 'index.html'),
+    ];
+
+    for (const candidate of candidates) {
+        if (fs.existsSync(candidate)) {
+            return res.sendFile(candidate, { headers: { 'Cache-Control': 'no-cache' } });
+        }
+    }
+    next();
+});
+
 // ─── Middleware ────────────────────────────────────────────────────────────────
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
