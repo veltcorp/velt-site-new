@@ -72,16 +72,16 @@
             <!-- Sticky Scroll / Tabs trigger -->
             <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
                 <a href="#casos-uso" onclick="switchTab('gestor')"
-                    class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2">
-                    <span class="material-icons text-primary">account_balance_wallet</span> Para os Gestores
+                    class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]">
+                    <span class="material-icons text-primary">account_balance_wallet</span> Sou gestor(a)
                 </a>
                 <a href="#casos-uso" onclick="switchTab('admin')"
-                    class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2">
-                    <span class="material-icons text-primary">engineering</span> Para o Administrativo
+                    class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]">
+                    <span class="material-icons text-primary">engineering</span> Sou do administrativo
                 </a>
                 <a href="#casos-uso" onclick="switchTab('viajante')"
-                    class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2">
-                    <span class="material-icons text-primary">flight_takeoff</span> Para o Viajante
+                    class="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]">
+                    <span class="material-icons text-primary">flight_takeoff</span> Sou viajante
                 </a>
             </div>
         </div>
@@ -99,30 +99,43 @@
                     a Velt transforma o seu dia a dia.</p>
             </div>
 
-            <!-- Tabs Navigation -->
-            <div class="flex flex-wrap justify-center gap-4 mb-20">
-                <button onclick="switchTab('gestor')" id="tab-gestor"
-                    class="usecase-tab active-tab bg-white shadow-md hover:shadow-lg border-2 border-primary text-secondary font-bold py-3 px-8 rounded-full transition-all flex items-center gap-2">
-                    <span id="icon-gestor"
-                        class="material-icons text-primary transition-colors">account_balance_wallet</span> Gestores
-                </button>
-                <button onclick="switchTab('admin')" id="tab-admin"
-                    class="usecase-tab bg-white shadow-sm hover:shadow-md border-2 border-transparent hover:border-slate-200 text-slate-500 font-bold py-3 px-8 rounded-full transition-all flex items-center gap-2">
-                    <span id="icon-admin" class="material-icons text-slate-400 transition-colors">engineering</span>
-                    Administrativo
-                </button>
-                <button onclick="switchTab('viajante')" id="tab-viajante"
-                    class="usecase-tab bg-white shadow-sm hover:shadow-md border-2 border-transparent hover:border-slate-200 text-slate-500 font-bold py-3 px-8 rounded-full transition-all flex items-center gap-2">
-                    <span id="icon-viajante"
-                        class="material-icons text-slate-400 transition-colors">flight_takeoff</span> Viajantes
-                </button>
+            <!-- Tabs Navigation (segmented control) -->
+            <div class="mb-20 text-center px-2">
+                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Escolha seu perfil</p>
+                <div class="inline-flex flex-wrap justify-center gap-2 p-2 sm:p-2.5 bg-slate-100 rounded-2xl border border-slate-200/90 shadow-inner max-w-full"
+                    role="tablist" aria-label="Perfil na empresa">
+                    <button type="button" onclick="switchTab('gestor')" id="tab-gestor" role="tab"
+                        aria-selected="true" aria-controls="content-gestor"
+                        class="usecase-tab cursor-pointer bg-white shadow-md border-2 border-primary text-secondary font-bold py-3 px-6 sm:px-8 rounded-xl sm:rounded-full transition-all duration-200 flex items-center justify-center gap-2 hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                        <span id="icon-gestor"
+                            class="material-icons text-primary transition-colors text-[22px] sm:text-2xl">account_balance_wallet</span>
+                        <span class="whitespace-nowrap">Sou gestor(a)</span>
+                    </button>
+                    <button type="button" onclick="switchTab('admin')" id="tab-admin" role="tab"
+                        aria-selected="false" aria-controls="content-admin"
+                        class="usecase-tab cursor-pointer bg-white shadow-sm border-2 border-slate-200 text-slate-600 font-bold py-3 px-6 sm:px-8 rounded-xl sm:rounded-full transition-all duration-200 flex items-center justify-center gap-2 hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                        <span id="icon-admin"
+                            class="material-icons text-slate-500 transition-colors text-[22px] sm:text-2xl">engineering</span>
+                        <span class="whitespace-nowrap">Sou do administrativo</span>
+                    </button>
+                    <button type="button" onclick="switchTab('viajante')" id="tab-viajante" role="tab"
+                        aria-selected="false" aria-controls="content-viajante"
+                        class="usecase-tab cursor-pointer bg-white shadow-sm border-2 border-slate-200 text-slate-600 font-bold py-3 px-6 sm:px-8 rounded-xl sm:rounded-full transition-all duration-200 flex items-center justify-center gap-2 hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                        <span id="icon-viajante"
+                            class="material-icons text-slate-500 transition-colors text-[22px] sm:text-2xl">flight_takeoff</span>
+                        <span class="whitespace-nowrap">Sou viajante</span>
+                    </button>
+                </div>
+                <p class="text-sm text-slate-400 mt-4 max-w-md mx-auto">Três visões — clique para ver o conteúdo de cada
+                    perfil abaixo.</p>
             </div>
 
             <!-- Tabs Content -->
             <div class="relative max-w-5xl mx-auto">
 
                 <!-- Content Gestor -->
-                <div id="content-gestor" class="usecase-content animate-fade-in block">
+                <div id="content-gestor" role="tabpanel" aria-labelledby="tab-gestor"
+                    class="usecase-content animate-fade-in block">
                     <div class="text-center mb-12">
                         <h3 class="text-3xl font-extrabold text-secondary">A matemática não mente.</h3>
                     </div>
@@ -191,7 +204,7 @@
                 </div>
 
                 <!-- Content Admin -->
-                <div id="content-admin" class="usecase-content hidden">
+                <div id="content-admin" role="tabpanel" aria-labelledby="tab-admin" class="usecase-content hidden">
                     <div class="text-center mb-12">
                         <h3 class="text-3xl font-extrabold text-secondary">Feche o notebook às 18h em ponto.</h3>
                     </div>
@@ -258,7 +271,8 @@
                 </div>
 
                 <!-- Content Viajante -->
-                <div id="content-viajante" class="usecase-content hidden">
+                <div id="content-viajante" role="tabpanel" aria-labelledby="tab-viajante"
+                    class="usecase-content hidden">
                     <div class="text-center mb-12">
                         <h3 class="text-3xl font-extrabold text-secondary">Zero perrengue no aeroporto.</h3>
                     </div>
@@ -425,13 +439,16 @@
 
             // Reset all tabs to inactive state
             document.querySelectorAll('.usecase-tab').forEach(el => {
+                el.setAttribute('aria-selected', 'false');
                 el.classList.remove('border-primary', 'text-secondary', 'shadow-md');
-                el.classList.add('border-transparent', 'text-slate-500', 'shadow-sm');
+                el.classList.add('border-slate-200', 'text-slate-600', 'shadow-sm');
 
-                // Reset icons
+                // Reset icons (first child = material icon)
                 const icon = el.children[0];
-                icon.classList.remove('text-primary');
-                icon.classList.add('text-slate-400');
+                if (icon) {
+                    icon.classList.remove('text-primary');
+                    icon.classList.add('text-slate-500');
+                }
             });
 
             // Show target content
@@ -444,13 +461,15 @@
             // Set active tab
             const targetTab = document.getElementById('tab-' + tabId);
             if (targetTab) {
-                targetTab.classList.remove('border-transparent', 'text-slate-500', 'shadow-sm');
+                targetTab.setAttribute('aria-selected', 'true');
+                targetTab.classList.remove('border-slate-200', 'text-slate-600', 'shadow-sm');
                 targetTab.classList.add('border-primary', 'text-secondary', 'shadow-md');
 
-                // Set active icon
                 const icon = targetTab.children[0];
-                icon.classList.remove('text-slate-400');
-                icon.classList.add('text-primary');
+                if (icon) {
+                    icon.classList.remove('text-slate-500');
+                    icon.classList.add('text-primary');
+                }
             }
         }
     </script>

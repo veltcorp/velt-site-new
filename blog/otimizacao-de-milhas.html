@@ -15,7 +15,14 @@
     <meta property="article:published_time" content="15 de fevereiro de 2026">
     <meta property="article:author" content="Velt Corp">
 
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <!-- Performance: preconnect to external origins before loading resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Tailwind (pinned version for cache stability) -->
+    <script src="https://cdn.tailwindcss.com/3.4.16?plugins=typography"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
