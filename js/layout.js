@@ -15,21 +15,30 @@ function getBasePath() {
     return '';
 }
 
+/** Home URL: empty href breaks on clean URLs (/solucoes → stays on same page). Relative index.html breaks (/solucoes/index.html). */
+function getHomeHref() {
+    const basePath = getBasePath();
+    if (basePath) return `${basePath}index.html`;
+    if (window.location.protocol === 'file:') return 'index.html';
+    return '/';
+}
+
 function loadHeader() {
     const basePath = getBasePath();
+    const homeHref = getHomeHref();
 
     const headerHTML = `
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24"> <!-- Increased height for larger logo -->
                 <!-- Logo -->
-                <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='${basePath}index.html'">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='${homeHref}'">
                     <img src="${basePath}assets/logoVelt.png" alt="Velt Logo" class="h-8 w-auto transition-all duration-300"> <!-- Adjusted size -->
                 </div>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="${basePath}" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Início</a>
+                    <a href="${homeHref}" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Início</a>
                     <a href="${basePath}solucoes" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Soluções</a>
                     <a href="${basePath}funcionalidades" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Funcionalidades</a>
                     <a href="${basePath}sobre" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Sobre Nós</a>
@@ -58,7 +67,7 @@ function loadHeader() {
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 z-[60] bg-white transform translate-x-full transition-transform duration-300 md:hidden flex flex-col pt-24 px-6 pb-6 overflow-y-auto">
         <div class="flex flex-col space-y-6 text-center">
-            <a href="${basePath}" class="text-xl font-bold text-slate-800 hover:text-primary">Início</a>
+            <a href="${homeHref}" class="text-xl font-bold text-slate-800 hover:text-primary">Início</a>
             <a href="${basePath}solucoes" class="text-xl font-bold text-slate-800 hover:text-primary">Soluções</a>
             <a href="${basePath}funcionalidades" class="text-xl font-bold text-slate-800 hover:text-primary">Funcionalidades</a>
             <a href="${basePath}sobre" class="text-xl font-bold text-slate-800 hover:text-primary">Sobre Nós</a>
@@ -188,14 +197,16 @@ function setupMobileMenu() {
 function highlightActiveLink() {
     const pathname = window.location.pathname;
     // Normalise: strip trailing slash, strip .html, default to '/' for home
-    const currentPath = pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+    let currentPath = pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+    if (currentPath === '/index') currentPath = '/';
 
     const links = document.querySelectorAll('.nav-link, #mobile-menu a');
 
     links.forEach(link => {
         const href = link.getAttribute('href') || '';
         // Normalise the link href the same way
-        const linkPath = href.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        let linkPath = href.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+        if (linkPath === '/index') linkPath = '/';
 
         if (linkPath === currentPath || (currentPath === '/' && (linkPath === '' || linkPath === '/'))) {
             link.classList.add('text-primary');

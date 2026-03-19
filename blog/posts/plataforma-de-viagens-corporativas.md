@@ -101,7 +101,7 @@ Antes de contratar uma plataforma de viagens corporativas, faça estas perguntas
 4. O suporte é **24/7** e **humano** (não apenas chatbot)?
 5. Quais são os **cases reais** com métricas documentadas?
 6. Existe **flexibilidade de pagamento** (PIX, faturamento)?
-7. A plataforma é **exclusiva para B2B** ou atende também varejo?
+7. A plataforma é **exclusiva para B2B** ou atende também o consumidor final?
 
 ---
 
