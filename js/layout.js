@@ -42,7 +42,7 @@ function loadHeader() {
                     <a href="${basePath}solucoes" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Soluções</a>
                     <a href="${basePath}funcionalidades" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Funcionalidades</a>
                     <a href="${basePath}sobre" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Sobre Nós</a>
-                    <a href="${basePath}parceiros" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Parceiros</a>
+                    <a href="${basePath}parceiros" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Indique e ganhe</a>
                     <a href="${basePath}blog" class="nav-link font-medium text-slate-600 hover:text-primary transition-colors">Blog</a>
                 </div>
 
@@ -71,7 +71,7 @@ function loadHeader() {
             <a href="${basePath}solucoes" class="text-xl font-bold text-slate-800 hover:text-primary">Soluções</a>
             <a href="${basePath}funcionalidades" class="text-xl font-bold text-slate-800 hover:text-primary">Funcionalidades</a>
             <a href="${basePath}sobre" class="text-xl font-bold text-slate-800 hover:text-primary">Sobre Nós</a>
-            <a href="${basePath}parceiros" class="text-xl font-bold text-slate-800 hover:text-primary">Parceiros</a>
+            <a href="${basePath}parceiros" class="text-xl font-bold text-slate-800 hover:text-primary">Indique e ganhe</a>
             <a href="${basePath}blog" class="text-xl font-bold text-slate-800 hover:text-primary">Blog</a>
             <hr class="border-slate-100">
             <a href="#" class="text-xl font-bold text-slate-800 hover:text-primary">Entrar</a>
@@ -136,7 +136,7 @@ function loadFooter() {
                     <ul class="space-y-4 text-sm text-slate-500">
                         <li><a href="${basePath}solucoes" class="hover:text-primary transition-colors">Soluções</a></li>
                         <li><a href="${basePath}funcionalidades" class="hover:text-primary transition-colors">Funcionalidades</a></li>
-                        <li><a href="${basePath}parceiros" class="hover:text-primary transition-colors">Parceiros</a></li>
+                        <li><a href="${basePath}parceiros" class="hover:text-primary transition-colors">Indique e ganhe</a></li>
                     </ul>
                 </div>
 

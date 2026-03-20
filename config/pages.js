@@ -11,7 +11,7 @@ module.exports = [
     { slug: 'solucoes', file: 'solucoes.html', title: 'Soluções' },
     { slug: 'funcionalidades', file: 'funcionalidades.html', title: 'Funcionalidades' },
     { slug: 'sobre', file: 'sobre.html', title: 'Sobre Nós' },
-    { slug: 'parceiros', file: 'parceiros.html', title: 'Parceiros' },
+    { slug: 'parceiros', file: 'parceiros.html', title: 'Indique e ganhe' },
     { slug: 'contato', file: 'contato.html', title: 'Contato' },
     { slug: 'blog', file: 'blog.html', title: 'Blog' },
 ];

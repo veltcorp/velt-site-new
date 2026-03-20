@@ -213,7 +213,7 @@ tags: ["Tecnologia"]
 | Soluções | `solucoes.html` | Solution overview with interactive use-case tabs | 3 buyer personas with "old way vs Velt way" comparison |
 | Funcionalidades | `funcionalidades.html` | Feature deep-dive (Dashboard, Trips, Approvals, Expenses) | Includes `buscador.png` screenshot + product GIF |
 | Sobre Nós | `sobre.html` | Founder story / About page | Photos: `bruno brant.JPG`, `wellerson assumpcao.JPG` |
-| Parceiros | `parceiros.html` | Partners / reseller program | Velvet Rope positioning |
+| Indique e ganhe (`/parceiros`) | `parceiros.html` | Referral / partner program | Nav label “Indique e ganhe”; URL slug stays `parceiros` |
 | Blog | `blog.html` | Blog index | ⚠️ Do NOT manually edit the article grid — it is overwritten by `npm run build` |
 | Contato | `contato.html` | Demo scheduling / contact form | CTA → book a call with Bruno |
 | Privacidade | `politicas-de-privacidade.html` | Privacy policy | Legal |
