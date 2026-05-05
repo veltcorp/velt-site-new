@@ -48,7 +48,7 @@ function loadHeader() {
 
                 <!-- CTA Buttons & Mobile Toggle -->
                 <div class="flex items-center gap-4">
-                    <a href="#" class="hidden lg:block font-semibold text-slate-600 hover:text-primary transition-colors">Entrar</a>
+                    <a href="https://app.veltcorp.com.br/" class="hidden lg:block font-semibold text-slate-600 hover:text-primary transition-colors">Entrar</a>
                     <a href="${basePath}contato" class="hidden md:block bg-primary text-white px-6 py-2.5 rounded-xl font-bold hover:bg-orange-600 transition-all shadow-lg shadow-primary/20 transform hover:-translate-y-0.5">
                         Agendar Demo
                     </a>
@@ -74,7 +74,7 @@ function loadHeader() {
             <a href="${basePath}parceiros" class="text-xl font-bold text-slate-800 hover:text-primary">Indique e ganhe</a>
             <a href="${basePath}blog" class="text-xl font-bold text-slate-800 hover:text-primary">Blog</a>
             <hr class="border-slate-100">
-            <a href="#" class="text-xl font-bold text-slate-800 hover:text-primary">Entrar</a>
+            <a href="https://app.veltcorp.com.br/" class="text-xl font-bold text-slate-800 hover:text-primary">Entrar</a>
             <a href="${basePath}contato" class="bg-primary text-white px-6 py-4 rounded-xl font-bold text-lg shadow-lg shadow-primary/20">Agendar Demo</a>
         </div>
         
