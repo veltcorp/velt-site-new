@@ -321,7 +321,7 @@ ${otherPillarsHtml}
 
     <!-- Footer injected by JS -->
     <div id="main-footer"></div>
-    <script src="../js/layout.js"></script>
+    <script src="../js/layout.js?v=3"></script>
 </body>
 </html>`;
 

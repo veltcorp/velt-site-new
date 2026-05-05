@@ -28,7 +28,7 @@ function loadHeader() {
     const homeHref = getHomeHref();
 
     const headerHTML = `
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300" id="navbar">
+    <nav class="sticky top-0 z-[100] bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24"> <!-- Increased height for larger logo -->
                 <!-- Logo -->
@@ -48,7 +48,7 @@ function loadHeader() {
 
                 <!-- CTA Buttons & Mobile Toggle -->
                 <div class="flex items-center gap-4">
-                    <a href="https://app.veltcorp.com.br/" class="hidden lg:block font-semibold text-slate-600 hover:text-primary transition-colors">Entrar</a>
+                    <a href="https://app.veltcorp.com.br/" class="hidden md:block font-semibold text-slate-600 hover:text-primary transition-colors">Entrar</a>
                     <a href="${basePath}contato" class="hidden md:block bg-primary text-white px-6 py-2.5 rounded-xl font-bold hover:bg-orange-600 transition-all shadow-lg shadow-primary/20 transform hover:-translate-y-0.5">
                         Agendar Demo
                     </a>

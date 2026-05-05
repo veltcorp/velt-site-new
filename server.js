@@ -23,6 +23,11 @@ app.use('/assets', express.static(path.join(__dirname, 'assets'), {
     etag: true,
     lastModified: true,
 }));
+// layout.js drives the live header; must not be cached "forever" or users keep stale HTML-in-JS after deploys
+app.get('/js/layout.js', (req, res) => {
+    res.setHeader('Cache-Control', 'no-cache, private, must-revalidate');
+    res.sendFile(path.join(__dirname, 'js', 'layout.js'), { etag: true, lastModified: true });
+});
 app.use('/js', express.static(path.join(__dirname, 'js'), {
     maxAge: ONE_YEAR_MS,
     immutable: true,
