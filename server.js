@@ -148,12 +148,15 @@ app.get('/api/auth/callback', async (req, res) => {
 <html><body><script>
 (function() {
   var authData = ${JSON.stringify(authData)};
-  window.addEventListener('message', function(e) {
+  function receiveMessage(e) {
     if (e.data === 'authorizing:github') {
       window.opener.postMessage('authorization:github:success:' + authData, e.origin);
+      window.removeEventListener('message', receiveMessage, false);
       window.close();
     }
-  });
+  }
+  window.addEventListener('message', receiveMessage, false);
+  window.opener.postMessage('authorizing:github', '*');
 })();
 </script></body></html>`);
     } catch (err) {
