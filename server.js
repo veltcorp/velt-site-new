@@ -115,6 +115,7 @@ app.get('/api/auth/callback', async (req, res) => {
     const { code } = req.query;
     const clientId = process.env.GITHUB_CLIENT_ID;
     const clientSecret = process.env.GITHUB_CLIENT_SECRET;
+    const redirectUri = `${getBaseUrl(req)}/api/auth/callback`;
 
     if (!code || !clientId || !clientSecret) {
         return res.status(400).send('Configuração OAuth incompleta ou código ausente.');
@@ -131,6 +132,7 @@ app.get('/api/auth/callback', async (req, res) => {
                 client_id: clientId,
                 client_secret: clientSecret,
                 code,
+                redirect_uri: redirectUri,
             }),
         });
 
@@ -140,15 +142,18 @@ app.get('/api/auth/callback', async (req, res) => {
             return res.status(401).send(data.error_description || 'Falha na autenticação GitHub.');
         }
 
-        const tokenPayload = JSON.stringify({ token: data.access_token, provider: 'github' });
-        const message = `authorization:github:success:${tokenPayload}`;
-        const origin = getBaseUrl(req);
+        const authData = JSON.stringify({ token: data.access_token, provider: 'github' });
 
         res.send(`<!DOCTYPE html>
 <html><body><script>
 (function() {
-  window.opener.postMessage(${JSON.stringify(message)}, ${JSON.stringify(origin)});
-  window.close();
+  var authData = ${JSON.stringify(authData)};
+  window.addEventListener('message', function(e) {
+    if (e.data === 'authorizing:github') {
+      window.opener.postMessage('authorization:github:success:' + authData, e.origin);
+      window.close();
+    }
+  });
 })();
 </script></body></html>`);
     } catch (err) {
