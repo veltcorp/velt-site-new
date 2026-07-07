@@ -105,6 +105,11 @@ veltcorp-website/
 ├── js/
 │   └── layout.js                 # 🔑 Shared header + footer (injected into every page)
 │
+├── public/
+│   └── admin/                    # Decap CMS (editor web do blog)
+│       ├── index.html
+│       └── config.yml
+│
 ├── scripts/
 │   ├── build-blog.js             # Blog build pipeline (MD → HTML)
 │   ├── new-post.js               # CLI to scaffold a new blog post
@@ -147,9 +152,27 @@ Edit `js/layout.js` → the `loadHeader()` and `loadFooter()` functions. Changes
 
 The blog uses a **Markdown → HTML pipeline** managed by `scripts/build-blog.js`.
 
-### How it works
-1. Write a `.md` file in `blog/posts/` with YAML front matter
-2. Run `npm run build` (or `npm run watch` during development)
+### Publishing flow (production)
+
+```mermaid
+flowchart LR
+    editor["Editor em /admin"] --> md["blog/posts/*.md"]
+    md --> github["Commit no GitHub"]
+    github --> vercel["Vercel vercel-build"]
+    vercel --> html["blog/*.html + blog.html"]
+    html --> site["veltcorp.com.br/blog"]
+```
+
+1. Editor writes in **Decap CMS** at `https://veltcorp.com.br/admin`
+2. On Publish, Decap commits a `.md` file to `blog/posts/` via GitHub API
+3. Vercel detects the push and runs `vercel-build` (`scripts/build-blog.js`)
+4. Generated HTML pages are deployed; post appears on the site in ~1–3 minutes
+
+> Full one-time setup (GitHub OAuth, Vercel env vars, collaborator access): see [`BLOG_CMS_SETUP.md`](BLOG_CMS_SETUP.md).
+
+### How the build works
+1. Each `.md` file in `blog/posts/` has YAML front matter
+2. `npm run build` (or `vercel-build` on deploy) converts MD → HTML
 3. The script:
    - Converts each `.md` to a full HTML page using `blog/template.html`
    - Updates the article grid in `blog.html`
@@ -157,13 +180,19 @@ The blog uses a **Markdown → HTML pipeline** managed by `scripts/build-blog.js
 
 ### Creating a new blog post
 
-**Option A — Interactive CLI (recommended)**
+**Option A — Decap CMS (recommended for editors)**
+1. Go to `https://veltcorp.com.br/admin`
+2. Log in with GitHub (account must have Write access to the repo)
+3. Click **New Blog**, fill in fields, write content, click **Publish**
+4. Wait 1–3 minutes for Vercel to deploy
+
+**Option B — Interactive CLI (for developers)**
 ```bash
 npm run new-post
 ```
 You will be prompted for: title, pillar, author, description.
 
-**Option B — CLI flags (non-interactive)**
+**Option C — CLI flags (non-interactive)**
 ```bash
 node scripts/new-post.js \
   --title "Meu Artigo" \
@@ -175,6 +204,7 @@ node scripts/new-post.js \
 Then open the generated `.md` file in `blog/posts/`, write the content, and run:
 ```bash
 npm run build
+git add -A && git commit -m "blog: novo post" && git push publish-remote main
 ```
 
 ### Front matter reference
@@ -262,19 +292,24 @@ tailwind.config = {
 | Package | Purpose |
 |---|---|
 | `express` | HTTP server / routing |
-| `ejs` | Server-side templating (used by server.js) |
 | `marked` | Converts Markdown blog posts to HTML |
 | `front-matter` | Parses YAML front matter from `.md` files |
 | `dotenv` | Loads environment variables from `.env` |
-| `express-session` | Session management |
-| `multer` | File upload handling |
 
 ---
 
 ## 11. Environment Variables
 
-The project uses a `.env` file (not committed to Git). See `.env` in the root for current values.  
-Variables are loaded via `dotenv` in `server.js`.
+The project uses a `.env` file locally (not committed to Git). Production values are set in **Vercel → Project Settings → Environment Variables**.
+
+| Variable | Required | Purpose |
+|---|---|---|
+| `GITHUB_CLIENT_ID` | Yes (prod CMS) | GitHub OAuth App client ID |
+| `GITHUB_CLIENT_SECRET` | Yes (prod CMS) | GitHub OAuth App client secret |
+| `OAUTH_STATE_SECRET` | Yes (prod CMS) | Random string for OAuth CSRF protection |
+| `SITE_URL` | Optional | Override base URL (default: inferred from request) |
+
+See [`.env.example`](.env.example) and [`BLOG_CMS_SETUP.md`](BLOG_CMS_SETUP.md) for setup instructions.
 
 ---
 
@@ -284,7 +319,8 @@ Variables are loaded via `dotenv` in `server.js`.
 → Edit `js/layout.js` in both `loadHeader()` and `loadFooter()` functions.
 
 ### Add a new blog post
-→ `npm run new-post` → write content in `.md` file → `npm run build` → commit & push.
+→ **Editors:** `https://veltcorp.com.br/admin` → write → Publish (auto-deploy).  
+→ **Developers:** `npm run new-post` → write `.md` → `npm run build` → commit & push.
 
 ### Update the hero video
 → Replace `assets/hero-gif.mp4` with a new file (keep the same filename).
@@ -308,4 +344,5 @@ Variables are loaded via `dotenv` in `server.js`.
 - **Blog pillar SVG images were removed** (the `assets/blog/*.svg` files were deleted). Blog cards now use Unsplash URLs or other online sources as `image:` in front matter instead.
 - **`process_blog.py`** is a standalone Python utility for bulk blog operations. It is not part of the Node build pipeline.
 - **Large GIF asset:** `assets/gif tour completo.gif` is ~25MB. If Vercel build times are slow, consider converting it to a `.mp4`.
-- **Tailwind via CDN**: No local CSS build step. To switch to a local Tailwind build for production optimizations (tree-shaking), a build step would need to be introduced.
+- **Decap CMS login requires GitHub OAuth** configured on Vercel. See `BLOG_CMS_SETUP.md`.
+- **OAuth login only works in production** (`veltcorp.com.br`). For local content work, use `npm run new-post` or edit `.md` files directly.

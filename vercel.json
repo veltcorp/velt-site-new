@@ -7,10 +7,12 @@
             "config": {
                 "includeFiles": [
                     "*.html",
-                    "blog/**/*.html",
+                    "blog/**/*",
                     "assets/**/*",
                     "js/**/*",
-                    "css/**/*"
+                    "css/**/*",
+                    "public/**/*",
+                    "scripts/build-blog.js"
                 ]
             }
         }
