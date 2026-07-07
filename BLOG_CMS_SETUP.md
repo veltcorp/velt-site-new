@@ -8,6 +8,8 @@ One-time setup to enable blog publishing at `https://veltcorp.com.br/admin`.
 
 Editors publish via Decap CMS in the browser. Content is saved as Markdown in `blog/posts/`, committed to GitHub, and deployed automatically by Vercel.
 
+> The repository is public so Git collaborators can trigger deploys on Vercel without extra team seats. Secrets stay in Vercel environment variables only.
+
 ---
 
 ## Step 1 — Create GitHub OAuth App
