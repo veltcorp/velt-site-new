@@ -2,7 +2,7 @@ backend:
   name: github
   repo: veltcorp/velt-site-new
   branch: main
-  base_url: https://veltcorp.com.br
+  base_url: https://www.veltcorp.com.br
   auth_endpoint: api/auth
 
 media_folder: assets/blog
@@ -18,11 +18,11 @@ collections:
     format: frontmatter
     identifier_field: title
     fields:
-      - { label: Título, name: title, widget: string }
-      - { label: Slug, name: slug, widget: string, hint: "Nome do arquivo sem .md (ex: meu-artigo)" }
-      - { label: Data, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: Autor, name: author, widget: string, default: "Velt Corp" }
-      - { label: Meta Descrição, name: description, widget: text }
+      - { label: "Título", name: title, widget: string }
+      - { label: "Slug", name: slug, widget: string, hint: "Nome do arquivo sem .md (ex: meu-artigo)" }
+      - { label: "Data", name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Autor", name: author, widget: string, default: "Velt Corp" }
+      - { label: "Meta Descrição", name: description, widget: text }
       - label: Pilar
         name: pillar
         widget: select
@@ -34,6 +34,6 @@ collections:
           - Tecnologia
           - Gestão de Milhas
           - Experiência do Viajante
-      - { label: Imagem de capa, name: image, widget: image, required: false }
-      - { label: Tags, name: tags, widget: list, default: [] }
-      - { label: Conteúdo, name: body, widget: markdown }
+      - { label: "Imagem de capa", name: image, widget: image, required: false }
+      - { label: "Tags", name: tags, widget: list, default: [] }
+      - { label: "Conteúdo", name: body, widget: markdown }

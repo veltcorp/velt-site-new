@@ -1,6 +1,6 @@
 # Blog CMS — Setup Guide (Decap CMS)
 
-One-time setup to enable blog publishing at `https://veltcorp.com.br/admin`.
+One-time setup to enable blog publishing at `https://www.veltcorp.com.br/admin`.
 
 ---
 
@@ -18,8 +18,8 @@ Editors publish via Decap CMS in the browser. Content is saved as Markdown in `b
 2. Click **New OAuth App**
 3. Fill in:
    - **Application name:** `Velt Blog CMS`
-   - **Homepage URL:** `https://veltcorp.com.br`
-   - **Authorization callback URL:** `https://veltcorp.com.br/api/auth/callback`
+   - **Homepage URL:** `https://www.veltcorp.com.br`
+   - **Authorization callback URL:** `https://www.veltcorp.com.br/api/auth/callback`
 4. Click **Register application**
 5. Copy the **Client ID**
 6. Click **Generate a new client secret** and copy the **Client Secret**
@@ -59,13 +59,13 @@ Editors log in with their **GitHub account**. They need Write access to the repo
 
 ## Step 4 — Verify the Setup
 
-1. Open `https://veltcorp.com.br/admin`
+1. Open `https://www.veltcorp.com.br/admin`
 2. Click **Login with GitHub**
 3. Authorize the app
 4. You should see the list of blog posts
 5. Create a test post, click **Publish**
 6. Confirm a new commit appears on GitHub (`blog/posts/...`)
-7. Wait 1–3 minutes, then check `https://veltcorp.com.br/blog`
+7. Wait 1–3 minutes, then check `https://www.veltcorp.com.br/blog`
 8. Delete the test post if desired
 
 ---
@@ -74,7 +74,7 @@ Editors log in with their **GitHub account**. They need Write access to the repo
 
 | Action | Steps |
 |---|---|
-| **Access** | `https://veltcorp.com.br/admin` → Login with GitHub |
+| **Access** | `https://www.veltcorp.com.br/admin` → Login with GitHub |
 | **New post** | Blog → New Blog → fill fields → Publish |
 | **Edit post** | Blog → click post → edit → Publish |
 | **Upload image** | Use the image field (saves to `assets/blog/`) |
@@ -111,7 +111,7 @@ Editors log in with their **GitHub account**. They need Write access to the repo
 ### Login redirects but returns to login screen
 - Verify `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, and `OAUTH_STATE_SECRET` are set on Vercel
 - Redeploy after adding env vars
-- Confirm callback URL in GitHub OAuth App is exactly `https://veltcorp.com.br/api/auth/callback`
+- Confirm callback URL in GitHub OAuth App is exactly `https://www.veltcorp.com.br/api/auth/callback`
 
 ### "Not authorized" when publishing
 - Editor needs **Write** access to `veltcorp/velt-site-new` on GitHub
@@ -123,7 +123,7 @@ Editors log in with their **GitHub account**. They need Write access to the repo
 - Hard-refresh the blog page (Cmd+Shift+R / Ctrl+F5)
 
 ### Local development
-- OAuth is configured for `veltcorp.com.br` only
+- OAuth is configured for `www.veltcorp.com.br` only
 - For local work, use `npm run new-post` and `npm run build`, then commit and push
 
 ---

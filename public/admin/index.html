@@ -4,7 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Velt Blog Admin</title>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
 </head>
-<body></body>
+<body>
+  <p id="cms-loading" style="font-family: system-ui, sans-serif; padding: 2rem; color: #475569;">
+    Carregando editor do blog...
+  </p>
+  <script src="https://unpkg.com/decap-cms@3.14.1/dist/decap-cms.js"></script>
+  <script>
+    document.getElementById('cms-loading')?.remove();
+  </script>
+</body>
 </html>
