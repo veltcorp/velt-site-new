@@ -3,7 +3,7 @@ title: "IA em viagens corporativas: por que a tecnologia funciona melhor com o
   humano no centro"
 slug: ia-em-viagens-corporativas
 date: 2026-07-09
-author: Velt Corp
+author: Bruno Brant Gotschalg
 description: "IA em viagens corporativas não substitui o gestor: ela o torna
   mais estratégico. Veja como a Velt combina inteligência artificial e
   atendimento humano para decidir melhor."
