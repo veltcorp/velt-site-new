@@ -77,10 +77,49 @@
 
         #guia-place-autocomplete {
             min-height: 48px;
+            position: relative;
+            z-index: 20;
+            overflow: visible;
         }
 
         #guia-place-autocomplete gmp-place-autocomplete {
             width: 100%;
+            display: block;
+        }
+
+        /* iOS: evita zoom automático no foco (fonte < 16px) */
+        #guia-place-autocomplete gmp-place-autocomplete,
+        #guia-place-autocomplete input,
+        #guia-place-autocomplete .input-container input {
+            font-size: 16px !important;
+            line-height: 1.4;
+        }
+
+        #guia-place-autocomplete input {
+            min-height: 44px;
+            padding: 10px 12px;
+        }
+
+        #guia-map.guia-map-mark-mode {
+            cursor: crosshair;
+            outline: 2px solid #FF6B00;
+            outline-offset: -2px;
+        }
+
+        .guia-map-actions button.is-active {
+            background: #FFF7ED;
+            border-color: rgba(255, 107, 0, 0.45);
+            color: #FF6B00;
+        }
+
+        #guia-map.guia-map-el {
+            height: min(55vh, 360px);
+        }
+
+        @media (min-width: 768px) {
+            #guia-map.guia-map-el {
+                height: 420px;
+            }
         }
     </style>
 </head>
@@ -122,22 +161,35 @@
                     Onde comer perto de você
                 </h2>
                 <p class="text-slate-600 max-w-xl mx-auto">
-                    Veja os restaurantes no mapa. Informe seu hotel ou clique no mapa para descobrir os mais próximos.
+                    Veja os restaurantes no mapa. Digite seu hotel, use sua localização ou marque a posição no mapa.
                 </p>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-3 sm:items-center mb-3">
-                <div id="guia-place-autocomplete" class="flex-1 min-w-0 rounded-xl bg-white border border-orange-100/80 px-1 py-1 shadow-sm"></div>
-                <button type="button" id="guia-clear-hotel"
-                    class="hidden shrink-0 inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:text-primary hover:border-primary/30 transition-colors">
-                    <span class="material-icons text-base">close</span> Limpar posição
-                </button>
+            <div class="flex flex-col gap-3 mb-3">
+                <div id="guia-place-autocomplete" class="w-full min-w-0 rounded-xl bg-white border border-orange-100/80 px-1 py-1 shadow-sm"></div>
+                <div class="guia-map-actions flex flex-col sm:flex-row gap-2 sm:gap-3">
+                    <button type="button" id="guia-use-location"
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl border border-orange-100/80 bg-white text-sm font-semibold text-secondary hover:text-primary hover:border-primary/30 transition-colors">
+                        <span class="material-icons text-base">my_location</span> Usar minha localização
+                    </button>
+                    <button type="button" id="guia-mark-on-map"
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl border border-orange-100/80 bg-white text-sm font-semibold text-secondary hover:text-primary hover:border-primary/30 transition-colors"
+                        aria-pressed="false">
+                        <span class="material-icons text-base">add_location_alt</span> Marcar no mapa
+                    </button>
+                    <button type="button" id="guia-clear-hotel"
+                        class="hidden w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:text-primary hover:border-primary/30 transition-colors">
+                        <span class="material-icons text-base">close</span> Limpar posição
+                    </button>
+                </div>
             </div>
-            <p class="text-xs text-slate-500 mb-2">Ou clique no mapa para marcar seu hotel / posição.</p>
+            <p class="text-xs text-slate-500 mb-2">
+                Digite o hotel, toque em “Usar minha localização” ou ative “Marcar no mapa” e toque no mapa.
+            </p>
             <p id="guia-hotel-status" class="text-sm font-medium text-accent mb-4 min-h-[1.25rem]" aria-live="polite"></p>
 
             <div class="relative rounded-2xl overflow-hidden border border-orange-100/80 shadow-sm bg-white">
-                <div id="guia-map" class="w-full h-[420px]" aria-label="Mapa de restaurantes recomendados Velt"></div>
+                <div id="guia-map" class="w-full guia-map-el" aria-label="Mapa de restaurantes recomendados Velt"></div>
                 <div id="guia-map-loading"
                     class="absolute inset-0 flex items-center justify-center bg-white/85 text-slate-600 font-medium z-10">
                     Carregando mapa…
@@ -499,7 +551,7 @@
 
     <script src="js/layout.js?v=3"></script>
     <script src="js/guiabh-restaurants.js?v=2"></script>
-    <script src="js/guiabh-map.js?v=2"></script>
+    <script src="js/guiabh-map.js?v=3"></script>
 
 </body>
 

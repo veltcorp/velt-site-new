@@ -9,6 +9,8 @@
     const PRIMARY = '#FF6B00';
     const ACCENT = '#C45C3E';
     const BH_CENTER = { lat: -19.934, lng: -43.94 };
+    const IS_NARROW = () =>
+        typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 640px)').matches;
 
     let coreLoadPromise = null;
     let map = null;
@@ -17,6 +19,8 @@
     let hotelMarker = null;
     let hotelPosition = null;
     let selectedId = null;
+    let markOnMapMode = false;
+    let statusOverride = '';
     const pinContents = new Map();
     const markersById = new Map();
 
@@ -89,6 +93,10 @@
         if (errorText && message) errorText.textContent = message;
     }
 
+    function isMobilePins() {
+        return IS_NARROW();
+    }
+
     function createRestaurantMarkerContent(restaurant, selected) {
         const wrapper = document.createElement('div');
         wrapper.style.cursor = 'pointer';
@@ -105,9 +113,12 @@
     }
 
     function applyPinStyle(pill, selected) {
+        const mobile = isMobilePins();
+        const pad = mobile ? '8px 12px' : '6px 10px';
+        const font = mobile ? '13px' : '12px';
         pill.style.cssText = selected
-            ? `border:2px solid ${PRIMARY};background:#FFF7ED;padding:6px 10px;border-radius:8px;font-size:12px;font-weight:700;color:#1E293B;box-shadow:0 4px 12px rgba(0,0,0,.15);white-space:nowrap;transform:scale(1.08);`
-            : `border:1px solid #E2E8F0;background:#fff;padding:6px 10px;border-radius:8px;font-size:12px;font-weight:700;color:#1E293B;box-shadow:0 2px 8px rgba(0,0,0,.12);white-space:nowrap;`;
+            ? `border:2px solid ${PRIMARY};background:#FFF7ED;padding:${pad};border-radius:8px;font-size:${font};font-weight:700;color:#1E293B;box-shadow:0 4px 12px rgba(0,0,0,.15);white-space:nowrap;transform:scale(1.08);`
+            : `border:1px solid #E2E8F0;background:#fff;padding:${pad};border-radius:8px;font-size:${font};font-weight:700;color:#1E293B;box-shadow:0 2px 8px rgba(0,0,0,.12);white-space:nowrap;`;
     }
 
     function setMarkerSelected(id, selected) {
@@ -125,7 +136,10 @@
         wrapper.title = 'Seu hotel / posição';
         const pill = document.createElement('div');
         pill.textContent = 'Meu hotel';
-        pill.style.cssText = `border:2px solid ${ACCENT};background:${ACCENT};color:#fff;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;box-shadow:0 4px 14px rgba(196,92,62,.35);white-space:nowrap;`;
+        const mobile = isMobilePins();
+        const pad = mobile ? '8px 14px' : '6px 12px';
+        const font = mobile ? '13px' : '12px';
+        pill.style.cssText = `border:2px solid ${ACCENT};background:${ACCENT};color:#fff;padding:${pad};border-radius:999px;font-size:${font};font-weight:700;box-shadow:0 4px 14px rgba(196,92,62,.35);white-space:nowrap;`;
         wrapper.appendChild(pill);
         return wrapper;
     }
@@ -246,20 +260,26 @@
         });
     }
 
+    function setStatus(text) {
+        const hint = document.getElementById('guia-hotel-status');
+        if (hint) hint.textContent = text || '';
+    }
+
     function applyHotelDistances() {
         const clearBtn = document.getElementById('guia-clear-hotel');
-        const hint = document.getElementById('guia-hotel-status');
 
         if (!hotelPosition) {
             if (clearBtn) clearBtn.classList.add('hidden');
-            if (hint) hint.textContent = '';
+            if (!markOnMapMode) setStatus(statusOverride || '');
             updateNearestPanel([]);
             updateDistanceBadges(new Map());
             return;
         }
 
         if (clearBtn) clearBtn.classList.remove('hidden');
-        if (hint) hint.textContent = 'Posição marcada — ordenando por proximidade.';
+        if (!markOnMapMode) {
+            setStatus(statusOverride || 'Posição marcada — ordenando por proximidade.');
+        }
 
         const sorted = activeRestaurants()
             .map((r) => ({
@@ -274,15 +294,47 @@
         reorderBrandCards(sorted);
     }
 
-    function setHotel(lat, lng, label) {
+    function scrollToNearestFeedback() {
+        requestAnimationFrame(() => {
+            const panel = document.getElementById('guia-nearest-panel');
+            const mapWrap = document.getElementById('guia-map')?.parentElement;
+            const target = panel && !panel.classList.contains('hidden') ? panel : mapWrap;
+            target?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+    }
+
+    function setMarkOnMapMode(enabled) {
+        markOnMapMode = !!enabled;
+        const btn = document.getElementById('guia-mark-on-map');
+        const mapEl = document.getElementById('guia-map');
+        if (btn) {
+            btn.classList.toggle('is-active', markOnMapMode);
+            btn.setAttribute('aria-pressed', markOnMapMode ? 'true' : 'false');
+        }
+        if (mapEl) mapEl.classList.toggle('guia-map-mark-mode', markOnMapMode);
+        if (markOnMapMode) {
+            setStatus('Toque no mapa para marcar seu hotel / posição.');
+        } else if (hotelPosition) {
+            setStatus(statusOverride || 'Posição marcada — ordenando por proximidade.');
+        } else {
+            setStatus(statusOverride || '');
+        }
+    }
+
+    function setHotel(lat, lng, label, options = {}) {
+        const { statusMessage, scrollFeedback = true } = options;
         hotelPosition = { lat, lng };
+        statusOverride = statusMessage || '';
+
         if (!map || !AdvancedMarkerElementCtor) {
             applyHotelDistances();
+            if (scrollFeedback) scrollToNearestFeedback();
             return;
         }
 
         if (hotelMarker) {
             hotelMarker.position = { lat, lng };
+            hotelMarker.title = label || 'Meu hotel';
         } else {
             hotelMarker = new AdvancedMarkerElementCtor({
                 map,
@@ -294,15 +346,24 @@
         }
 
         map.panTo({ lat, lng });
+        const currentZoom = map.getZoom?.() ?? 13;
+        if (typeof currentZoom === 'number' && currentZoom < 14) {
+            map.setZoom(14);
+        }
+
+        setMarkOnMapMode(false);
         applyHotelDistances();
+        if (scrollFeedback) scrollToNearestFeedback();
     }
 
     function clearHotel() {
         hotelPosition = null;
+        statusOverride = '';
         if (hotelMarker) {
             hotelMarker.map = null;
             hotelMarker = null;
         }
+        setMarkOnMapMode(false);
         applyHotelDistances();
 
         const placeRoot = document.getElementById('guia-place-autocomplete');
@@ -310,6 +371,36 @@
             const input = placeRoot.querySelector('input');
             if (input) input.value = '';
         }
+    }
+
+    function useCurrentLocation() {
+        const btn = document.getElementById('guia-use-location');
+        if (!navigator.geolocation) {
+            setStatus('Geolocalização não disponível neste aparelho.');
+            return;
+        }
+
+        if (btn) btn.disabled = true;
+        setStatus('Obtendo sua localização…');
+
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                if (btn) btn.disabled = false;
+                setHotel(pos.coords.latitude, pos.coords.longitude, 'Minha localização', {
+                    statusMessage: 'Usando sua localização atual.',
+                });
+            },
+            (err) => {
+                if (btn) btn.disabled = false;
+                const denied = err && err.code === 1;
+                setStatus(
+                    denied
+                        ? 'Permissão de localização negada. Digite o hotel ou marque no mapa.'
+                        : 'Não foi possível obter a localização. Digite o hotel ou marque no mapa.'
+                );
+            },
+            { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 }
+        );
     }
 
     function setupCardClicks() {
@@ -321,10 +412,40 @@
         });
     }
 
+    function styleAutocompleteInput(root) {
+        const apply = () => {
+            const input =
+                root.querySelector('input') ||
+                root.shadowRoot?.querySelector?.('input');
+            if (!input) return false;
+
+            input.style.fontSize = '16px';
+            input.style.minHeight = '44px';
+            if (!input.getAttribute('placeholder')) {
+                input.setAttribute('placeholder', 'Hotel ou ponto de referência em BH');
+            }
+            input.setAttribute('autocomplete', 'street-address');
+            input.setAttribute('enterkeyhint', 'search');
+
+            input.addEventListener('focus', () => {
+                root.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+            return true;
+        };
+
+        if (apply()) return;
+        // Web component pode montar o input depois
+        let tries = 0;
+        const timer = setInterval(() => {
+            tries += 1;
+            if (apply() || tries > 40) clearInterval(timer);
+        }, 100);
+    }
+
     async function setupPlacesAutocomplete(container) {
         if (!container || !google.maps.places?.PlaceAutocompleteElement) {
             container.innerHTML =
-                '<p class="text-sm text-slate-500">Busca de hotel indisponível. Clique no mapa para marcar sua posição.</p>';
+                '<p class="text-sm text-slate-500 px-3 py-2">Busca de hotel indisponível. Use sua localização ou marque no mapa.</p>';
             return;
         }
 
@@ -339,27 +460,34 @@
         });
         placeAutocomplete.id = 'guia-hotel-autocomplete';
         placeAutocomplete.style.width = '100%';
+        placeAutocomplete.setAttribute(
+            'placeholder',
+            'Hotel ou ponto de referência em BH'
+        );
         container.innerHTML = '';
         container.appendChild(placeAutocomplete);
+        styleAutocompleteInput(placeAutocomplete);
 
-        placeAutocomplete.addEventListener('gmp-select', async ({ placePrediction }) => {
-            const place = placePrediction.toPlace();
-            await place.fetchFields({ fields: ['location', 'displayName', 'formattedAddress'] });
-            const loc = place.location;
-            if (!loc) return;
-            const lat = typeof loc.lat === 'function' ? loc.lat() : loc.lat;
-            const lng = typeof loc.lng === 'function' ? loc.lng() : loc.lng;
-            setHotel(lat, lng, place.displayName || place.formattedAddress || 'Hotel');
-        });
-
-        // Fallback para builds mais antigos do Places Autocomplete Element
-        placeAutocomplete.addEventListener('gmp-placeselect', async ({ place }) => {
+        const onPlace = async (place) => {
             await place.fetchFields?.({ fields: ['location', 'displayName', 'formattedAddress'] });
             const loc = place.location;
             if (!loc) return;
             const lat = typeof loc.lat === 'function' ? loc.lat() : loc.lat;
             const lng = typeof loc.lng === 'function' ? loc.lng() : loc.lng;
-            setHotel(lat, lng, place.displayName || place.formattedAddress || 'Hotel');
+            const label = place.displayName || place.formattedAddress || 'Hotel';
+            setHotel(lat, lng, label, {
+                statusMessage: `Hotel: ${label}`,
+            });
+        };
+
+        placeAutocomplete.addEventListener('gmp-select', async ({ placePrediction }) => {
+            const place = placePrediction.toPlace();
+            await onPlace(place);
+        });
+
+        // Fallback para builds mais antigos do Places Autocomplete Element
+        placeAutocomplete.addEventListener('gmp-placeselect', async ({ place }) => {
+            await onPlace(place);
         });
     }
 
@@ -396,6 +524,7 @@
                 mapTypeControl: false,
                 streetViewControl: false,
                 fullscreenControl: true,
+                gestureHandling: IS_NARROW() ? 'cooperative' : 'greedy',
             });
 
             const bounds = new LatLngBoundsCtor();
@@ -420,14 +549,16 @@
             }
 
             if (restaurants.length > 1) {
-                map.fitBounds(bounds, 56);
+                map.fitBounds(bounds, IS_NARROW() ? 40 : 56);
             }
 
             map.addListener('click', (e) => {
-                if (!e.latLng) return;
+                if (!markOnMapMode || !e.latLng) return;
                 const lat = e.latLng.lat();
                 const lng = e.latLng.lng();
-                setHotel(lat, lng, 'Posição no mapa');
+                setHotel(lat, lng, 'Posição no mapa', {
+                    statusMessage: 'Posição marcada no mapa — ordenando por proximidade.',
+                });
             });
 
             await setupPlacesAutocomplete(document.getElementById('guia-place-autocomplete'));
@@ -446,6 +577,10 @@
     function init() {
         setupCardClicks();
         document.getElementById('guia-clear-hotel')?.addEventListener('click', clearHotel);
+        document.getElementById('guia-use-location')?.addEventListener('click', useCurrentLocation);
+        document.getElementById('guia-mark-on-map')?.addEventListener('click', () => {
+            setMarkOnMapMode(!markOnMapMode);
+        });
         void initMap();
     }
 
