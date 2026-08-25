@@ -76,28 +76,88 @@
         }
 
         #guia-place-autocomplete {
-            min-height: 48px;
             position: relative;
-            z-index: 20;
+            z-index: 30;
             overflow: visible;
         }
 
-        #guia-place-autocomplete gmp-place-autocomplete {
+        #guia-hotel-input {
             width: 100%;
+            min-height: 44px;
+            padding: 10px 14px;
+            font-size: 16px;
+            line-height: 1.4;
+            color: #1E293B;
+            background: transparent;
+            border: none;
+            outline: none;
+            border-radius: 0.75rem;
+        }
+
+        #guia-hotel-input::placeholder {
+            color: #94A3B8;
+        }
+
+        #guia-place-suggestions {
+            display: none;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: calc(100% + 6px);
+            z-index: 40;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background: #fff;
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 0.75rem;
+            box-shadow: 0 12px 28px -8px rgba(30, 41, 59, 0.18);
+            max-height: min(50vh, 280px);
+            overflow-y: auto;
+        }
+
+        #guia-place-suggestions.is-open {
             display: block;
         }
 
-        /* iOS: evita zoom automático no foco (fonte < 16px) */
-        #guia-place-autocomplete gmp-place-autocomplete,
-        #guia-place-autocomplete input,
-        #guia-place-autocomplete .input-container input {
-            font-size: 16px !important;
-            line-height: 1.4;
+        #guia-place-suggestions li[role="option"] {
+            padding: 12px 14px;
+            min-height: 48px;
+            cursor: pointer;
+            border-bottom: 1px solid #F1F5F9;
         }
 
-        #guia-place-autocomplete input {
-            min-height: 44px;
-            padding: 10px 12px;
+        #guia-place-suggestions li[role="option"]:last-of-type {
+            border-bottom: none;
+        }
+
+        #guia-place-suggestions li[role="option"]:hover,
+        #guia-place-suggestions li[role="option"].is-active {
+            background: #FFF7ED;
+        }
+
+        #guia-place-suggestions .guia-suggest-main {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1E293B;
+            line-height: 1.3;
+        }
+
+        #guia-place-suggestions .guia-suggest-secondary {
+            display: block;
+            margin-top: 2px;
+            font-size: 12px;
+            color: #64748B;
+            line-height: 1.3;
+        }
+
+        #guia-place-suggestions .guia-suggest-footer {
+            padding: 8px 14px;
+            font-size: 10px;
+            color: #94A3B8;
+            text-align: right;
+            border-top: 1px solid #F1F5F9;
         }
 
         #guia-map.guia-map-mark-mode {
@@ -166,7 +226,18 @@
             </div>
 
             <div class="flex flex-col gap-3 mb-3">
-                <div id="guia-place-autocomplete" class="w-full min-w-0 rounded-xl bg-white border border-orange-100/80 px-1 py-1 shadow-sm"></div>
+                <div id="guia-place-autocomplete" class="w-full min-w-0 rounded-xl bg-white border border-orange-100/80 shadow-sm">
+                    <input type="text" id="guia-hotel-input"
+                        placeholder="Hotel ou ponto de referência em BH"
+                        autocomplete="off"
+                        enterkeyhint="search"
+                        role="combobox"
+                        aria-autocomplete="list"
+                        aria-expanded="false"
+                        aria-controls="guia-place-suggestions"
+                        aria-haspopup="listbox">
+                    <ul id="guia-place-suggestions" role="listbox" aria-label="Sugestões de lugares" hidden></ul>
+                </div>
                 <div class="guia-map-actions flex flex-col sm:flex-row gap-2 sm:gap-3">
                     <button type="button" id="guia-use-location"
                         class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl border border-orange-100/80 bg-white text-sm font-semibold text-secondary hover:text-primary hover:border-primary/30 transition-colors">
@@ -551,7 +622,7 @@
 
     <script src="js/layout.js?v=3"></script>
     <script src="js/guiabh-restaurants.js?v=2"></script>
-    <script src="js/guiabh-map.js?v=3"></script>
+    <script src="js/guiabh-map.js?v=6"></script>
 
 </body>
 

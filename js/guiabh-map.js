@@ -135,7 +135,7 @@
         wrapper.style.userSelect = 'none';
         wrapper.title = 'Seu hotel / posição';
         const pill = document.createElement('div');
-        pill.textContent = 'Meu hotel';
+        pill.textContent = 'Meu Local';
         const mobile = isMobilePins();
         const pad = mobile ? '8px 14px' : '6px 12px';
         const font = mobile ? '13px' : '12px';
@@ -334,13 +334,13 @@
 
         if (hotelMarker) {
             hotelMarker.position = { lat, lng };
-            hotelMarker.title = label || 'Meu hotel';
+            hotelMarker.title = label || 'Meu Local';
         } else {
             hotelMarker = new AdvancedMarkerElementCtor({
                 map,
                 position: { lat, lng },
                 content: createHotelMarkerContent(),
-                title: label || 'Meu hotel',
+                title: label || 'Meu Local',
                 zIndex: 1000,
             });
         }
@@ -366,10 +366,10 @@
         setMarkOnMapMode(false);
         applyHotelDistances();
 
-        const placeRoot = document.getElementById('guia-place-autocomplete');
-        if (placeRoot) {
-            const input = placeRoot.querySelector('input');
-            if (input) input.value = '';
+        const input = document.getElementById('guia-hotel-input');
+        if (input) input.value = '';
+        if (typeof window.__guiaClearSuggestions === 'function') {
+            window.__guiaClearSuggestions();
         }
     }
 
@@ -412,82 +412,273 @@
         });
     }
 
-    function styleAutocompleteInput(root) {
-        const apply = () => {
-            const input =
-                root.querySelector('input') ||
-                root.shadowRoot?.querySelector?.('input');
-            if (!input) return false;
+    function formatPredictionText(part) {
+        if (!part) return '';
+        if (typeof part === 'string') return part;
+        if (typeof part.text === 'string' && part.text) return part.text;
+        if (typeof part.toString === 'function') {
+            const s = part.toString();
+            if (typeof s === 'string' && s && s !== '[object Object]') return s;
+        }
+        return '';
+    }
 
-            input.style.fontSize = '16px';
-            input.style.minHeight = '44px';
-            if (!input.getAttribute('placeholder')) {
-                input.setAttribute('placeholder', 'Hotel ou ponto de referência em BH');
-            }
-            input.setAttribute('autocomplete', 'street-address');
-            input.setAttribute('enterkeyhint', 'search');
-
-            input.addEventListener('focus', () => {
-                root.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            });
-            return true;
-        };
-
-        if (apply()) return;
-        // Web component pode montar o input depois
-        let tries = 0;
-        const timer = setInterval(() => {
-            tries += 1;
-            if (apply() || tries > 40) clearInterval(timer);
-        }, 100);
+    function predictionLabel(prediction) {
+        const main =
+            formatPredictionText(prediction.mainText) ||
+            formatPredictionText(prediction.text) ||
+            'Lugar';
+        const secondary = formatPredictionText(prediction.secondaryText);
+        return { main, secondary };
     }
 
     async function setupPlacesAutocomplete(container) {
-        if (!container || !google.maps.places?.PlaceAutocompleteElement) {
+        const input = document.getElementById('guia-hotel-input');
+        const listEl = document.getElementById('guia-place-suggestions');
+        if (!container || !input || !listEl) return;
+
+        const AutocompleteSuggestion = google.maps.places?.AutocompleteSuggestion;
+        const AutocompleteSessionToken = google.maps.places?.AutocompleteSessionToken;
+
+        if (!AutocompleteSuggestion?.fetchAutocompleteSuggestions || !AutocompleteSessionToken) {
             container.innerHTML =
                 '<p class="text-sm text-slate-500 px-3 py-2">Busca de hotel indisponível. Use sua localização ou marque no mapa.</p>';
             return;
         }
 
-        const placeAutocomplete = new google.maps.places.PlaceAutocompleteElement({
-            includedRegionCodes: ['br'],
-            locationBias: {
-                west: -44.2,
-                south: -20.1,
-                east: -43.7,
-                north: -19.7,
-            },
-        });
-        placeAutocomplete.id = 'guia-hotel-autocomplete';
-        placeAutocomplete.style.width = '100%';
-        placeAutocomplete.setAttribute(
-            'placeholder',
-            'Hotel ou ponto de referência em BH'
-        );
-        container.innerHTML = '';
-        container.appendChild(placeAutocomplete);
-        styleAutocompleteInput(placeAutocomplete);
-
-        const onPlace = async (place) => {
-            await place.fetchFields?.({ fields: ['location', 'displayName', 'formattedAddress'] });
-            const loc = place.location;
-            if (!loc) return;
-            const lat = typeof loc.lat === 'function' ? loc.lat() : loc.lat;
-            const lng = typeof loc.lng === 'function' ? loc.lng() : loc.lng;
-            const label = place.displayName || place.formattedAddress || 'Hotel';
-            setHotel(lat, lng, label, {
-                statusMessage: `Hotel: ${label}`,
-            });
+        const BH_BOUNDS = {
+            west: -44.2,
+            south: -20.1,
+            east: -43.7,
+            north: -19.7,
         };
 
-        placeAutocomplete.addEventListener('gmp-select', async ({ placePrediction }) => {
-            const place = placePrediction.toPlace();
-            await onPlace(place);
+        let sessionToken = new AutocompleteSessionToken();
+        let debounceTimer = null;
+        let blurTimer = null;
+        let activeIndex = -1;
+        let currentPredictions = [];
+        let requestId = 0;
+
+        function renewSessionToken() {
+            sessionToken = new AutocompleteSessionToken();
+        }
+
+        function setExpanded(open) {
+            input.setAttribute('aria-expanded', open ? 'true' : 'false');
+            listEl.classList.toggle('is-open', open);
+            if (open) listEl.removeAttribute('hidden');
+            else listEl.setAttribute('hidden', '');
+        }
+
+        function clearSuggestions() {
+            currentPredictions = [];
+            activeIndex = -1;
+            listEl.innerHTML = '';
+            setExpanded(false);
+            input.removeAttribute('aria-activedescendant');
+        }
+
+        window.__guiaClearSuggestions = clearSuggestions;
+
+        function renderSuggestions(predictions) {
+            currentPredictions = predictions;
+            activeIndex = -1;
+            listEl.innerHTML = '';
+
+            if (!predictions.length) {
+                setExpanded(false);
+                return;
+            }
+
+            predictions.forEach((prediction, i) => {
+                const { main, secondary } = predictionLabel(prediction);
+                const li = document.createElement('li');
+                li.id = `guia-suggest-${i}`;
+                li.setAttribute('role', 'option');
+                li.setAttribute('aria-selected', 'false');
+                li.dataset.index = String(i);
+
+                const mainSpan = document.createElement('span');
+                mainSpan.className = 'guia-suggest-main';
+                mainSpan.textContent = main;
+                li.appendChild(mainSpan);
+
+                if (secondary) {
+                    const secSpan = document.createElement('span');
+                    secSpan.className = 'guia-suggest-secondary';
+                    secSpan.textContent = secondary;
+                    li.appendChild(secSpan);
+                }
+
+                li.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                });
+                li.addEventListener('click', () => {
+                    void selectPrediction(i);
+                });
+
+                listEl.appendChild(li);
+            });
+
+            const footer = document.createElement('div');
+            footer.className = 'guia-suggest-footer';
+            footer.textContent = 'Powered by Google';
+            listEl.appendChild(footer);
+
+            setExpanded(true);
+        }
+
+        function highlightActive(index) {
+            const options = listEl.querySelectorAll('[role="option"]');
+            options.forEach((el, i) => {
+                const on = i === index;
+                el.classList.toggle('is-active', on);
+                el.setAttribute('aria-selected', on ? 'true' : 'false');
+            });
+            activeIndex = index;
+            if (index >= 0 && options[index]) {
+                input.setAttribute('aria-activedescendant', options[index].id);
+                options[index].scrollIntoView({ block: 'nearest' });
+            } else {
+                input.removeAttribute('aria-activedescendant');
+            }
+        }
+
+        async function selectPrediction(index) {
+            const prediction = currentPredictions[index];
+            if (!prediction) return;
+
+            clearSuggestions();
+            const { main } = predictionLabel(prediction);
+            input.value = main;
+
+            try {
+                const place = prediction.toPlace();
+                await place.fetchFields({
+                    fields: ['location', 'displayName', 'formattedAddress'],
+                });
+                renewSessionToken();
+
+                const loc = place.location;
+                if (!loc) {
+                    setStatus('Não foi possível localizar este lugar. Tente outro.');
+                    return;
+                }
+                const lat = typeof loc.lat === 'function' ? loc.lat() : loc.lat;
+                const lng = typeof loc.lng === 'function' ? loc.lng() : loc.lng;
+                const rawLabel = place.displayName || place.formattedAddress || main || 'Hotel';
+                const label = formatPredictionText(rawLabel) || String(rawLabel);
+                input.value = label;
+                setHotel(lat, lng, label, {
+                    statusMessage: `Hotel: ${label}`,
+                });
+            } catch (err) {
+                console.error('[guiabh-map] place select', err);
+                setStatus('Não foi possível obter detalhes do lugar. Tente novamente.');
+                renewSessionToken();
+            }
+        }
+
+        async function fetchSuggestions(query) {
+            const id = ++requestId;
+            const request = {
+                input: query,
+                sessionToken,
+                locationRestriction: BH_BOUNDS,
+                language: 'pt-BR',
+                region: 'br',
+                includedRegionCodes: ['br'],
+            };
+
+            try {
+                const { suggestions } =
+                    await AutocompleteSuggestion.fetchAutocompleteSuggestions(request);
+                if (id !== requestId) return;
+
+                const predictions = (suggestions || [])
+                    .map((s) => s.placePrediction)
+                    .filter(Boolean)
+                    .slice(0, 5);
+
+                renderSuggestions(predictions);
+            } catch (err) {
+                // locationRestriction pode falhar em algumas builds — tenta com bias
+                try {
+                    const { suggestions } =
+                        await AutocompleteSuggestion.fetchAutocompleteSuggestions({
+                            input: query,
+                            sessionToken,
+                            locationBias: BH_BOUNDS,
+                            language: 'pt-BR',
+                            region: 'br',
+                        });
+                    if (id !== requestId) return;
+                    const predictions = (suggestions || [])
+                        .map((s) => s.placePrediction)
+                        .filter(Boolean)
+                        .slice(0, 5);
+                    renderSuggestions(predictions);
+                } catch (err2) {
+                    if (id !== requestId) return;
+                    console.error('[guiabh-map] autocomplete', err2);
+                    clearSuggestions();
+                }
+            }
+        }
+
+        input.addEventListener('input', () => {
+            const q = input.value.trim();
+            clearTimeout(debounceTimer);
+            if (q.length < 2) {
+                clearSuggestions();
+                return;
+            }
+            debounceTimer = setTimeout(() => {
+                void fetchSuggestions(q);
+            }, 300);
         });
 
-        // Fallback para builds mais antigos do Places Autocomplete Element
-        placeAutocomplete.addEventListener('gmp-placeselect', async ({ place }) => {
-            await onPlace(place);
+        input.addEventListener('keydown', (e) => {
+            const open = listEl.classList.contains('is-open');
+            if (e.key === 'Escape') {
+                clearSuggestions();
+                return;
+            }
+            if (!open || !currentPredictions.length) return;
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                const next = activeIndex < currentPredictions.length - 1 ? activeIndex + 1 : 0;
+                highlightActive(next);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                const prev = activeIndex > 0 ? activeIndex - 1 : currentPredictions.length - 1;
+                highlightActive(prev);
+            } else if (e.key === 'Enter') {
+                if (activeIndex >= 0) {
+                    e.preventDefault();
+                    void selectPrediction(activeIndex);
+                }
+            }
+        });
+
+        input.addEventListener('focus', () => {
+            clearTimeout(blurTimer);
+            input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (currentPredictions.length) setExpanded(true);
+        });
+
+        input.addEventListener('blur', () => {
+            blurTimer = setTimeout(() => {
+                setExpanded(false);
+                activeIndex = -1;
+                input.removeAttribute('aria-activedescendant');
+                listEl.querySelectorAll('[role="option"]').forEach((el) => {
+                    el.classList.remove('is-active');
+                    el.setAttribute('aria-selected', 'false');
+                });
+            }, 180);
         });
     }
 
