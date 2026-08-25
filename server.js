@@ -80,10 +80,15 @@ app.get('/health', (req, res) => {
 
 /** Public Maps JS config for guiabh (key is restricted by HTTP referrer + API). */
 app.get('/api/maps-config', (req, res) => {
-    const apiKey = (process.env.GOOGLE_MAPS_API_KEY || '').trim();
+    // PRD usa NEXT_PUBLIC_GOOGLE_MAPS_API_KEY; local aceita GOOGLE_MAPS_API_KEY também.
+    const apiKey = (
+        process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
+        process.env.GOOGLE_MAPS_API_KEY ||
+        ''
+    ).trim();
     if (!apiKey) {
         return res.status(503).json({
-            error: 'GOOGLE_MAPS_API_KEY não configurada. Defina no .env ou nas variáveis da Vercel.',
+            error: 'Google Maps API key não configurada (NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ou GOOGLE_MAPS_API_KEY).',
         });
     }
     const mapId = (process.env.GOOGLE_MAPS_MAP_ID || '').trim() || 'DEMO_MAP_ID';
