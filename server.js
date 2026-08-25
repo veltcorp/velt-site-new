@@ -78,6 +78,19 @@ app.get('/health', (req, res) => {
     res.json({ status: 'ok', uptime: process.uptime(), timestamp: new Date().toISOString() });
 });
 
+/** Public Maps JS config for guiabh (key is restricted by HTTP referrer + API). */
+app.get('/api/maps-config', (req, res) => {
+    const apiKey = (process.env.GOOGLE_MAPS_API_KEY || '').trim();
+    if (!apiKey) {
+        return res.status(503).json({
+            error: 'GOOGLE_MAPS_API_KEY não configurada. Defina no .env ou nas variáveis da Vercel.',
+        });
+    }
+    const mapId = (process.env.GOOGLE_MAPS_MAP_ID || '').trim() || 'DEMO_MAP_ID';
+    res.setHeader('Cache-Control', 'no-store');
+    res.json({ apiKey, mapId });
+});
+
 app.get('/admin', (req, res) => {
     res.redirect('/admin/index.html');
 });

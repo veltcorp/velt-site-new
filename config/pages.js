@@ -14,4 +14,5 @@ module.exports = [
     { slug: 'parceiros', file: 'parceiros.html', title: 'Indique e ganhe' },
     { slug: 'contato', file: 'contato.html', title: 'Contato' },
     { slug: 'blog', file: 'blog.html', title: 'Blog' },
+    { slug: 'guiabh', file: 'guiabh.html', title: 'Guia BH — Restaurantes Velt' },
 ];

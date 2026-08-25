@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de recomendações Velt — Belo Horizonte</title>
+    <meta name="description"
+        content="Curadoria especial da Velt: Pacato, AVRA, Isto e aQuilo e Nashy Sushi — restaurantes recomendados em Belo Horizonte.">
+    <meta name="robots" content="noindex, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://veltcorp.com.br/guiabh">
+    <meta property="og:title" content="Guia de recomendações Velt — Belo Horizonte">
+    <meta property="og:description"
+        content="Uma curadoria especial da Velt com restaurantes recomendados em Belo Horizonte.">
+    <meta property="og:image" content="https://veltcorp.com.br/assets/logoVelt.png">
+    <meta property="og:site_name" content="Veltcorp">
+    <meta property="og:locale" content="pt_BR">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B00',
+                        secondary: '#1E293B',
+                        surface: '#F8FAFC',
+                        guide: '#F7EDE6',
+                        accent: '#C45C3E',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7EDE6;
+            color: #1E293B;
+        }
+
+        .restaurant-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -12px rgba(30, 41, 59, 0.12);
+        }
+
+        .logo-dark {
+            background: #000;
+        }
+
+        .guia-card-selected {
+            box-shadow: 0 0 0 2px #FF6B00, 0 20px 40px -12px rgba(30, 41, 59, 0.12);
+        }
+
+        .guia-location-selected {
+            background: #FFF7ED;
+            border-radius: 0.75rem;
+            outline: 1px solid rgba(255, 107, 0, 0.35);
+        }
+
+        #guia-place-autocomplete {
+            min-height: 48px;
+        }
+
+        #guia-place-autocomplete gmp-place-autocomplete {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <div id="main-header"></div>
+
+    <!-- Hero -->
+    <header class="relative overflow-hidden bg-guide border-b border-orange-100">
+        <div class="relative z-10 max-w-3xl mx-auto px-4 pt-20 pb-14 text-center">
+            <div class="flex justify-center mb-5">
+                <span class="material-icons text-accent text-4xl">notifications_active</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-5 text-secondary leading-tight tracking-tight uppercase">
+                Guia de recomendações <span class="text-primary">Velt</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
+                Uma curadoria especial da Velt com restaurantes recomendados em Belo Horizonte
+                para aproveitar durante o evento.
+            </p>
+            <div
+                class="mt-8 inline-flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 bg-orange-50 border border-primary/25 text-primary px-4 py-3 rounded-2xl text-sm font-bold max-w-xl mx-auto">
+                <span class="inline-flex items-center gap-2 justify-center">
+                    <span class="material-icons text-base">local_offer</span>
+                    Leve o encarte Velt e ganhe benefícios exclusivos.
+                </span>
+                <span class="hidden sm:inline text-primary/40">·</span>
+                <span class="font-semibold text-accent">Válido até 30/08/2026</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Map + hotel -->
+    <section id="mapa-guia" class="py-12 bg-guide border-b border-orange-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-secondary tracking-tight mb-2">
+                    Onde comer perto de você
+                </h2>
+                <p class="text-slate-600 max-w-xl mx-auto">
+                    Veja os restaurantes no mapa. Informe seu hotel ou clique no mapa para descobrir os mais próximos.
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3 sm:items-center mb-3">
+                <div id="guia-place-autocomplete" class="flex-1 min-w-0 rounded-xl bg-white border border-orange-100/80 px-1 py-1 shadow-sm"></div>
+                <button type="button" id="guia-clear-hotel"
+                    class="hidden shrink-0 inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:text-primary hover:border-primary/30 transition-colors">
+                    <span class="material-icons text-base">close</span> Limpar posição
+                </button>
+            </div>
+            <p class="text-xs text-slate-500 mb-2">Ou clique no mapa para marcar seu hotel / posição.</p>
+            <p id="guia-hotel-status" class="text-sm font-medium text-accent mb-4 min-h-[1.25rem]" aria-live="polite"></p>
+
+            <div class="relative rounded-2xl overflow-hidden border border-orange-100/80 shadow-sm bg-white">
+                <div id="guia-map" class="w-full h-[420px]" aria-label="Mapa de restaurantes recomendados Velt"></div>
+                <div id="guia-map-loading"
+                    class="absolute inset-0 flex items-center justify-center bg-white/85 text-slate-600 font-medium z-10">
+                    Carregando mapa…
+                </div>
+                <div id="guia-map-error"
+                    class="hidden absolute inset-0 flex items-center justify-center bg-white/95 px-6 text-center z-10">
+                    <p id="guia-map-error-text" class="text-slate-600 max-w-sm">
+                        Não foi possível carregar o mapa. Use a lista abaixo.
+                    </p>
+                </div>
+            </div>
+
+            <div id="guia-nearest-panel" class="hidden mt-8">
+                <h3 class="text-lg font-extrabold text-secondary mb-3">Mais próximos do seu hotel</h3>
+                <div id="guia-nearest-list" class="space-y-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant list -->
+    <section class="py-14 bg-guide">
+        <div id="guia-restaurant-list" class="max-w-4xl mx-auto px-4 sm:px-6 space-y-8">
+
+            <!-- PACATO -->
+            <article data-brand-card="Pacato"
+                class="restaurant-card bg-white rounded-3xl border border-orange-100/80 overflow-hidden shadow-sm">
+                <div class="logo-dark flex items-center justify-center px-8 py-10">
+                    <img src="assets/guiabh/pacato-leite.png" alt="Logo Pacato"
+                        class="max-h-16 md:max-h-20 w-auto object-contain">
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <h2 class="text-2xl font-extrabold text-secondary tracking-wide uppercase">Pacato</h2>
+                            <span data-brand-distance="Pacato"
+                                class="hidden text-xs font-bold text-primary bg-orange-50 px-2.5 py-1 rounded-full"></span>
+                        </div>
+                        <a href="https://www.instagram.com/pacatobh" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" clip-rule="evenodd"/></svg>
+                            @pacatobh
+                        </a>
+                    </div>
+                    <div class="mb-4 inline-flex flex-wrap items-center gap-2 bg-orange-50 border border-primary/25 text-primary px-3 py-2 rounded-xl text-sm font-bold">
+                        <span class="material-icons text-base">local_offer</span>
+                        <span>10% de desconto ao apresentar o encarte Velt</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        Pacato é o retrato da cozinha mineira na alta gastronomia. Em 5 anos, virou um dos
+                        restaurantes mais premiados e badalados de BH: cozinha autoral do chef Caio Soter,
+                        elegante e sem cerimônia.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-6 text-sm">
+                        <div>
+                            <p class="font-bold text-accent mb-2 flex items-center gap-1.5">
+                                <span class="material-icons text-base">schedule</span> Horários
+                            </p>
+                            <ul class="text-slate-600 space-y-1">
+                                <li><strong class="text-secondary">Qua–Sáb:</strong> 12h às 16h / 19h às 23h</li>
+                                <li><strong class="text-secondary">Dom:</strong> 12h às 16h</li>
+                                <li><strong class="text-secondary">Seg–Ter:</strong> fechado</li>
+                            </ul>
+                        </div>
+                        <div data-restaurant-id="pacato-lourdes" class="cursor-pointer p-2 -m-2">
+                            <p class="font-bold text-accent mb-2 flex items-center gap-1.5">
+                                <span class="material-icons text-base">place</span> Unidade
+                                <span data-distance-for="pacato-lourdes"
+                                    class="hidden ml-auto text-xs font-bold text-primary bg-orange-50 px-2 py-0.5 rounded-full"></span>
+                            </p>
+                            <p class="text-slate-600 mb-1"><strong class="text-secondary">Lourdes</strong></p>
+                            <p class="text-slate-500 text-xs mb-4">Rua Rio de Janeiro, 2735 — Lourdes, Belo Horizonte</p>
+                            <div class="flex flex-wrap gap-4">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Pacato+Rua+Rio+de+Janeiro+2735+Lourdes+Belo+Horizonte"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-1 text-primary font-semibold hover:underline">
+                                    Ver no Maps <span class="material-icons text-sm">open_in_new</span>
+                                </a>
+                                <a href="https://pacatobh.com.br/" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-1 text-slate-500 font-semibold hover:text-primary hover:underline">
+                                    Site / reservas
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- AVRA -->
+            <article data-brand-card="Avra"
+                class="restaurant-card bg-white rounded-3xl border border-orange-100/80 overflow-hidden shadow-sm">
+                <div class="logo-dark flex items-center justify-center px-8 py-10">
+                    <img src="assets/guiabh/avra-leite.png" alt="Logo AVRA"
+                        class="max-h-24 md:max-h-28 w-auto object-contain">
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <h2 class="text-2xl font-extrabold text-secondary tracking-wide uppercase">Avra</h2>
+                            <span data-brand-distance="Avra"
+                                class="hidden text-xs font-bold text-primary bg-orange-50 px-2.5 py-1 rounded-full"></span>
+                        </div>
+                        <a href="https://www.instagram.com/avra.bar" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" clip-rule="evenodd"/></svg>
+                            @avra.bar
+                        </a>
+                    </div>
+                    <div class="mb-4 inline-flex flex-wrap items-center gap-2 bg-orange-50 border border-primary/25 text-primary px-3 py-2 rounded-xl text-sm font-bold">
+                        <span class="material-icons text-base">local_offer</span>
+                        <span>1 chopp Brahma ao apresentar o encarte Velt</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        O Avra é um gastrobar que une gastronomia, carnes nobres na brasa, drinks, vinhos e
+                        chopp Brahma em uma arquitetura marcante, feita para encontros, celebrações e bons
+                        momentos à mesa.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-6 text-sm">
+                        <div>
+                            <p class="font-bold text-accent mb-2 flex items-center gap-1.5">
+                                <span class="material-icons text-base">schedule</span> Horários
+                            </p>
+                            <ul class="text-slate-600 space-y-1">
+                                <li><strong class="text-secondary">Seg–Qui:</strong> a partir das 17h</li>
+                                <li><strong class="text-secondary">Sex–Dom:</strong> a partir das 12h</li>
+                            </ul>
+                        </div>
+                        <div data-restaurant-id="avra-lourdes" class="cursor-pointer p-2 -m-2">
+                            <p class="font-bold text-accent mb-2 flex items-center gap-1.5">
+                                <span class="material-icons text-base">place</span> Unidade
+                                <span data-distance-for="avra-lourdes"
+                                    class="hidden ml-auto text-xs font-bold text-primary bg-orange-50 px-2 py-0.5 rounded-full"></span>
+                            </p>
+                            <p class="text-slate-600 mb-1"><strong class="text-secondary">Lourdes</strong></p>
+                            <p class="text-slate-500 text-xs mb-4">Rua Santa Catarina, 1287 — Lourdes, Belo Horizonte</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=AVRA+Rua+Santa+Catarina+1287+Lourdes+Belo+Horizonte"
+                                target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1 text-primary font-semibold hover:underline">
+                                Ver no Maps <span class="material-icons text-sm">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ISTO E AQUILO -->
+            <article data-brand-card="Isto e aQuilo"
+                class="restaurant-card bg-white rounded-3xl border border-orange-100/80 overflow-hidden shadow-sm">
+                <div class="logo-dark flex items-center justify-center px-8 py-10">
+                    <img src="assets/guiabh/isto-e-aquilo.png" alt="Logo Isto e aQuilo Restaurante"
+                        class="max-h-20 md:max-h-24 w-auto object-contain">
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <h2 class="text-2xl font-extrabold text-secondary tracking-wide uppercase">Isto e aQuilo</h2>
+                            <span data-brand-distance="Isto e aQuilo"
+                                class="hidden text-xs font-bold text-primary bg-orange-50 px-2.5 py-1 rounded-full"></span>
+                        </div>
+                        <a href="https://www.instagram.com/istoeaquilobh" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" clip-rule="evenodd"/></svg>
+                            @istoeaquilobh
+                        </a>
+                    </div>
+                    <div class="mb-4 inline-flex flex-wrap items-center gap-2 bg-orange-50 border border-primary/25 text-primary px-3 py-2 rounded-xl text-sm font-bold">
+                        <span class="material-icons text-base">local_offer</span>
+                        <span>10% de desconto em todas as unidades ao apresentar o encarte Velt</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        O criador oficial do modelo de comida a quilo no Brasil e no mundo. Tradição de 40 anos
+                        com o melhor tempero caseiro da culinária mineira, variedade incomparável e espaços
+                        pet friendly.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-6 text-sm">
+                        <div>
+                            <p class="font-bold text-accent mb-2 flex items-center gap-1.5">
+                                <span class="material-icons text-base">schedule</span> Horários
+                            </p>
+                            <ul class="text-slate-600 space-y-2">
+                                <li>
+                                    <strong class="text-secondary">Cidade Jardim:</strong><br>
+                                    Seg–Dom · 11h–15h
+                                </li>
+                                <li>
+                                    <strong class="text-secondary">Santo Agostinho:</strong><br>
+                                    Seg–Sáb · 11h15–15h
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="font-bold text-accent mb-2 flex items-center gap-1.5">
+                                <span class="material-icons text-base">place</span> Unidades
+                            </p>
+                            <ul class="text-slate-600 space-y-3 mb-4">
+                                <li data-restaurant-id="isto-cidade-jardim" class="cursor-pointer p-2 -mx-2">
+                                    <div class="flex items-start justify-between gap-2">
+                                        <div>
+                                            <strong class="text-secondary">Cidade Jardim</strong><br>
+                                            <span class="text-slate-500 text-xs">Av. Prudente de Morais, 1158</span>
+                                        </div>
+                                        <span data-distance-for="isto-cidade-jardim"
+                                            class="hidden shrink-0 text-xs font-bold text-primary bg-orange-50 px-2 py-0.5 rounded-full"></span>
+                                    </div>
+                                </li>
+                                <li data-restaurant-id="isto-santo-agostinho" class="cursor-pointer p-2 -mx-2">
+                                    <div class="flex items-start justify-between gap-2">
+                                        <div>
+                                            <strong class="text-secondary">Santo Agostinho</strong><br>
+                                            <span class="text-slate-500 text-xs">Av. Olegário Maciel, 1826</span>
+                                        </div>
+                                        <span data-distance-for="isto-santo-agostinho"
+                                            class="hidden shrink-0 text-xs font-bold text-primary bg-orange-50 px-2 py-0.5 rounded-full"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="flex flex-wrap gap-4">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Isto+e+aQuilo+Belo+Horizonte"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-1 text-primary font-semibold hover:underline">
+                                    Ver no Maps <span class="material-icons text-sm">open_in_new</span>
+                                </a>
+                                <a href="https://istoeaquilo.com.br/" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-1 text-slate-500 font-semibold hover:text-primary hover:underline">
+                                    Site oficial
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- NASHY -->
+            <article data-brand-card="Nashy"
+                class="restaurant-card bg-white rounded-3xl border border-orange-100/80 overflow-hidden shadow-sm">
+                <div class="logo-dark flex items-center justify-center px-8 py-10">
+                    <img src="assets/guiabh/nashy.png" alt="Logo Nashy"
+                        class="max-h-16 md:max-h-20 w-auto object-contain">
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <h2 class="text-2xl font-extrabold text-secondary tracking-wide uppercase">Nashy</h2>
+                            <span data-brand-distance="Nashy"
+                                class="hidden text-xs font-bold text-primary bg-orange-50 px-2.5 py-1 rounded-full"></span>
+                        </div>
+                        <a href="https://www.instagram.com/nashysushi_oficial" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" clip-rule="evenodd"/></svg>
+                            @nashysushi_oficial
+                        </a>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        Rodízio japonês premium com sushis, sashimis, temakis, camarão, polvo, pratos quentes
+                        e carnes grelhadas, como picanha e contrafilé. Uma parada imperdível em BH.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-6 text-sm">
+                        <div>
+                            <p class="font-bold text-accent mb-2 flex items-center gap-1.5">
+                                <span class="material-icons text-base">schedule</span> Horários
+                            </p>
+                            <ul class="text-slate-600 space-y-1 mb-4">
+                                <li><strong class="text-secondary">Seg–Sex:</strong> 11h30 às 15h e 18h30 às 23h</li>
+                                <li><strong class="text-secondary">Sáb:</strong> 12h às 23h</li>
+                                <li><strong class="text-secondary">Dom e feriados:</strong> 12h às 22h</li>
+                            </ul>
+                            <div class="flex flex-wrap gap-4">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Nashy+Sushi+Belo+Horizonte"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-1 text-primary font-semibold hover:underline">
+                                    Ver no Maps <span class="material-icons text-sm">open_in_new</span>
+                                </a>
+                                <a href="https://www.nashysushi.com/home" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-1 text-slate-500 font-semibold hover:text-primary hover:underline">
+                                    Site oficial
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="font-bold text-accent mb-2 flex items-center gap-1.5">
+                                <span class="material-icons text-base">place</span> 4 unidades em BH e região
+                            </p>
+                            <ul class="text-slate-600 space-y-2">
+                                <li data-restaurant-id="nashy-sao-pedro" class="cursor-pointer p-2 -mx-2">
+                                    <div class="flex items-start justify-between gap-2">
+                                        <div>
+                                            <strong class="text-secondary">São Pedro</strong><br>
+                                            <span class="text-slate-500 text-xs">R. Irmão Gonçalves Xavier, 46</span>
+                                        </div>
+                                        <span data-distance-for="nashy-sao-pedro"
+                                            class="hidden shrink-0 text-xs font-bold text-primary bg-orange-50 px-2 py-0.5 rounded-full"></span>
+                                    </div>
+                                </li>
+                                <li data-restaurant-id="nashy-lourdes" class="cursor-pointer p-2 -mx-2">
+                                    <div class="flex items-start justify-between gap-2">
+                                        <div>
+                                            <strong class="text-secondary">Lourdes</strong><br>
+                                            <span class="text-slate-500 text-xs">R. Espírito Santo, 1972</span>
+                                        </div>
+                                        <span data-distance-for="nashy-lourdes"
+                                            class="hidden shrink-0 text-xs font-bold text-primary bg-orange-50 px-2 py-0.5 rounded-full"></span>
+                                    </div>
+                                </li>
+                                <li data-restaurant-id="nashy-savassi" class="cursor-pointer p-2 -mx-2">
+                                    <div class="flex items-start justify-between gap-2">
+                                        <div>
+                                            <strong class="text-secondary">Savassi</strong><br>
+                                            <span class="text-slate-500 text-xs">Av. Getúlio Vargas, 900</span>
+                                        </div>
+                                        <span data-distance-for="nashy-savassi"
+                                            class="hidden shrink-0 text-xs font-bold text-primary bg-orange-50 px-2 py-0.5 rounded-full"></span>
+                                    </div>
+                                </li>
+                                <li data-restaurant-id="nashy-contagem" class="cursor-pointer p-2 -mx-2">
+                                    <div class="flex items-start justify-between gap-2">
+                                        <div>
+                                            <strong class="text-secondary">Contagem</strong><br>
+                                            <span class="text-slate-500 text-xs">Rua Portugal, 344 — Bairro da Glória</span>
+                                        </div>
+                                        <span data-distance-for="nashy-contagem"
+                                            class="hidden shrink-0 text-xs font-bold text-primary bg-orange-50 px-2 py-0.5 rounded-full"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+        <p class="text-center text-slate-400 text-sm pt-4 max-w-4xl mx-auto px-4 sm:px-6">
+            Indicações do time Velt · Ofertas do encarte válidas até 30/08/2026 · Sujeitas a disponibilidade
+        </p>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-primary relative text-center overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+        </div>
+        <div class="relative z-10 max-w-3xl mx-auto px-4">
+            <p class="text-white/80 font-semibold uppercase tracking-wider text-sm mb-4">Viajando a trabalho?</p>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6 leading-tight">
+                Economize até 30% nas viagens da sua empresa.
+            </h2>
+            <p class="text-white/90 text-lg mb-10 max-w-xl mx-auto">
+                Atendimento humano e dedicado · Soluções completas em viagens · Mais economia e eficiência
+            </p>
+            <a href="contato"
+                class="inline-block bg-white text-secondary px-10 py-5 rounded-2xl font-black text-lg hover:bg-slate-100 transition-all shadow-2xl hover:scale-105 active:scale-95">
+                Conhecer a Velt
+            </a>
+        </div>
+    </section>
+
+    <div id="main-footer"></div>
+
+    <script src="js/layout.js?v=3"></script>
+    <script src="js/guiabh-restaurants.js?v=2"></script>
+    <script src="js/guiabh-map.js?v=2"></script>
+
+</body>
+
+</html>
