@@ -243,9 +243,8 @@
     <!-- Form Handler -->
     <script>
             (function () {
-                const HUBSPOT_PORTAL = '50211725';
-                const HUBSPOT_FORM_ID = 'fc9622f6-bd22-4eda-a23a-32191360baa3';
-                const HUBSPOT_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL}/${HUBSPOT_FORM_ID}`;
+                // Google Apps Script Web App (planilha + e-mail de notificação)
+                const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyBxcQGw1MjtqWHGb2slN13bYfrURIFUC94atuSvYpT0kIWhGi9OYlWKZs7BIcamBA/exec';
 
                 const form = document.getElementById('velt-contact-form');
                 const formContainer = document.getElementById('form-container');
@@ -274,17 +273,14 @@
                 }
 
                 form.addEventListener('submit', async function (e) {
-                    // 1. Prevent default
                     e.preventDefault();
                     hideError();
 
-                    // 2. Collect fields
                     const name = document.getElementById('name').value.trim();
                     const email = document.getElementById('email').value.trim();
                     const phone = document.getElementById('phone').value.trim();
                     const company = document.getElementById('company').value.trim();
 
-                    // Basic client-side validation
                     if (!name || !email || !phone || !company) {
                         showError('Por favor, preencha todos os campos obrigatórios.');
                         return;
@@ -292,39 +288,18 @@
 
                     setLoading(true);
 
-                    // Split name into firstname/lastname for HubSpot
-                    const nameParts = name.split(' ');
-                    const firstname = nameParts[0];
-                    const lastname = nameParts.slice(1).join(' ') || '-';
-
-                    // 3. Send to HubSpot
-                    const payload = {
-                        fields: [
-                            { name: 'firstname', value: firstname },
-                            { name: 'lastname', value: lastname },
-                            { name: 'email', value: email },
-                            { name: 'phone', value: phone },
-                            { name: 'company', value: company },
-                        ],
-                        context: {
-                            pageUri: window.location.href,
-                            pageName: document.title,
-                        },
-                    };
+                    const payload = { name, email, phone, company };
 
                     try {
-                        const res = await fetch(HUBSPOT_URL, {
+                        // text/plain + no-cors evita preflight CORS no Apps Script;
+                        // o script ainda faz JSON.parse(e.postData.contents).
+                        await fetch(APPS_SCRIPT_URL, {
                             method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
+                            mode: 'no-cors',
+                            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                             body: JSON.stringify(payload),
                         });
 
-                        if (!res.ok) {
-                            const data = await res.json().catch(() => ({}));
-                            throw new Error(data.message || `HTTP ${res.status}`);
-                        }
-
-                        // 4. GTM event
                         if (window.dataLayer) {
                             window.dataLayer.push({
                                 event: 'form_submit',
@@ -332,18 +307,13 @@
                             });
                         }
 
-                        // 5. Facebook Pixel
                         if (typeof fbq === 'function') {
                             fbq('track', 'Lead');
                         }
 
-                        // 6. Reset form
                         form.reset();
-
-                        // 7. Emit browser event
                         window.dispatchEvent(new CustomEvent('formSubmissionSuccess'));
 
-                        // Show success UI
                         formContainer.classList.add('hidden');
                         successBox.classList.remove('hidden');
                         successBox.classList.add('fade-in-up');
